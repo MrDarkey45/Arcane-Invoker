@@ -54,8 +54,9 @@ data "SpellSchool" "Evocation"
 data "DamageType" "Lightning"
 data "PrepareEffect" "77241e8c-ae8d-4402-92d8-a871ce64d86f"
 data "CastEffect" "10fc784a-4312-47a8-a6b8-6b529c646ac4"
-data "TargetEffect" "a3e2368b-f486-4cfc-b04a-b02e23383280"
-data "PositionEffect" "de5e4e60-e2b7-44f4-aca8-c11390b4cc48"
+// Dota-style EMP ground effect (custom, vfx_src\VFX_Invoker_EMP_01 via tools\vfxcompile\build_emp.py).
+// Previous look (Call Lightning): TargetEffect a3e2368b-f486-4cfc-b04a-b02e23383280 (bolt on each victim), PositionEffect de5e4e60-e2b7-44f4-aca8-c11390b4cc48
+data "PositionEffect" "2205da78-d0f4-549c-a791-007b20df03bc"
 data "CastSound" "Spell_Cast_Damage_Lightning_CallLightning_L1to3"
 data "TargetSound" "Spell_Impact_Damage_Lightning_CallLightning_L1to3"
 data "VerbalIntent" "Damage"
