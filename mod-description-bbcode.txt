@@ -43,12 +43,12 @@ Just holding an orb grants a passive, stacking up to three:
 [*][b]Cold Snap[/b] (QQQ) — [i]At-will.[/i] A 3-turn frost DoT (1d4+1 → 3d4+3 per tick) that snaps the target with a 1-turn freeze.
 [*][b]Ghost Walk[/b] (QQW) — [i]At-will.[/i] Turn invisible with a haunting aura — nearby foes are slowed and burned while you move faster and can't be held.
 [*][b]Ice Wall[/b] (QQE) — [i]At-will.[/i] Drag out a wall of ice. It can be walked through, but foes within 2m of it are slowed and burned (1d6 → 3d6 fire per turn).
-[*][b]EMP[/b] (WWW) — [i]Lv2 slot.[/i] A targeted storm burst (2d8 → 7d8) that Silences everything caught for two turns.
+[*][b]EMP[/b] (WWW) — [i]Lv2 slot.[/i] A crackling ball of energy charges over the targeted area, then detonates in a storm burst (2d8 → 7d8) that Silences everything caught for two turns.
 [*][b]Tornado[/b] (QWW) — [i]Lv2 slot.[/i] A lingering cyclone: knocks enemies prone as they enter, then slows and batters them (1d4+4 → 3d6+6 force per turn).
 [*][b]Deafening Blast[/b] (QWE) — [i]At-will.[/i] A thunder cone (2d8 → 5d8) that knocks foes back and leaves them disarmed (attacks at disadvantage).
 [*][b]Alacrity[/b] (WWE) — [i]Lv2 slot.[/i] One buff for 3 turns: Haste (no exhaustion afterward), +1d4 to attack rolls and +1d6 damage on every hit.
 [*][b]Sun Strike[/b] (EEE) — [i]Lv3 slot.[/i] Call a pillar of solar fire down on any spot you can see (3d10 → 10d10) with a small blast radius — no line of sight from you needed.
-[*][b]Chaos Meteor[/b] (WEE) — [i]Lv3 slot.[/i] A crashing impact (3d8 → 10d8 thunder) that sets everything it hits ablaze for 3 turns (2d6 → 4d6 fire per turn) and leaves a burning fire field behind.
+[*][b]Chaos Meteor[/b] (WEE) — [i]Lv3 slot.[/i] A flaming boulder falls from the sky and shatters where it lands (3d8 → 10d8 thunder), setting everything it hits ablaze for 3 turns (2d6 → 4d6 fire per turn) and leaves a burning fire field behind.
 [*][b]Forge Spirit[/b] (QEE) — [i]Lv2 slot.[/i] Summon two fire elemental spirits for 4 turns. They throw Fire Bolts and burn foes in melee, and grow tougher and hit harder as you level.
 [/list]
 
@@ -79,7 +79,7 @@ Free for personal use. [b]Not for commercial use[/b] and not to be reuploaded or
 
 [line]
 [center][size=4][color=#ff4d4d][b]DISCLAIMER: Arcane Invoker is an UNOFFICIAL, FAN-MADE mod inspired by the Invoker hero from Dota 2. It is NOT affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios. Dota 2, Invoker and all related names are trademarks of Valve. Baldur's Gate 3 is a trademark of Larian Studios. No Valve assets are included.[/b][/color][/size][/center]
-[center][i]Built with the official BG3 Toolkit; effects remixed from base-game spells.[/i][/center]
+[center][i]Built with the official BG3 Toolkit; custom orb, EMP and Chaos Meteor effects assembled from base-game assets.[/i][/center]
 
 
 ########################################################################
@@ -115,12 +115,12 @@ Just holding an orb grants a passive, stacking up to three:
 [*][b]Cold Snap[/b] (QQQ) — At-will. 3-turn frost DoT (1d4+1 → 3d4+3 per tick) + a 1-turn freeze.
 [*][b]Ghost Walk[/b] (QQW) — At-will. Invisibility + a haunting aura that slows and burns nearby foes; you move faster and can't be held.
 [*][b]Ice Wall[/b] (QQE) — At-will. Drag out a wall of ice you can walk through; foes within 2m are slowed and burned (1d6 → 3d6 fire/turn).
-[*][b]EMP[/b] (WWW) — Lv2 slot. Targeted storm burst (2d8 → 7d8) + Silence for two turns.
+[*][b]EMP[/b] (WWW) — Lv2 slot. An energy ball charges over the target area, then detonates: storm burst (2d8 → 7d8) + Silence for two turns.
 [*][b]Tornado[/b] (QWW) — Lv2 slot. Lingering cyclone: prone on entry, then slow + 1d4+4 → 3d6+6 force/turn.
 [*][b]Deafening Blast[/b] (QWE) — At-will. Thunder cone (2d8 → 5d8) + knockback + disarm (attacks at disadvantage).
 [*][b]Alacrity[/b] (WWE) — Lv2 slot. One 3-turn buff: Haste (no exhaustion after) + attack-roll and damage bonuses.
 [*][b]Sun Strike[/b] (EEE) — Lv3 slot. Ground-targeted pillar of fire (3d10 → 10d10) on any spot you can see — no line of sight from you needed.
-[*][b]Chaos Meteor[/b] (WEE) — Lv3 slot. Impact (3d8 → 10d8 thunder) + a 3-turn burn (2d6 → 4d6 per turn) + a burning fire field.
+[*][b]Chaos Meteor[/b] (WEE) — Lv3 slot. A flaming boulder falls from the sky: impact (3d8 → 10d8 thunder) + a 3-turn burn (2d6 → 4d6 per turn) + a burning fire field.
 [*][b]Forge Spirit[/b] (QEE) — Lv2 slot. Summons two fire elemental spirits for 4 turns that scale with your level.
 [/list]
 
@@ -148,4 +148,4 @@ Just holding an orb grants a passive, stacking up to three:
 
 [b]DISCLAIMER: Arcane Invoker is an UNOFFICIAL, FAN-MADE mod inspired by the Invoker hero from Dota 2. It is NOT affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios. Dota 2, Invoker and all related names are trademarks of Valve. Baldur's Gate 3 is a trademark of Larian Studios. No Valve assets are included.[/b]
 
-[i]Built with the official BG3 Toolkit; effects remixed from base-game spells.[/i]
+[i]Built with the official BG3 Toolkit; custom orb, EMP and Chaos Meteor effects assembled from base-game assets.[/i]

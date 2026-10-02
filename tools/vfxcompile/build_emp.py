@@ -33,10 +33,16 @@ MEI_ID = str(uuid.uuid5(B.NS, "emp_mei"))
 INFO_ID = str(uuid.uuid5(B.NS, "emp_effectinfo"))
 
 AREA_RADIUS = 4.0           # INVOKER_EMP AreaRadius (metres)
-DECAL_DIAMETER = 9.0        # a little over 2 x AREA_RADIUS so the ring edge lands near 4 m
+DECAL_DIAMETER = 12.0       # ground ring / shockwave decal width (was 9: user 2026-10-02 "doesn't seem visible" -> remade bigger)
 K = DECAL_DIAMETER / 16.0   # vanilla Static Overdrive decal is 16 m wide -> scale factor for everything else
-CHARGE = 0.7                # seconds of charging ring before the burst starts
-RAISE = 0.35                # metres to lift the burst's rings/flash/sparks off the ground (user: "too low"); decals stay on the floor
+CHARGE = 1.0                # seconds the energy ball + ground ring charge before the burst (was 0.7)
+RAISE = 0.6                 # metres to lift the burst's rings/flash/sparks off the ground; decals stay on the floor
+BURST_STRETCH = 2.5         # vanilla burst layers last 0.15-0.4 s (a blink): play them this much slower
+BURST_BRIGHT = 2.0          # brightness multiplier on the burst's particle layers
+BALL_Y = 1.6                # height of the charging energy ball
+BALL_SIZE = 2.4             # metres (aura)
+LINGER = 1.6                # seconds the crackling arcs keep going after the burst
+ARC_RING = 2.6              # radius of the ring of lingering arcs
 
 MAIN = (125, 90, 255)       # Wex violet-blue
 BRIGHT = (205, 185, 255)    # sparks / hot highlights
@@ -121,11 +127,18 @@ def burst_components():
         for pid in COLOR_PROPS.get(cls, ()):
             if has_prop(c, pid):
                 tint(c, pid, rgb)
-        shift(c, CHARGE)
+        st0, en0 = float(c.get("start")), float(c.get("end"))
+        if cls in ("ParticleSystem", "Billboard", "Decal"):        # slow the blink-short burst down
+            retime(c, CHARGE + st0, CHARGE + st0 + (en0 - st0) * BURST_STRETCH)
+            if cls == "ParticleSystem":
+                scale_ramp(c, "352fac77", BURST_STRETCH)           # particle lifespan
+                scale_ramp(c, "7b01f163", BURST_BRIGHT)
+        else:
+            shift(c, CHARGE)
         if cls in ("ParticleSystem", "Billboard"):
             raise_component(c, RAISE)
         if cls.endswith("Force"):                 # forces only need to outlast the longest spark (emitted <= 1.0 s, life <= 2 s)
-            retime(c, float(c.get("start")), 3.0)
+            retime(c, float(c.get("start")), CHARGE + 3.5)
         c.set("instancename", str(uuid.uuid5(B.NS, f"emp_burst_{len(out)}_{cls}_{nm}")))
         out.append(c)
     return out
@@ -134,7 +147,7 @@ def burst_components():
 def charge_components():
     """Ground ring + glow disc that build up before the burst (cloned from the Ranger Volley prepare decals)."""
     out = []
-    want = [("PolarUV_UVDistortion_04", MAIN, 3.0, 1.0), ("Glow_Circle_01", MAIN, 1.2, 0.55)]
+    want = [("PolarUV_UVDistortion_04", MAIN, 7.0, 1.0), ("Glow_Circle_01", MAIN, 3.0, 0.8)]
     seen = set()
     for c in ET.parse(VOLLEY).getroot().iter("component"):
         if c.get("class") != "Decal":
@@ -156,7 +169,57 @@ def charge_components():
                 c.set("instancename", str(uuid.uuid5(B.NS, f"emp_charge_{key}")))
                 out.append(c)
                 break
-    assert len(out) == 2, f"charge decals not found: {seen}"
+    assert len(out) == 2, f"charge decals not found: {seen}"  # noqa
+    return out
+
+
+def _abs(v):          # layer() scales are multiplied by build_orb's SIZE; give absolute metres
+    return tuple(x / B.SIZE for x in v) if isinstance(v, tuple) else v / B.SIZE
+
+
+def _emit(tag, L, start, end, pos):
+    glow_base = [c for c in B.xml(B.BASE).iter("component") if c.get("class") == "ParticleSystem"][1]
+    c = B.make_emitter(glow_base, "emp", dict(column=0, slot=2, phase=0), L, end - start)
+    B.set_ramp(c, B.P["kf_offset"], [[(0, pos[0]), (1, pos[0])], [(0, pos[1]), (1, pos[1])], [(0, pos[2]), (1, pos[2])]])
+    B.set_value(c, B.P["name"], f"emp_{tag}")
+    retime(c, start, end)
+    c.set("instancename", str(uuid.uuid5(B.NS, f"emp_{tag}")))
+    return c
+
+
+def ball_components():
+    """New (remake): a crackling energy ball hangs over the target while the ring charges, detonates into a big flash,
+    and arcs keep crackling across the area afterwards - so the EMP reads from the normal BG3 camera distance."""
+    import math
+    br = lambda v: v / B.BRIGHT
+    arcs = lambda lo, hi, rate: B.layer("arcs", color=B.argb(255, 185, 140, 255), bright=br(14.0), scale=_abs((lo, hi)),
+                                        life=(0.08, 0.18), rate=rate, max_count=14, spin=(0, 0),
+                                        clone=(B.LIGHTNING_ORB, "04x02_Lightning_01"))
+    centre = (0.0, BALL_Y, 0.0)
+    out = [
+        # charging ball
+        _emit("ball_aura", B.layer("aura", "glow", B.argb(255, *MAIN), br(4.0), _abs(BALL_SIZE), 0.25, 40, 16,
+                                   alpha=[(0, 0.8), (1, 0)]), 0, CHARGE + 0.1, centre),
+        _emit("ball_core", B.layer("core", "glow", B.argb(255, 235, 225, 255), br(9.0), _abs(BALL_SIZE * 0.4), 0.12, 60, 12,
+                                   alpha=[(0, 1), (1, 0.6)]), 0, CHARGE + 0.1, centre),
+        _emit("ball_arcs", arcs(BALL_SIZE * 0.8, BALL_SIZE * 1.3, 22), 0, CHARGE + 0.1, centre),
+        _emit("ball_sparks", B.layer("sparks", "glow", B.argb(255, *BRIGHT), br(8.0), _abs((0.06, 0.12)), (0.3, 0.6), 50, 40,
+                                     alpha=[(0, 1), (1, 0)], velocity=("0,1,0", 180, 1.0, 3.0), space=2),
+              0, CHARGE + 0.1, centre),
+        # detonation flash
+        _emit("flash_aura", B.layer("flash", "glow", B.argb(255, *MAIN), br(8.0), _abs(DECAL_DIAMETER * 0.9), (0.4, 0.6), 20, 10,
+                                    alpha=[(0, 0.9), (1, 0)]), CHARGE, CHARGE + 0.35, (0.0, 1.0, 0.0)),
+        _emit("flash_core", B.layer("flashcore", "glow", B.argb(255, 240, 235, 255), br(14.0), _abs(DECAL_DIAMETER * 0.35),
+                                    (0.25, 0.4), 20, 8, alpha=[(0, 1), (1, 0)]), CHARGE, CHARGE + 0.25, (0.0, 1.0, 0.0)),
+        _emit("flash_sparks", B.layer("flashsparks", "glow", B.argb(255, *BRIGHT), br(10.0), _abs((0.08, 0.16)), (0.5, 1.0),
+                                      160, 120, alpha=[(0, 1), (1, 0)], velocity=("0,1,0", 180, 3.0, 8.0), space=2),
+              CHARGE, CHARGE + 0.4, (0.0, 1.0, 0.0)),
+    ]
+    # lingering arcs: one in the middle + a ring of six
+    spots = [(0.0, 1.0, 0.0)] + [(ARC_RING * math.cos(math.radians(a)), 0.9, ARC_RING * math.sin(math.radians(a)))
+                                 for a in range(0, 360, 60)]
+    for i, pos in enumerate(spots):
+        out.append(_emit(f"linger_arcs_{i}", arcs(1.6, 2.6, 12), CHARGE, CHARGE + LINGER, pos))
     return out
 
 
@@ -212,8 +275,8 @@ def write_bank(duration, deps):
 					<attribute id="Name" type="LSString" value="{NAME}" />
 					<attribute id="SourceFile" type="LSString" value="Public/{B.MOD}/Assets/Effects/Effects_Banks/Invoker/{NAME}.lsfx" />
 					<attribute id="EffectName" type="FixedString" value="{NAME}" />
-					<attribute id="BoundsMin" type="fvec3" value="-6 -6 -6" />
-					<attribute id="BoundsMax" type="fvec3" value="6 6 6" />
+					<attribute id="BoundsMin" type="fvec3" value="-10 -10 -10" />
+					<attribute id="BoundsMax" type="fvec3" value="10 10 10" />
 					<attribute id="CullingDistance" type="float" value="0" />
 					<attribute id="Duration" type="float" value="{duration:g}" />
 					<attribute id="Looping" type="bool" value="False" />
@@ -279,7 +342,7 @@ def write_mei():
 def main():
     root = copy.deepcopy(B.xml(STATIC))
     bounds = copy.deepcopy(next(c for c in root.iter("component") if c.get("class") == "BoundingSphere"))
-    burst, charge = burst_components(), charge_components()
+    burst, charge = burst_components(), charge_components() + ball_components()
     comps = charge + burst
     duration = round(max(float(c.get("end")) for c in comps) + 0.1, 3)
 
@@ -295,7 +358,7 @@ def main():
 
     bounds.set("instancename", str(uuid.uuid5(B.NS, "emp_bounds")))
     retime(bounds, 0, duration)
-    B.set_value(bounds, "ba2ee0f9", AREA_RADIUS + 3)   # BoundingSphere Radius
+    B.set_value(bounds, "ba2ee0f9", DECAL_DIAMETER)   # BoundingSphere Radius
     tg = ET.SubElement(tgs, "trackgroup", name="Invoker EMP")
     ET.SubElement(ET.SubElement(tg, "ids"), "id", value="2")
     for c in [bounds] + comps:

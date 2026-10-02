@@ -855,6 +855,37 @@
 						</node>
 					</children>
 				</node>
+<!-- METEOR PROJECTILE BEGIN (generated) -->
+                <node id="GameObjects">
+					<attribute id="Acceleration" type="float" value="25" />
+					<attribute id="CameraOffset" type="fvec3" value="0 0 0" />
+					<attribute id="CastBone" type="FixedString" value="Dummy_CastFX" />
+					<attribute id="Flag" type="int32" value="0" />
+					<attribute id="GroupID" type="uint32" value="0" />
+					<attribute id="HasGameplayValue" type="bool" value="False" />
+					<attribute id="ImpactFX" type="FixedString" value="VFX_Invoker_Meteor_Impact_01" />
+					<attribute id="InitialSpeed" type="float" value="18" />
+					<attribute id="LevelName" type="FixedString" value="" />
+					<attribute id="MapKey" type="FixedString" value="373fc678-0a69-52b1-9923-e9fc1c8e9894" />
+					<attribute id="Name" type="LSString" value="INVOKER_Projectile_ChaosMeteor" />
+					<attribute id="ParentTemplateId" type="FixedString" value="" />
+					<attribute id="PhysicsTemplate" type="FixedString" value="" />
+					<attribute id="PreviewPathImpactFX" type="FixedString" value="VFX_UI_DestinationBeam_Projectile_01" />
+					<attribute id="PreviewPathMaterial" type="FixedString" value="312a1494-a0e2-c215-cf51-bda58a6b2341" />
+					<attribute id="PreviewPathRadius" type="float" value="0.1" />
+					<attribute id="Speed" type="float" value="18" />
+					<attribute id="TrailFX" type="FixedString" value="VFX_Invoker_Meteor_Head_01" />
+					<attribute id="TrajectoryType" type="uint8" value="0" />
+					<attribute id="Type" type="FixedString" value="projectile" />
+					<attribute id="VelocityMode" type="uint8" value="1" />
+					<attribute id="VisualTemplate" type="FixedString" value="" />
+					<attribute id="_OriginalFileVersion_" type="int64" value="144115200960758167" />
+					<children>
+						<node id="Bounds" />
+						<node id="GameMaster" />
+					</children>
+				</node>
+<!-- METEOR PROJECTILE END -->
             </children>
         </node>
     </region>

@@ -44,11 +44,17 @@ data "Icon" "Spell_Evocation_FlameStrike"
 // ============ METEOR (WEE) — big fire projectile AoE ============
 new entry "INVOKER_METEOR"
 type "SpellData"
-data "SpellType" "Target"
+data "SpellType" "ProjectileStrike"
 data "SpellProperties" "GROUND:CreateSurface(3,3,Fire)"
 data "TargetRadius" "18"
 data "AreaRadius" "3"
-data "PreviewCursor" "Cast"
+data "ExplodeRadius" "3"
+data "ProjectileCount" "1"
+data "Distribution" "EdgeCenter"
+data "Angle" "25"
+data "Height" "20"
+data "Template" "373fc678-0a69-52b1-9923-e9fc1c8e9894"
+data "Trajectories" "373fc678-0a69-52b1-9923-e9fc1c8e9894"
 data "TargetConditions" "not Dead()"
 data "AoEConditions" "not Dead() and not (HasPassive('SculptSpells', context.Source) and Ally())"
 data "SpellRoll" "not SavingThrow(Ability.Dexterity, 14)"
@@ -65,9 +71,10 @@ data "SpellSchool" "Evocation"
 data "DamageType" "Thunder"
 data "PrepareEffect" "fdbf8e88-c3a5-4151-a81d-429985de422c"
 data "CastEffect" "69aaec35-fb5f-489e-a4cc-47310f4377e9"
-// Sky-fall meteor (custom effect VFX_Invoker_Meteor_01, built by tools/vfxcompile/build_meteor.py). Was a Fireball-style Projectile:
-// Trajectories f5855e43-2e8f-4971-b8c2-7faa36e3381b, ProjectileCount 1, ExplodeRadius 3, HitEffect 41de42e1-56d0-4336-8b44-99fc38281525
-data "PositionEffect" "8fffd60f-3e4a-5465-b623-987c5d327a3e"
+// Sky-fall meteor = a real projectile (ProjectileStrike, like the tutorial Bombardment / Nautiloid Airstrike): the engine drops
+// projectile template INVOKER_Projectile_ChaosMeteor (roottemplate_src) from Height/Angle and applies damage WHEN IT LANDS.
+// Its TrailFX / ImpactFX are VFX_Invoker_Meteor_Head_01 / _Impact_01 (tools/vfxcompile/build_meteor.py).
+// Before: SpellType Target + PreviewCursor Cast + PositionEffect 8fffd60f-... (damage landed at cast, before the visual). Backup: backups/pre_projectilestrike
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerMeteor),Thunder)"
 data "TooltipAttackSave" "Dexterity"
 data "CastSound" "Spell_Cast_Damage_Fireball_L5"
