@@ -43,3 +43,8 @@ The Script Extender is optional and only used to give the gauntlets item once.
 ## Disclaimer
 
 **This is an unofficial fan project. It is not affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios. Dota 2 and Invoker are Valve's; Baldur's Gate 3 is Larian's. Base-game assets are referenced by ID and are not redistributed.**
+
+## License
+
+Original content in this repository is licensed under [CC BY-NC 4.0](LICENSE): free to share and adapt with credit,
+**not for commercial use**. This does not cover Valve's or Larian's content (see the disclaimer above).
