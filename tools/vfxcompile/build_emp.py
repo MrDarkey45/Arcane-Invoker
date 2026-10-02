@@ -189,7 +189,7 @@ def material_guids(comps):
     for c in comps:
         for pid in MATERIAL_PROPS:
             if has_prop(c, pid):
-                m = re.search(r"<([0-9a-f-]{36})>?", B.get_value(c, pid) or "")
+                m = re.search(r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})", B.get_value(c, pid) or "")
                 if m:
                     g.add(m.group(1))
     return sorted(g)
