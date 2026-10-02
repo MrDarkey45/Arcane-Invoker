@@ -74,6 +74,9 @@ Just holding an orb grants a passive, stacking up to three:
 [*]Launch. Create a Wizard, reach [b]level 2[/b], and choose [b]Arcane Invoker[/b].
 [/list]
 
+[size=5][b]License[/b][/size]
+Free for personal use. [b]Not for commercial use[/b] and not to be reuploaded or redistributed for profit. Licensed under CC BY-NC 4.0 — full terms and source are in the GitHub repository: https://github.com/MrDarkey45/Arcane-Invoker
+
 [line]
 [center][size=4][color=#ff4d4d][b]DISCLAIMER: Arcane Invoker is an UNOFFICIAL, FAN-MADE mod inspired by the Invoker hero from Dota 2. It is NOT affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios. Dota 2, Invoker and all related names are trademarks of Valve. Baldur's Gate 3 is a trademark of Larian Studios. No Valve assets are included.[/b][/color][/size][/center]
 [center][i]Built with the official BG3 Toolkit; effects remixed from base-game spells.[/i][/center]
