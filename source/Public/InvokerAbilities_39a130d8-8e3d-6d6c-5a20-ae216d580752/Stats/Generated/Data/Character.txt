@@ -1,0 +1,9 @@
+// ============ FORGE SPIRIT creature stats (2026-09-25) ============
+// A tuned copy of the base Conjure Elemental fire elemental (Fire_Elemental). Tweak Vitality / Armor / abilities here.
+new entry "INVOKER_FIRE_SPIRIT"
+type "Character"
+using "Fire_Elemental"
+data "Vitality" "45"
+data "Armor" "12"
+// Spirits fire Fire Bolt (a spell attack): use Dexterity (17) instead of the elemental's Intelligence 6.
+data "SpellCastingAbility" "Dexterity"

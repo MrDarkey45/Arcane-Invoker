@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="319"/>
+    <region id="ItemWallTemplates">
+        <node id="root">
+            <children>
+                <!-- Invoker Ice Wall: vanilla Wall of Ice meshes on walk-through (Wall of Fire-style) pieces. -->
+                <node id="ItemWallTemplates">
+                    <attribute id="Animation" type="FixedString" value="OddEven"/>
+                    <attribute id="HighLeft" type="LSString" value="INVOKER_IceWall_HighLeft_2f28edb7-a689-4471-9056-15302bd22f08"/>
+                    <attribute id="HighMiddle" type="LSString" value="INVOKER_IceWall_HighMiddle_e28964d7-2d5f-49b8-afba-4c64bdf7f7b4"/>
+                    <attribute id="HighRight" type="LSString" value="INVOKER_IceWall_HighRight_39b94af2-471a-4e91-a59e-c069612587c0"/>
+                    <attribute id="LowLeft" type="LSString" value="INVOKER_IceWall_LowLeft_52a9f029-9672-4485-b7c0-5c07973193c2"/>
+                    <attribute id="LowMiddle" type="LSString" value="INVOKER_IceWall_LowMiddle_2be60576-a9c7-4eb0-9e24-a14ab92ea38c"/>
+                    <attribute id="LowRight" type="LSString" value="INVOKER_IceWall_LowRight_8a2f62fd-26d6-407c-9547-315774bf2d88"/>
+                    <attribute id="Name" type="LSString" value="InvokerIceWall"/>
+                    <attribute id="Padding" type="float" value="-0.2"/>
+                    <attribute id="RandomRotation" type="bool" value="true"/>
+                    <attribute id="TimeBetweenItems" type="float" value="0.033"/>
+                    <attribute id="UUID" type="guid" value="adb9454a-05e6-4557-b682-b5481b35084b"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

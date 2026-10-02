@@ -1,0 +1,3 @@
+// Gauntlets delivery moved to Script Extender (Mods/<mod>/ScriptExtender/Lua/BootstrapServer.lua),
+// which grants the Arcane Invoker's Gauntlets to the host character once on first load. The old
+// TUT_Chest_Potions injection was removed so the item isn't handed out twice.

@@ -1,0 +1,18 @@
+# Backups, large and local only
+backups/
+
+# Build output and tooling junk
+InvokerAbilities.pak
+**/bin/
+**/obj/
+*.blend1
+*.blend
+
+# Other projects that share this folder's docs
+docs/plans/*ogre-magi*
+
+# Generated effect sources: regenerate with `python tools/vfxcompile/build_orb.py`
+vfx_src/
+
+# Embedded copy of base-game icons used only by the store page
+icons.png

@@ -1,0 +1,8 @@
+// ============ ARCANE INVOKER'S GAUNTLETS (Gloves) — signature Invoker item ============
+// Grants the at-will INVOKER_ARCANE_STRIKE ("weapon") + a small Intelligence boost while equipped.
+new entry "INVOKER_ARCANE_GAUNTLETS"
+type "Armor"
+using "_Hand_Magic"
+data "RootTemplate" "e6b53f1a-7082-4441-b0bf-7acded17a960"
+data "Rarity" "VeryRare"
+data "Boosts" "UnlockSpell(INVOKER_ARCANE_STRIKE);Ability(Intelligence,1,20)"

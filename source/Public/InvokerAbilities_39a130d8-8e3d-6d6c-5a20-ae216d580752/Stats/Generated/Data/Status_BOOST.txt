@@ -1,0 +1,491 @@
+// ============ INVOKER ORB TYPE STATUSES (presence = which elements are held) ============
+// BG3 has no visible multi-stack counter; StackType valid values are Stack/Overwrite/Ignore.
+// We use presence markers + HasStatus. "Ignore" = re-casting the same element is a harmless no-op.
+
+new entry "INVOKER_ORB_QUAS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h7f09443ag5440g4f59g936cg083b23a21e95;1"
+data "Description" "h547f6808g7e27g4732g8a2eg60bdf22b2477;1"
+data "Icon" "Spell_Evocation_ChromaticOrb_Cold"
+data "StackId" "INVOKER_ORB_QUAS"
+data "StackType" "Ignore"
+// Visual: orbiting orb via visual-only statuses INVOKER_ORBFX_QUAS_* (see build_orb.py). Pre-orb look: Mage Armor shimmer b605de22-7474-4f7b-9eeb-287ef6a94dce
+data "TickType" "StartTurn"
+data "TickFunctors" "IF(Combat(context.Source)):RegainHitPoints(1)"
+
+new entry "INVOKER_ORB_WEX"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hc2bff7e2g10eag4dacgb277g5e808ffbcd64;1"
+data "Description" "h96755596g86c3g4637gaf73g5213a3eb91d4;2"
+data "Icon" "Spell_Evocation_ChromaticOrb_Thunder"
+data "StackId" "INVOKER_ORB_WEX"
+data "StackType" "Ignore"
+// Visual: orbiting orb via visual-only statuses INVOKER_ORBFX_WEX_* (see build_orb.py). Pre-orb look: Witch Bolt aura 869aaa90-c2da-40d3-856a-9730df79c4ba
+// Wex passive (2026-10-01): movement COSTS 10% less per Wex held + Initiative +1 per Wex. Not a resource pool, so Dispel + recast refunds nothing.
+data "Boosts" "ActionResourceConsumeMultiplier(Movement,0.9,0);Initiative(1)"
+
+new entry "INVOKER_ORB_EXORT"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hc6c374b0g9639g421ag898ag593a8b0c7747;1"
+data "Description" "h313a09e4gd5fcg40b5g9302g6a757e6fc200;1"
+data "Icon" "Spell_Evocation_ChromaticOrb_Fire"
+data "StackId" "INVOKER_ORB_EXORT"
+data "StackType" "Ignore"
+// Visual: orbiting orb via visual-only statuses INVOKER_ORBFX_EXORT_* (see build_orb.py). Pre-orb look: Burning flames 2156dd48-f83b-4060-9a4e-cab994da8857
+data "Boosts" "DamageBonus(1d4,Force)"
+
+// ============ TOTAL-ORB COUNT MARKERS (one visible pip per orb held; drive cap + combo gating) ============
+new entry "INVOKER_ORB_1"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h8f50feccg3bc6g4c41g9fbfgcbac9cc2f287;1"
+data "Icon" "Spell_Evocation_MagicMissile"
+data "StackId" "INVOKER_ORB_1"
+data "StackType" "Ignore"
+
+new entry "INVOKER_ORB_2"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h8f50feccg3bc6g4c41g9fbfgcbac9cc2f287;1"
+data "Icon" "Spell_Evocation_MagicMissile"
+data "StackId" "INVOKER_ORB_2"
+data "StackType" "Ignore"
+
+new entry "INVOKER_ORB_3"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h8f50feccg3bc6g4c41g9fbfgcbac9cc2f287;1"
+data "Icon" "Spell_Evocation_MagicMissile"
+data "StackId" "INVOKER_ORB_3"
+data "StackType" "Ignore"
+
+// ============ COLD SNAP DoT (Part 5) — cold damage per turn + slow ============
+new entry "INVOKER_COLDSNAP_DOT"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hbeae42d9gd89eg4a7bg9b02g7df079c5d225;1"
+data "Description" "h55e673bdg2fc9g4d4bg8e60gf02459998a74;1"
+data "Icon" "Status_Chilled"
+data "StackId" "INVOKER_COLDSNAP_DOT"
+data "StackType" "Overwrite"
+data "OnApplyFunctors" "DealDamage(1d4 + 1,Cold)"
+data "TickType" "StartTurn"
+data "TickFunctors" "DealDamage(1d4 + 1,Cold)"
+data "Boosts" "ActionResource(Movement,-3,0)"
+data "TooltipDamage" "DealDamage(1d4 + 1,Cold)"
+data "DescriptionParams" "DealDamage(1d4 + 1,Cold)"
+
+// ============ GHOST WALK self-buff — ghostly evasion while invisible ============
+// Bundled with Ghost Walk's INVISIBLE: faster movement, harder to hit, better at hiding.
+// INDEFINITE (2026-09-24): duration is -1; ends on the same trigger as INVISIBLE (cast a spell without
+// the Invisible flag, or deal damage) via the identical RemoveEvents/RemoveConditions copied from base
+// Status_INVISIBLE.stats, so the whole Ghost Walk kit drops together, Dota-style ("until you act").
+new entry "INVOKER_GHOSTWALK_BUFF"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h080ff1beg9b96g43ccgb73cg8a102ba3580a;1"
+data "Description" "h78e06138gd8c2g4443ga070g8820c1aefab3;1"
+data "Icon" "Spell_Abjuration_PassWithoutTrace"
+data "StackId" "INVOKER_GHOSTWALK_BUFF"
+data "StackType" "Ignore"
+data "Boosts" "ActionResource(Movement,3,0);AC(2);Advantage(Skill,Stealth)"
+data "RemoveEvents" "OnSpellCast;OnDamage"
+data "RemoveConditions" "(IsStatusEvent(StatusEvent.OnSpellCast) and not HasSpellFlag(SpellFlags.Invisible)) or (IsStatusEvent(StatusEvent.OnDamage) and TotalDamageDoneGreaterThan(0))"
+data "StatusPropertyFlags" "DisableCombatlog"
+
+// ============ GHOST WALK haunting aura — slows + chills enemies near the (invisible) Invoker ============
+// Lives on the CASTER (moves with them). Applies slow (DIFFICULT_TERRAIN) + a cold DoT to enemies in radius.
+// Also indefinite; same RemoveEvents/RemoveConditions as above (tiers _5/_9 inherit these via "using").
+new entry "INVOKER_GHOSTWALK_AURA"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h080ff1beg9b96g43ccgb73cg8a102ba3580a;1"
+data "Description" "h78e06138gd8c2g4443ga070g8820c1aefab3;1"
+data "Icon" "Spell_Abjuration_PassWithoutTrace"
+data "StackId" "INVOKER_GHOSTWALK_AURA"
+data "StackType" "Ignore"
+data "AuraRadius" "3"
+data "AuraStatuses" "TARGET:IF(Character() and not Dead() and Enemy()):ApplyStatus(INVOKER_GHOSTWALK_HIT,100,-1);ApplyStatus(DIFFICULT_TERRAIN,100,-1)"
+data "RemoveEvents" "OnSpellCast;OnDamage"
+data "RemoveConditions" "(IsStatusEvent(StatusEvent.OnSpellCast) and not HasSpellFlag(SpellFlags.Invisible)) or (IsStatusEvent(StatusEvent.OnDamage) and TotalDamageDoneGreaterThan(0))"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+// ============ GHOST WALK freedom-of-movement — mirrors base FREEDOM_OF_MOVEMENT ============
+// A private copy (not an override of the base status, which other items/spells also grant) so it can
+// carry the same indefinite-until-you-act removal as the rest of the Ghost Walk kit.
+new entry "INVOKER_GHOSTWALK_FREEDOM"
+type "StatusData"
+data "StatusType" "BOOST"
+using "FREEDOM_OF_MOVEMENT"
+data "DisplayName" "h080ff1beg9b96g43ccgb73cg8a102ba3580a;1"
+data "Description" "h78e06138gd8c2g4443ga070g8820c1aefab3;1"
+data "StackId" "INVOKER_GHOSTWALK_FREEDOM"
+data "RemoveEvents" "OnSpellCast;OnDamage"
+data "RemoveConditions" "(IsStatusEvent(StatusEvent.OnSpellCast) and not HasSpellFlag(SpellFlags.Invisible)) or (IsStatusEvent(StatusEvent.OnDamage) and TotalDamageDoneGreaterThan(0))"
+
+// The per-enemy burn carried by the aura: a Fire hit the moment a foe enters range (OnApply fires once
+// per entry — StackType Ignore), then Fire each turn while they stay. Without the OnApply hit, damage only
+// landed if the enemy was still in range at the START of its own turn, which rarely happens while moving.
+new entry "INVOKER_GHOSTWALK_HIT"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h080ff1beg9b96g43ccgb73cg8a102ba3580a;1"
+data "Description" "h78e06138gd8c2g4443ga070g8820c1aefab3;1"
+data "Icon" "Status_Burning"
+data "StackId" "INVOKER_GHOSTWALK_HIT"
+data "StackType" "Ignore"
+data "OnApplyFunctors" "DealDamage(1d6,Fire)"
+data "TickType" "StartTurn"
+data "TickFunctors" "DealDamage(1d6,Fire)"
+data "TooltipDamage" "DealDamage(1d6,Fire)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+// ============ ALACRITY buff — the ONLY status Alacrity applies (haste minus lethargy, +attack rolls, +damage) ============
+// Alacrity = ONE buff (3 turns): base HASTE's boosts + visuals copied WITHOUT its OnRemove lethargy, plus attack rolls + damage.
+new entry "INVOKER_ALACRITY_BUFF"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h14b24eb4gd146g406bgb058gc07f68236b38;1"
+data "Description" "ha0642f11g8c78g4da5g87b2g1df7a587151a;2"
+data "Icon" "PassiveFeature_WardingFlare"
+data "StackId" "INVOKER_ALACRITY_BUFF"
+data "StackType" "Overwrite"
+data "Boosts" "ActionResource(Movement,9,0);AC(2);ActionResource(ActionPoint,1,0);Advantage(SavingThrow,Dexterity);RollBonus(Attack,1d4);DamageBonus(1d6)"
+data "ApplyEffect" "e0438396-b78d-4249-bc46-f45dd6feb10a"
+data "StatusEffect" "b79270c7-13cd-44d9-82f5-11eb41ca5f8a"
+data "SoundLoop" "Spell_Status_Longstrider_MO"
+data "SoundStop" "Spell_Status_Haste_MO_Stop"
+data "StatusPropertyFlags" "DisableCombatlog"
+
+// ============ ICE WALL wall-piece status — carried by every piece of the dragged wall line ============
+// Walk-through pieces; this status's aura hits anyone near the line. Visual = vanilla Wall of Ice StatusEffect (e43f3949).
+// Enemies within the aura are slowed (DIFFICULT_TERRAIN — the Quas/ice part) and burned (INVOKER_ICEWALL_HIT).
+new entry "INVOKER_ICEWALL_WALL"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hfdacfda6gea01g4d84g99b7g7fa7db552d30;1"
+data "Description" "ha2b749dag32ecg4db8g837bgac881997bc7a;1"
+data "Icon" "Spell_Evocation_WallOfIce"
+data "StackId" "INVOKER_ICEWALL_WALL"
+data "StackType" "Ignore"
+data "StackPriority" "1"
+data "AuraRadius" "2"
+data "AuraStatuses" "TARGET:IF(Character() and not Dead() and Enemy()):ApplyStatus(INVOKER_ICEWALL_HIT,100,-1);ApplyStatus(DIFFICULT_TERRAIN,100,-1)"
+data "StatusEffect" "e43f3949-109d-452e-8791-82e7e5815d21"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;InitiateCombat;BringIntoCombat"
+
+new entry "INVOKER_ICEWALL_HIT"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hfdacfda6gea01g4d84g99b7g7fa7db552d30;1"
+data "Description" "ha2b749dag32ecg4db8g837bgac881997bc7a;1"
+data "Icon" "Status_Burning"
+data "StackId" "INVOKER_ICEWALL_HIT"
+data "StackType" "Ignore"
+data "OnApplyFunctors" "DealDamage(1d6,Fire)"
+data "TickType" "StartTurn"
+data "TickFunctors" "DealDamage(1d6,Fire)"
+data "TooltipDamage" "DealDamage(1d6,Fire)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+// ============ DEAFENING BLAST disarm — disoriented, attacks at disadvantage ============
+// Base DISARMED is an inert marker (no boosts), so we use a real effect instead.
+new entry "INVOKER_DEAFENED"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h68a6074ag0afag4774g8615geadf6466e050;1"
+data "Description" "haae76190g693bg4f0dg8b54g738f8f49aba4;1"
+data "Icon" "Spell_Evocation_Thunderwave"
+data "StackId" "INVOKER_DEAFENED"
+data "StackType" "Ignore"
+data "Boosts" "Disadvantage(AttackRoll)"
+data "StatusPropertyFlags" "DisableCombatlog"
+
+// ============ ORB CONSUMPTION HELPER ============
+// Applied to the caster (SELF) by a combo on cast; on apply it wipes all held orbs from its owner.
+// Reliable because ApplyStatus(SELF,...) resolves to the caster even for container-child combos.
+new entry "INVOKER_CONSUME_ORBS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h8f50feccg3bc6g4c41g9fbfgcbac9cc2f287;1"
+data "StackId" "INVOKER_CONSUME_ORBS"
+data "StackType" "Overwrite"
+data "OnApplyFunctors" "RemoveStatus(INVOKER_ORB_QUAS);RemoveStatus(INVOKER_ORB_WEX);RemoveStatus(INVOKER_ORB_EXORT);RemoveStatus(INVOKER_ORB_1);RemoveStatus(INVOKER_ORB_2);RemoveStatus(INVOKER_ORB_3);RemoveStatus(INVOKER_QUAS_DOUBLE);RemoveStatus(INVOKER_QUAS_TRIPLE);RemoveStatus(INVOKER_WEX_DOUBLE);RemoveStatus(INVOKER_WEX_TRIPLE);RemoveStatus(INVOKER_EXORT_DOUBLE);RemoveStatus(INVOKER_EXORT_TRIPLE)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+// ============ PER-TYPE COUNT MARKERS (hidden; disambiguate 2+1 recipes) ============
+new entry "INVOKER_QUAS_DOUBLE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h217e5c23gac7ag40degb108gf3c5f35a574d;1"
+data "StackId" "INVOKER_QUAS_DOUBLE"
+data "StackType" "Ignore"
+data "TickType" "StartTurn"
+data "TickFunctors" "IF(Combat(context.Source)):RegainHitPoints(1)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+new entry "INVOKER_QUAS_TRIPLE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h26797b79g384eg488cg851cg3129a10be686;1"
+data "StackId" "INVOKER_QUAS_TRIPLE"
+data "StackType" "Ignore"
+data "TickType" "StartTurn"
+data "TickFunctors" "IF(Combat(context.Source)):RegainHitPoints(1)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+new entry "INVOKER_WEX_DOUBLE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h8f7d6c92gcb3fg40f9g9e50g5f6c182fa8ea;1"
+data "StackId" "INVOKER_WEX_DOUBLE"
+data "StackType" "Ignore"
+data "Boosts" "ActionResourceConsumeMultiplier(Movement,0.9,0);Initiative(1)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+new entry "INVOKER_WEX_TRIPLE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hfa240b42g7be9g4ce8g97cfg92d36289575a;1"
+data "StackId" "INVOKER_WEX_TRIPLE"
+data "StackType" "Ignore"
+data "Boosts" "ActionResourceConsumeMultiplier(Movement,0.9,0);Initiative(1)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+new entry "INVOKER_EXORT_DOUBLE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hfc9f7100gf807g42e8g8debgeb128491fde3;1"
+data "StackId" "INVOKER_EXORT_DOUBLE"
+data "StackType" "Ignore"
+data "Boosts" "DamageBonus(1d4,Force)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+new entry "INVOKER_EXORT_TRIPLE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hacae0ee5g4113g4c78gad95g879acae2625a;1"
+data "StackId" "INVOKER_EXORT_TRIPLE"
+data "StackType" "Ignore"
+data "Boosts" "DamageBonus(1d4,Force)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+
+
+// ============ TORNADO persistent aura (Moonbeam pattern) ============
+// AURA lives on the summoned anchor; it applies HIT to creatures in radius; HIT ticks force damage.
+new entry "INVOKER_TORNADO_AURA"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h3a3cc4c1g22a8g467bga34bg2d47a04f2a67;1"
+data "StackId" "INVOKER_TORNADO_AURA"
+data "StackType" "Ignore"
+data "AuraRadius" "3"
+data "AuraStatuses" "TARGET:IF(Character() and not Dead() and Enemy()):ApplyStatus(INVOKER_TORNADO_HIT,100,-1);ApplyStatus(DIFFICULT_TERRAIN,100,-1)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;InitiateCombat;BringIntoCombat"
+data "StatusEffect" "cc2497d9-a481-4f17-86a7-25e4991e9d49"
+data "SoundLoop" "Spell_Status_CloudOfDaggers_ST"
+data "SoundStop" "Spell_Status_CloudOfDaggers_ST_Stop"
+
+new entry "INVOKER_TORNADO_HIT"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h3a3cc4c1g22a8g467bga34bg2d47a04f2a67;1"
+data "Description" "h9796caf4gf6fbg407bg9a9aga3752109a6f6;1"
+data "Icon" "Action_Monster_ElementalAir_Whirlwind"
+data "StackId" "INVOKER_TORNADO_HIT"
+data "StackType" "Ignore"
+data "OnApplyFunctors" "ApplyStatus(PRONE,100,1)"
+data "TickType" "StartTurn"
+data "TickFunctors" "DealDamage(1d4 + 4,Force)"
+data "TooltipDamage" "DealDamage(1d4 + 4,Force)"
+
+// ============ LEVEL TIERS for damage-over-time statuses (2026-09-24) ============
+// DoT ticks run on the victim, so a LevelMapValue there can't be trusted to read the CASTER's level.
+// Same fix Larian uses for Booming Blade: stronger copies of the status, chosen by the caster's level at
+// cast time (CharacterLevelGreaterThan defaults to context.Source). Tier 5 = level 5-8, tier 9 = level 9+.
+// Copies inherit everything (incl. StackId) and only swap the damage / the HIT status they spread.
+
+new entry "INVOKER_COLDSNAP_DOT_5"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_COLDSNAP_DOT"
+data "OnApplyFunctors" "DealDamage(2d4 + 2,Cold)"
+data "TickFunctors" "DealDamage(2d4 + 2,Cold)"
+data "TooltipDamage" "DealDamage(2d4 + 2,Cold)"
+data "DescriptionParams" "DealDamage(2d4 + 2,Cold)"
+
+new entry "INVOKER_COLDSNAP_DOT_9"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_COLDSNAP_DOT"
+data "OnApplyFunctors" "DealDamage(3d4 + 3,Cold)"
+data "TickFunctors" "DealDamage(3d4 + 3,Cold)"
+data "TooltipDamage" "DealDamage(3d4 + 3,Cold)"
+data "DescriptionParams" "DealDamage(3d4 + 3,Cold)"
+
+new entry "INVOKER_TORNADO_HIT_5"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_TORNADO_HIT"
+data "TickFunctors" "DealDamage(2d6 + 4,Force)"
+data "TooltipDamage" "DealDamage(2d6 + 4,Force)"
+
+new entry "INVOKER_TORNADO_HIT_9"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_TORNADO_HIT"
+data "TickFunctors" "DealDamage(3d6 + 6,Force)"
+data "TooltipDamage" "DealDamage(3d6 + 6,Force)"
+
+new entry "INVOKER_TORNADO_AURA_5"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_TORNADO_AURA"
+data "AuraStatuses" "TARGET:IF(Character() and not Dead() and Enemy()):ApplyStatus(INVOKER_TORNADO_HIT_5,100,-1);ApplyStatus(DIFFICULT_TERRAIN,100,-1)"
+
+new entry "INVOKER_TORNADO_AURA_9"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_TORNADO_AURA"
+data "AuraStatuses" "TARGET:IF(Character() and not Dead() and Enemy()):ApplyStatus(INVOKER_TORNADO_HIT_9,100,-1);ApplyStatus(DIFFICULT_TERRAIN,100,-1)"
+
+new entry "INVOKER_GHOSTWALK_HIT_5"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_GHOSTWALK_HIT"
+data "OnApplyFunctors" "DealDamage(2d6,Fire)"
+data "TickFunctors" "DealDamage(2d6,Fire)"
+data "TooltipDamage" "DealDamage(2d6,Fire)"
+
+new entry "INVOKER_GHOSTWALK_HIT_9"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_GHOSTWALK_HIT"
+data "OnApplyFunctors" "DealDamage(3d6,Fire)"
+data "TickFunctors" "DealDamage(3d6,Fire)"
+data "TooltipDamage" "DealDamage(3d6,Fire)"
+
+new entry "INVOKER_GHOSTWALK_AURA_5"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_GHOSTWALK_AURA"
+data "AuraStatuses" "TARGET:IF(Character() and not Dead() and Enemy()):ApplyStatus(INVOKER_GHOSTWALK_HIT_5,100,-1);ApplyStatus(DIFFICULT_TERRAIN,100,-1)"
+
+new entry "INVOKER_GHOSTWALK_AURA_9"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_GHOSTWALK_AURA"
+data "AuraStatuses" "TARGET:IF(Character() and not Dead() and Enemy()):ApplyStatus(INVOKER_GHOSTWALK_HIT_9,100,-1);ApplyStatus(DIFFICULT_TERRAIN,100,-1)"
+// ============ CHAOS METEOR burn (2026-09-25) — the DoT rider on everything the impact hits ============
+// Stronger than the base surface BURNING (1d4): 3 turns of Fire at each StartTurn. Level-tiered at cast time like the other
+// DoTs (base L1-4 / _5 L5-8 / _9 L9+). Applied on success AND fail, so a passed Dex save halves the impact but still burns.
+new entry "INVOKER_METEOR_BURN"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h762ecd85g96beg4dd7ga5e8gc19834a9b20a;2"
+data "Description" "hc900206eg3950g424aga6a8g8f44e4f48975;3"
+data "Icon" "Status_Burning"
+data "StackId" "INVOKER_METEOR_BURN"
+data "StackType" "Overwrite"
+data "TickType" "StartTurn"
+data "TickFunctors" "DealDamage(2d6,Fire)"
+data "TooltipDamage" "DealDamage(2d6,Fire)"
+data "DescriptionParams" "DealDamage(2d6,Fire)"
+data "StatusPropertyFlags" "DisableCombatlog"
+
+new entry "INVOKER_METEOR_BURN_5"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_METEOR_BURN"
+data "TickFunctors" "DealDamage(3d6,Fire)"
+data "TooltipDamage" "DealDamage(3d6,Fire)"
+data "DescriptionParams" "DealDamage(3d6,Fire)"
+
+new entry "INVOKER_METEOR_BURN_9"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOKER_METEOR_BURN"
+data "TickFunctors" "DealDamage(4d6,Fire)"
+data "TooltipDamage" "DealDamage(4d6,Fire)"
+data "DescriptionParams" "DealDamage(4d6,Fire)"
+
+// >>> ORBFX BEGIN (generated)
+// Visual-only orb statuses, GENERATED by tools/vfxcompile/build_orb.py (edit the script, not this block).
+// INVOKER_ORBFX_<E>_<N>_<i> = orb i of N held orbs of that element. The orb spells clear and re-apply them.
+
+new entry "INVOKER_ORBFX_QUAS_S1"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_QUAS_S1"
+data "StackType" "Ignore"
+data "StatusEffect" "154b1367-62e6-4a20-a6a1-acfb8a52340e"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_QUAS_S2"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_QUAS_S2"
+data "StackType" "Ignore"
+data "StatusEffect" "9c15cfc0-c871-5b79-804f-0c47afc28fed"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_QUAS_S3"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_QUAS_S3"
+data "StackType" "Ignore"
+data "StatusEffect" "d5ff99d9-302c-58b6-983a-0227a6be39d2"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_WEX_S1"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_WEX_S1"
+data "StackType" "Ignore"
+data "StatusEffect" "38f10632-9a54-4afa-8ad4-00c34705780d"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_WEX_S2"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_WEX_S2"
+data "StackType" "Ignore"
+data "StatusEffect" "edb4ef38-fd28-5395-9e38-b4bfc06bbc9e"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_WEX_S3"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_WEX_S3"
+data "StackType" "Ignore"
+data "StatusEffect" "cedfd699-9855-55cf-ad44-c7cbfdf2d69d"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_EXORT_S1"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_EXORT_S1"
+data "StackType" "Ignore"
+data "StatusEffect" "fdae7102-6cae-47d3-9e96-9e5c0f113a8d"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_EXORT_S2"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_EXORT_S2"
+data "StackType" "Ignore"
+data "StatusEffect" "2963a60f-8864-57fb-8aa4-165f69a6d210"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOKER_ORBFX_EXORT_S3"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "INVOKER_ORBFX_EXORT_S3"
+data "StackType" "Ignore"
+data "StatusEffect" "04c45354-762d-5fce-8b8c-dd04dace68b6"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+// <<< ORBFX END

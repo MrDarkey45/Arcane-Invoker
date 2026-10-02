@@ -1,0 +1,139 @@
+========================================================================
+  ARCANE INVOKER — mod description (BBCode)
+  Two versions below: full Nexus BBCode, and a conservative mod.io version.
+  Copy the block you need. (Nexus supports [size]/[color]/[center]/[line];
+  mod.io's editor is more limited, so its block sticks to [b]/[i]/[list]/[url].)
+========================================================================
+
+
+########################################################################
+#  NEXUS MODS  — full BBCode
+########################################################################
+
+[center][size=6][b]ARCANE INVOKER[/b][/size]
+[i]Dota 2's Invoker, reforged for Faerûn — hold the elements, then invoke.[/i][/center]
+
+[line]
+
+[size=5][b]Overview[/b][/size]
+The [b]Arcane Invoker[/b] is a Wizard subclass that ports Invoker's signature kit into Baldur's Gate 3. You conjure up to three [b]reagent orbs[/b] — [b]Quas[/b], [b]Wex[/b] and [b]Exort[/b] — then cast [b]Invoke[/b] to unleash the one spell that matches the orbs you're holding. Orbs are free to conjure; the combo is your turn. Ten combos, each true to its Dota role, built almost entirely from remixed base-game effects — so there are [b]no asset dependencies[/b].
+
+[size=5][b]The Three Orbs[/b][/size]
+Just holding an orb grants a passive, stacking up to three:
+[list]
+[*][b][color=#5cc6ff]Quas[/color][/b] (Ice) — +1 HP regenerated per turn in combat, per Quas held.
+[*][b][color=#b98bff]Wex[/color][/b] (Storm) — movement costs 10% less and +1 Initiative, per Wex held.
+[*][b][color=#ff8f43]Exort[/color][/b] (Fire) — +1d4 force damage to your attacks & Arcane Strike, per Exort held.
+[/list]
+
+[size=5][b]How It Works[/b][/size]
+[list=1]
+[*][b]Conjure[/b] — cast Quas, Wex or Exort to hold up to 3 orbs. No action cost — build freely.
+[*][b]Invoke[/b] — open Invoke and the combo matching your held orbs lights up; the other nine stay greyed out. One click to fire.
+[*][b]Reset[/b] — orbs persist after invoking; cast [b]Dispel Orbs[/b] (free) to clear them and mix a new recipe.
+[/list]
+
+[size=5][b]The Ten Combos[/b][/size]
+[i]Order doesn't matter — only which three orbs you hold. Damage shown as level 1 → top tier; it climbs as you level.[/i]
+[list]
+[*][b]Cold Snap[/b] (QQQ) — [i]At-will.[/i] A 3-turn frost DoT (1d4+1 → 3d4+3 per tick) that snaps the target with a 1-turn freeze.
+[*][b]Ghost Walk[/b] (QQW) — [i]At-will.[/i] Turn invisible with a haunting aura — nearby foes are slowed and burned while you move faster and can't be held.
+[*][b]Ice Wall[/b] (QQE) — [i]At-will.[/i] Drag out a wall of ice. It can be walked through, but foes within 2m of it are slowed and burned (1d6/turn).
+[*][b]EMP[/b] (WWW) — [i]Lv2 slot.[/i] A targeted storm burst (2d8 → 7d8) that Silences everything caught for two turns.
+[*][b]Tornado[/b] (QWW) — [i]Lv2 slot.[/i] A lingering cyclone: knocks enemies prone as they enter, then slows and batters them (1d4+4 → 3d6+6 force per turn).
+[*][b]Deafening Blast[/b] (QWE) — [i]At-will.[/i] A thunder cone (2d8 → 5d8) that knocks foes back and leaves them disarmed (attacks at disadvantage).
+[*][b]Alacrity[/b] (WWE) — [i]Lv2 slot.[/i] One buff for 3 turns: Haste (no exhaustion afterward), +1d4 to attack rolls and +1d6 damage on every hit.
+[*][b]Sun Strike[/b] (EEE) — [i]Lv3 slot.[/i] Call a pillar of solar fire down on any spot (3d10 → 10d10) with a small blast radius — pinpoint from range.
+[*][b]Chaos Meteor[/b] (WEE) — [i]Lv3 slot.[/i] A crashing impact (3d8 → 10d8 thunder) that sets everything it hits ablaze for 3 turns (2d6 → 4d6 fire per turn) and leaves a burning fire field behind.
+[*][b]Forge Spirit[/b] (QEE) — [i]Lv2 slot.[/i] Summon two fire elemental spirits for 4 turns. They throw Fire Bolts and burn foes in melee.
+[/list]
+
+[size=5][b]Beyond the Combos[/b][/size]
+[list]
+[*][b]Invoker's tempo[/b] — two actions per turn from level 2.
+[*][b]Scales with you[/b] — combo damage climbs every couple of levels (Sun Strike and Chaos Meteor more than triple by level 11), from the Nautiloid to the endgame.
+[*][b]Arcane Gauntlets[/b] — signature gloves granted at the start: an at-will [b]Arcane Strike[/b] force bolt and an Intelligence boost.
+[*][b]Reagent economy[/b] — free orbs, at-will utility combos, and spell-slot-gated heavy hitters keep it strong but fair.
+[/list]
+
+[size=5][b]Requirements[/b][/size]
+[list]
+[*][b]Baldur's Gate 3[/b] — current patch.
+[*][b]BG3 Mod Manager[/b] — to install and order the mod.
+[*][b]BG3 Script Extender[/b] — needed [i]only[/i] to auto-grant the Arcane Gauntlets. The subclass, orbs and all ten combos work without it.
+[/list]
+
+[size=5][b]Installation[/b][/size]
+[list=1]
+[*]Add [b]InvokerAbilities.pak[/b] via BG3 Mod Manager (or drop it into your Mods folder).
+[*]Add it to your load order and export to the game.
+[*]Launch. Create a Wizard, reach [b]level 2[/b], and choose [b]Arcane Invoker[/b].
+[/list]
+
+[line]
+[center][i]Built with the official BG3 Toolkit; effects remixed from base-game spells.[/i][/center]
+
+
+########################################################################
+#  MOD.IO  — conservative BBCode (no size/color/center/line)
+########################################################################
+
+[b]ARCANE INVOKER[/b]
+[i]Dota 2's Invoker, reforged for Faerûn — hold the elements, then invoke.[/i]
+
+[b]— OVERVIEW —[/b]
+The [b]Arcane Invoker[/b] is a Wizard subclass that ports Invoker's signature kit into Baldur's Gate 3. You conjure up to three [b]reagent orbs[/b] — [b]Quas[/b], [b]Wex[/b] and [b]Exort[/b] — then cast [b]Invoke[/b] to unleash the one spell that matches the orbs you're holding. Orbs are free to conjure; the combo is your turn. Ten combos, each true to its Dota role, built almost entirely from remixed base-game effects — so there are [b]no asset dependencies[/b].
+
+[b]— THE THREE ORBS —[/b]
+Just holding an orb grants a passive, stacking up to three:
+[list]
+[*][b]Quas[/b] (Ice) — +1 HP regenerated per turn in combat, per Quas held.
+[*][b]Wex[/b] (Storm) — movement costs 10% less and +1 Initiative, per Wex held.
+[*][b]Exort[/b] (Fire) — +1d4 force damage to your attacks & Arcane Strike, per Exort held.
+[/list]
+
+[b]— HOW IT WORKS —[/b]
+[list]
+[*][b]Conjure[/b] — cast Quas, Wex or Exort to hold up to 3 orbs. No action cost.
+[*][b]Invoke[/b] — the combo matching your held orbs lights up; one click to fire.
+[*][b]Reset[/b] — orbs persist; cast [b]Dispel Orbs[/b] (free) to clear and mix a new recipe.
+[/list]
+
+[b]— THE TEN COMBOS —[/b]
+[i]Order doesn't matter — only which three orbs you hold. Damage shown as level 1 → top tier; it climbs as you level.[/i]
+[list]
+[*][b]Cold Snap[/b] (QQQ) — At-will. 3-turn frost DoT (1d4+1 → 3d4+3 per tick) + a 1-turn freeze.
+[*][b]Ghost Walk[/b] (QQW) — At-will. Invisibility + a haunting aura that slows and burns nearby foes; you move faster and can't be held.
+[*][b]Ice Wall[/b] (QQE) — At-will. Drag out a wall of ice you can walk through; foes within 2m are slowed and burned (1d6/turn).
+[*][b]EMP[/b] (WWW) — Lv2 slot. Targeted storm burst (2d8 → 7d8) + Silence for two turns.
+[*][b]Tornado[/b] (QWW) — Lv2 slot. Lingering cyclone: prone on entry, then slow + 1d4+4 → 3d6+6 force/turn.
+[*][b]Deafening Blast[/b] (QWE) — At-will. Thunder cone (2d8 → 5d8) + knockback + disarm (attacks at disadvantage).
+[*][b]Alacrity[/b] (WWE) — Lv2 slot. One 3-turn buff: Haste (no exhaustion after) + attack-roll and damage bonuses.
+[*][b]Sun Strike[/b] (EEE) — Lv3 slot. Ground-targeted pillar of fire (3d10 → 10d10) with a small blast radius.
+[*][b]Chaos Meteor[/b] (WEE) — Lv3 slot. Impact (3d8 → 10d8 thunder) + a 3-turn burn (2d6 → 4d6 per turn) + a burning fire field.
+[*][b]Forge Spirit[/b] (QEE) — Lv2 slot. Summons two fire elemental spirits for 4 turns.
+[/list]
+
+[b]— BEYOND THE COMBOS —[/b]
+[list]
+[*][b]Invoker's tempo[/b] — two actions per turn from level 2.
+[*][b]Scales with you[/b] — combo damage climbs every couple of levels (Sun Strike and Chaos Meteor more than triple by level 11).
+[*][b]Arcane Gauntlets[/b] — starting gloves granting an at-will Arcane Strike bolt + Intelligence.
+[*][b]Reagent economy[/b] — free orbs, at-will utility combos, spell-slot-gated heavy hitters.
+[/list]
+
+[b]— REQUIREMENTS —[/b]
+[list]
+[*]Baldur's Gate 3 (current patch)
+[*]BG3 Mod Manager
+[*]BG3 Script Extender — only to auto-grant the Arcane Gauntlets; the subclass, orbs and all combos work without it.
+[/list]
+
+[b]— INSTALLATION —[/b]
+[list]
+[*]Add InvokerAbilities.pak via BG3 Mod Manager (or drop it in your Mods folder).
+[*]Add it to your load order and export to the game.
+[*]Create a Wizard, reach level 2, and choose Arcane Invoker.
+[/list]
+
+[i]Built with the official BG3 Toolkit; effects remixed from base-game spells.[/i]

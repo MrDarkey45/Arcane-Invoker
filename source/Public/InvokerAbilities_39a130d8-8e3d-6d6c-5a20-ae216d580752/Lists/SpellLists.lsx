@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="330"/>
+    <region id="SpellLists">
+        <node id="root">
+            <children>
+                <node id="SpellList">
+                    <attribute id="Comment" type="LSString" value="Invoker orb + dispel abilities"/>
+                    <attribute id="Name" type="LSString" value="InvokerOrbAbilities"/>
+                    <attribute id="Spells" type="LSString" value="INVOKER_QUAS;INVOKER_WEX;INVOKER_EXORT;INVOKER_DISPEL_ORBS;INVOKER_INVOKE"/>
+                    <attribute id="UUID" type="guid" value="793881ae-b38c-4d7d-a9f1-672a070f648e"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>
