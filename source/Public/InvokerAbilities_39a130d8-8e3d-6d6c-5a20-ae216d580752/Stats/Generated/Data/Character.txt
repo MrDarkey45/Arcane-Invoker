@@ -7,3 +7,19 @@ data "Vitality" "45"
 data "Armor" "12"
 // Spirits fire Fire Bolt (a spell attack): use Dexterity (17) instead of the elemental's Intelligence 6.
 data "SpellCastingAbility" "Dexterity"
+
+// Level tier _5: used when the caster is level 5+ (see INVOKER_FORGESPIRIT).
+new entry "INVOKER_FIRE_SPIRIT_5"
+type "Character"
+using "Fire_Elemental"
+data "Vitality" "70"
+data "Armor" "13"
+data "SpellCastingAbility" "Dexterity"
+
+// Level tier _9: used when the caster is level 9+ (see INVOKER_FORGESPIRIT).
+new entry "INVOKER_FIRE_SPIRIT_9"
+type "Character"
+using "Fire_Elemental"
+data "Vitality" "100"
+data "Armor" "14"
+data "SpellCastingAbility" "Dexterity"

@@ -185,9 +185,9 @@ data "Description" "ha2b749dag32ecg4db8g837bgac881997bc7a;1"
 data "Icon" "Status_Burning"
 data "StackId" "INVOKER_ICEWALL_HIT"
 data "StackType" "Ignore"
-data "OnApplyFunctors" "DealDamage(1d6,Fire)"
+data "OnApplyFunctors" "IF(not CharacterLevelGreaterThan(4)):DealDamage(1d6,Fire);IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):DealDamage(2d6,Fire);IF(CharacterLevelGreaterThan(8)):DealDamage(3d6,Fire)"
 data "TickType" "StartTurn"
-data "TickFunctors" "DealDamage(1d6,Fire)"
+data "TickFunctors" "IF(not CharacterLevelGreaterThan(4)):DealDamage(1d6,Fire);IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):DealDamage(2d6,Fire);IF(CharacterLevelGreaterThan(8)):DealDamage(3d6,Fire)"
 data "TooltipDamage" "DealDamage(1d6,Fire)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
 
@@ -205,17 +205,6 @@ data "Boosts" "Disadvantage(AttackRoll)"
 data "StatusPropertyFlags" "DisableCombatlog"
 
 // ============ ORB CONSUMPTION HELPER ============
-// Applied to the caster (SELF) by a combo on cast; on apply it wipes all held orbs from its owner.
-// Reliable because ApplyStatus(SELF,...) resolves to the caster even for container-child combos.
-new entry "INVOKER_CONSUME_ORBS"
-type "StatusData"
-data "StatusType" "BOOST"
-data "DisplayName" "h8f50feccg3bc6g4c41g9fbfgcbac9cc2f287;1"
-data "StackId" "INVOKER_CONSUME_ORBS"
-data "StackType" "Overwrite"
-data "OnApplyFunctors" "RemoveStatus(INVOKER_ORB_QUAS);RemoveStatus(INVOKER_ORB_WEX);RemoveStatus(INVOKER_ORB_EXORT);RemoveStatus(INVOKER_ORB_1);RemoveStatus(INVOKER_ORB_2);RemoveStatus(INVOKER_ORB_3);RemoveStatus(INVOKER_QUAS_DOUBLE);RemoveStatus(INVOKER_QUAS_TRIPLE);RemoveStatus(INVOKER_WEX_DOUBLE);RemoveStatus(INVOKER_WEX_TRIPLE);RemoveStatus(INVOKER_EXORT_DOUBLE);RemoveStatus(INVOKER_EXORT_TRIPLE)"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
-
 // ============ PER-TYPE COUNT MARKERS (hidden; disambiguate 2+1 recipes) ============
 new entry "INVOKER_QUAS_DOUBLE"
 type "StatusData"

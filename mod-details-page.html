@@ -91,6 +91,10 @@
     @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
   }
 
+  .disclaimer{margin:0 auto;max-width:var(--maxw);padding:16px 20px;text-align:center;font-weight:700;font-size:15.5px;line-height:1.5;
+    background:rgba(255,77,77,.12);border-block:2px solid #ff4d4d;color:#ffd9d9}
+  .disclaimer strong{color:#fff}
+
   /* ---------- sections ---------- */
   section{padding-block:52px;border-bottom:1px solid var(--line)}
   .sec-label{
@@ -211,6 +215,8 @@
   </div>
 </header>
 
+<div class="disclaimer" role="note"><strong>DISCLAIMER:</strong> Arcane Invoker is an <strong>UNOFFICIAL, FAN-MADE</strong> mod inspired by the Invoker hero from Dota 2. It is <strong>NOT affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios.</strong> Dota 2, Invoker and all related names are trademarks of Valve. Baldur's Gate 3 is a trademark of Larian Studios. No Valve assets are included.</div>
+
 <section>
   <div class="wrap">
     <p class="sec-label">Overview</p>
@@ -291,7 +297,7 @@
       <div class="combo q">
         <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb q"></span><span class="orb e"></span></div><span class="cost free">At-will</span></div>
         <h3><span class="ico" style="--n:7" role="img" aria-label="Ice Wall icon"></span>Ice Wall <span class="rc">QQE</span></h3>
-        <p>Drag out a wall of ice. It can be walked through, but foes within 2 m of it are slowed and burned (1d6/turn).</p>
+        <p>Drag out a wall of ice. It can be walked through, but foes within 2 m of it are slowed and burned (1d6 → 3d6 fire per turn).</p>
       </div>
 
       <div class="combo w">
@@ -321,7 +327,7 @@
       <div class="combo e">
         <div class="chead"><div class="recipe"><span class="orb e"></span><span class="orb e"></span><span class="orb e"></span></div><span class="cost l3">Lv3 slot</span></div>
         <h3><span class="ico" style="--n:12" role="img" aria-label="Sun Strike icon"></span>Sun Strike <span class="rc">EEE</span></h3>
-        <p>Call a pillar of solar fire down on any spot (3d10 → 10d10) with a small blast radius — pinpoint from range.</p>
+        <p>Call a pillar of solar fire down on any spot you can see (3d10 → 10d10) with a small blast radius — no line of sight from you needed.</p>
       </div>
 
       <div class="combo e">
@@ -333,7 +339,7 @@
       <div class="combo e">
         <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb e"></span><span class="orb e"></span></div><span class="cost l2">Lv2 slot</span></div>
         <h3><span class="ico" style="--n:14" role="img" aria-label="Forge Spirit icon"></span>Forge Spirit <span class="rc">QEE</span></h3>
-        <p>Summon <strong>two</strong> fire elemental spirits for 4 turns. They throw Fire Bolts and burn foes in melee.</p>
+        <p>Summon <strong>two</strong> fire elemental spirits for 4 turns. They throw Fire Bolts and burn foes in melee, and grow tougher and hit harder as you level.</p>
       </div>
 
     </div>
@@ -395,5 +401,6 @@
     <div class="glyph" aria-hidden="true">◈ ◈ ◈</div>
     Arcane Invoker — a Baldur's Gate 3 subclass mod.<br>
     Built with the official BG3 Toolkit; effects remixed from base-game spells.
+    <p class="disclaimer" role="note" style="margin-top:20px"><strong>DISCLAIMER:</strong> Arcane Invoker is an <strong>UNOFFICIAL, FAN-MADE</strong> mod inspired by the Invoker hero from Dota 2. It is <strong>NOT affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios.</strong> Dota 2, Invoker and all related names are trademarks of Valve. Baldur's Gate 3 is a trademark of Larian Studios. No Valve assets are included.</p>
   </div>
 </footer>

@@ -14,7 +14,7 @@
     <content contentuid="h936195d7gd9c3g41f4g96fbg3308818caa8d" version="1">Invoke</content>
     <content contentuid="h6c2d90e3g87feg481aga7dag40c1537ce836" version="1">Combine your held orbs into a spell. The available combination depends on which orbs you are holding.</content>
     <content contentuid="hba12ad0cg09a1g4e1agb9ebgc80728a3d54d" version="1">Sun Strike</content>
-    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="1">EEE — Call down a pinpoint blast of solar fire. Requires 3 Exort orbs.</content>
+    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="2">EEE — Call down a pinpoint blast of solar fire on any spot you can see, even without a clear line of sight from you. Requires 3 Exort orbs.</content>
     <content contentuid="h3474333ag6e03g426cgacd1ge151d20a4f54" version="1">Cold Snap</content>
     <content contentuid="h1923bf23g6553g45d6g9795g9bf4f9d73d1c" version="1">QQQ — Chill a foe with biting frost. Requires 3 Quas orbs.</content>
     <content contentuid="h68a6074ag0afag4774g8615geadf6466e050" version="1">Deafening Blast</content>
@@ -33,11 +33,11 @@
     <content contentuid="h080ff1beg9b96g43ccgb73cg8a102ba3580a" version="1">Ghost Walk</content>
     <content contentuid="h78e06138gd8c2g4443ga070g8820c1aefab3" version="2">QQW — Turn invisible and slip past your foes. Enemies near you are slowed and burned.</content>
     <content contentuid="hfdacfda6gea01g4d84g99b7g7fa7db552d30" version="1">Ice Wall</content>
-    <content contentuid="ha2b749dag32ecg4db8g837bgac881997bc7a" version="2">QQE — Draw a wall of ice. It can be walked through, but enemies who cross it are slowed and burned.</content>
+    <content contentuid="ha2b749dag32ecg4db8g837bgac881997bc7a" version="3">QQE — Draw a wall of ice. It can be walked through, but enemies who cross it are slowed and burned, more fiercely as you level.</content>
     <content contentuid="h3a3cc4c1g22a8g467bga34bg2d47a04f2a67" version="1">Tornado</content>
     <content contentuid="h9796caf4gf6fbg407bg9a9aga3752109a6f6" version="1">QWW — Conjure a lingering cyclone that deals force damage each turn to those caught inside.</content>
     <content contentuid="h04efb32cgd35bg4509gaca5g987e5c41797a" version="1">Forge Spirit</content>
-    <content contentuid="h0ed534degc645g4152gb496gb03401c3a91b" version="3">QEE — Forge two fire elemental spirits that fight at your side for 4 turns.</content>
+    <content contentuid="h0ed534degc645g4152gb496gb03401c3a91b" version="4">QEE — Forge two fire elemental spirits that fight at your side for 4 turns. They grow tougher and hit harder as you level.</content>
     <content contentuid="hae63ab73g6b63g4078ga630g1432e0e86c38" version="1">Forged in Fire</content>
     <content contentuid="hff28df45g1f9fg4d08gbd7bg421f3ca553ed" version="1">A forged fire spirit empowers you: attacks deal +1d6 fire damage and you resist fire.</content>
     <content contentuid="h7ac34c72g09eag4098gb8a2g7f21184c3977" version="1">Arcane Strike</content>

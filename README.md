@@ -1,5 +1,8 @@
 # Arcane Invoker
 
+> # ⚠️ DISCLAIMER
+> **Arcane Invoker is an UNOFFICIAL, FAN-MADE mod inspired by the Invoker hero from Dota 2. It is NOT affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios. Dota 2, Invoker and all related names are trademarks of Valve. Baldur's Gate 3 is a trademark of Larian Studios. No Valve assets are included.**
+
 A Baldur's Gate 3 mod that adds the **Arcane Invoker**, a Wizard subclass (chosen at Wizard level 2).
 Unofficial fan work, inspired by the Invoker hero from Dota 2.
 
@@ -39,6 +42,4 @@ The Script Extender is optional and only used to give the gauntlets item once.
 
 ## Disclaimer
 
-This is an unofficial fan project. It is not affiliated with, endorsed by, or sponsored by Valve Corporation
-or Larian Studios. Dota 2 and Invoker are Valve's; Baldur's Gate 3 is Larian's. Base-game assets are referenced
-by ID and are not redistributed.
+**This is an unofficial fan project. It is not affiliated with, endorsed by, or sponsored by Valve Corporation or Larian Studios. Dota 2 and Invoker are Valve's; Baldur's Gate 3 is Larian's. Base-game assets are referenced by ID and are not redistributed.**
