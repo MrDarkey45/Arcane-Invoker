@@ -25,7 +25,7 @@
     <content contentuid="hbeae42d9gd89eg4a7bg9b02g7df079c5d225" version="1">Cold Snap</content>
     <content contentuid="h55e673bdg2fc9g4d4bg8e60gf02459998a74" version="1">Gripped by biting frost: taking [1] each turn and slowed.</content>
     <content contentuid="h1590970cg666dg48e0gb3b7gcb7beb9992c3" version="1">EMP</content>
-    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="4">WWW — Call a storm burst down on a targeted area, dealing lightning damage and Silencing everything caught for a turn.</content>
+    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="5">WWW — Call a storm burst down on a targeted area, dealing lightning damage and Silencing everything caught: two turns on a failed save, one turn on a success.</content>
     <content contentuid="h762ecd85g96beg4dd7ga5e8gc19834a9b20a" version="2">Chaos Meteor</content>
     <content contentuid="hc900206eg3950g424aga6a8g8f44e4f48975" version="3">WEE — Hurl a crashing meteor that deals thunder damage on impact, sets everything it hits ablaze for 3 turns, and leaves a burning fire field behind.</content>
     <content contentuid="h14b24eb4gd146g406bgb058gc07f68236b38" version="1">Alacrity</content>

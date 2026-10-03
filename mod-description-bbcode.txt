@@ -43,7 +43,7 @@ Just holding an orb grants a passive, stacking up to three:
 [*][b]Cold Snap[/b] (QQQ) — [i]At-will.[/i] A 3-turn frost DoT (1d4+1 → 3d4+3 per tick) that snaps the target with a 1-turn freeze.
 [*][b]Ghost Walk[/b] (QQW) — [i]At-will.[/i] Turn invisible with a haunting aura — nearby foes are slowed and burned while you move faster and can't be held.
 [*][b]Ice Wall[/b] (QQE) — [i]At-will.[/i] Drag out a wall of ice. It can be walked through, but foes within 2m of it are slowed and burned (1d6 → 3d6 fire per turn).
-[*][b]EMP[/b] (WWW) — [i]Lv2 slot.[/i] A crackling ball of energy charges over the targeted area, then detonates in a storm burst (2d8 → 7d8) that Silences everything caught for a turn.
+[*][b]EMP[/b] (WWW) — [i]Lv2 slot.[/i] A crackling ball of energy charges over the targeted area, then detonates in a storm burst (2d8 → 7d8) that Silences everything caught (two turns on a failed save, one on a success).
 [*][b]Tornado[/b] (QWW) — [i]Lv2 slot.[/i] A lingering cyclone: knocks enemies prone as they enter, then slows and batters them (1d4+4 → 3d6+6 force per turn).
 [*][b]Deafening Blast[/b] (QWE) — [i]At-will.[/i] A thunder cone (2d8 → 5d8) that knocks foes back and leaves them disarmed (attacks at disadvantage).
 [*][b]Alacrity[/b] (WWE) — [i]Lv2 slot.[/i] One buff for 3 turns: Haste (no exhaustion afterward), +1d4 to attack rolls and +1d6 damage on every hit.
@@ -115,7 +115,7 @@ Just holding an orb grants a passive, stacking up to three:
 [*][b]Cold Snap[/b] (QQQ) — At-will. 3-turn frost DoT (1d4+1 → 3d4+3 per tick) + a 1-turn freeze.
 [*][b]Ghost Walk[/b] (QQW) — At-will. Invisibility + a haunting aura that slows and burns nearby foes; you move faster and can't be held.
 [*][b]Ice Wall[/b] (QQE) — At-will. Drag out a wall of ice you can walk through; foes within 2m are slowed and burned (1d6 → 3d6 fire/turn).
-[*][b]EMP[/b] (WWW) — Lv2 slot. An energy ball charges over the target area, then detonates: storm burst (2d8 → 7d8) + Silence for a turn.
+[*][b]EMP[/b] (WWW) — Lv2 slot. An energy ball charges over the target area, then detonates: storm burst (2d8 → 7d8) + Silence (two turns on a failed save, one on a success).
 [*][b]Tornado[/b] (QWW) — Lv2 slot. Lingering cyclone: prone on entry, then slow + 1d4+4 → 3d6+6 force/turn.
 [*][b]Deafening Blast[/b] (QWE) — At-will. Thunder cone (2d8 → 5d8) + knockback + disarm (attacks at disadvantage).
 [*][b]Alacrity[/b] (WWE) — Lv2 slot. One 3-turn buff: Haste (no exhaustion after) + attack-roll and damage bonuses.
