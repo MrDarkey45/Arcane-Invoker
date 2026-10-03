@@ -44,6 +44,17 @@ BALL_SIZE = 2.4             # metres (aura)
 LINGER = 1.6                # seconds the crackling arcs keep going after the burst
 ARC_RING = 2.6              # radius of the ring of lingering arcs
 
+# Damage delay (user 2026-10-02): INVOKER_EMP is a ProjectileStrike. An invisible projectile drops from PROJ_HEIGHT straight down in
+# ~CHARGE seconds (HEIGHT = v0*t + a*t^2/2), so the damage lands with the burst instead of at the cast. The ground effect stays the
+# spell's PositionEffect (it plays on Cast and bursts at CHARGE).
+PROJ_ID = str(uuid.uuid5(B.NS, "emp_projectile"))
+PROJ_NAME = "INVOKER_Projectile_EMP"
+PROJ_HEIGHT = 30
+PROJ_INITIAL_SPEED = 6.0
+PROJ_ACCEL = 48.0
+PROJ_SPEED = 60.0
+ROOT_TEMPLATES = os.path.join(B.ROOT, "roottemplate_src", "merged.lsx")
+
 MAIN = (125, 90, 255)       # Wex violet-blue
 BRIGHT = (205, 185, 255)    # sparks / hot highlights
 
@@ -339,6 +350,50 @@ def write_mei():
         f.write(text)
 
 
+def write_projectile_template():
+    """Invisible delay projectile (no TrailFX / ImpactFX): its only job is to carry the damage down after ~CHARGE seconds."""
+    node = f"""                <node id="GameObjects">
+					<attribute id="Acceleration" type="float" value="{PROJ_ACCEL:g}" />
+					<attribute id="CameraOffset" type="fvec3" value="0 0 0" />
+					<attribute id="CastBone" type="FixedString" value="Dummy_CastFX" />
+					<attribute id="Flag" type="int32" value="0" />
+					<attribute id="GroupID" type="uint32" value="0" />
+					<attribute id="HasGameplayValue" type="bool" value="False" />
+					<attribute id="ImpactFX" type="FixedString" value="" />
+					<attribute id="InitialSpeed" type="float" value="{PROJ_INITIAL_SPEED:g}" />
+					<attribute id="LevelName" type="FixedString" value="" />
+					<attribute id="MapKey" type="FixedString" value="{PROJ_ID}" />
+					<attribute id="Name" type="LSString" value="{PROJ_NAME}" />
+					<attribute id="ParentTemplateId" type="FixedString" value="" />
+					<attribute id="PhysicsTemplate" type="FixedString" value="" />
+					<attribute id="PreviewPathImpactFX" type="FixedString" value="VFX_UI_DestinationBeam_Projectile_01" />
+					<attribute id="PreviewPathMaterial" type="FixedString" value="312a1494-a0e2-c215-cf51-bda58a6b2341" />
+					<attribute id="PreviewPathRadius" type="float" value="0.1" />
+					<attribute id="RotateImpact" type="bool" value="False" />
+					<attribute id="Speed" type="float" value="{PROJ_SPEED:g}" />
+					<attribute id="TrailFX" type="FixedString" value="" />
+					<attribute id="TrajectoryType" type="uint8" value="0" />
+					<attribute id="Type" type="FixedString" value="projectile" />
+					<attribute id="VelocityMode" type="uint8" value="1" />
+					<attribute id="VisualTemplate" type="FixedString" value="" />
+					<attribute id="_OriginalFileVersion_" type="int64" value="144115200960758167" />
+					<children>
+						<node id="Bounds" />
+						<node id="GameMaster" />
+					</children>
+				</node>
+"""
+    begin, end = "<!-- EMP PROJECTILE BEGIN (generated) -->\n", "<!-- EMP PROJECTILE END -->\n"
+    s = open(ROOT_TEMPLATES, encoding="utf-8", newline="").read().replace("\r\n", "\n")
+    if begin in s:
+        s = s[:s.index(begin)] + s[s.index(end) + len(end):]
+    close = s.rfind("</children>", 0, s.rfind("</region>"))
+    close = s.rfind("\n", 0, close) + 1
+    s = s[:close] + begin + node + end + s[close:]
+    with open(ROOT_TEMPLATES, "w", encoding="utf-8", newline="") as f:
+        f.write(s)
+
+
 def main():
     root = copy.deepcopy(B.xml(STATIC))
     bounds = copy.deepcopy(next(c for c in root.iter("component") if c.get("class") == "BoundingSphere"))
@@ -369,6 +424,7 @@ def main():
     deps = material_guids(comps)
     write_bank(duration, deps)
     write_mei()
+    write_projectile_template()
     if os.path.isdir(B.PREVIEW_DIR):
         shutil.copy2(out, B.PREVIEW_DIR)
     print(f"{NAME}: {len(charge)} charge + {len(burst)} burst components, duration {duration:g}s, scale K={K:.3f}, "
