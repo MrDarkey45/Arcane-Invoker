@@ -54,7 +54,7 @@ data "CastTextEvent" "Cast"
 data "CastSound" "Spell_Cast_Damage_Fire_FireBolt_L1to3"
 data "SpellFlags" "Stealth;Invisible"
 data "DisplayName" "hc6c374b0g9639g421ag898ag593a8b0c7747;1"
-data "Description" "h313a09e4gd5fcg40b5g9302g6a757e6fc200;1"
+data "Description" "h313a09e4gd5fcg40b5g9302g6a757e6fc200;2"
 data "Icon" "Spell_Evocation_ChromaticOrb_Fire"
 
 // ============ DISPEL ORBS (clears everything, including count markers) ============

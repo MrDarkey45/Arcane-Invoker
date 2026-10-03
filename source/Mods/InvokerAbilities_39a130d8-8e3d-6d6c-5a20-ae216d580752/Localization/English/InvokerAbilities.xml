@@ -7,7 +7,7 @@
     <content contentuid="hc2bff7e2g10eag4dacgb277g5e808ffbcd64" version="1">Wex</content>
     <content contentuid="h96755596g86c3g4637gaf73g5213a3eb91d4" version="2">Conjure a Wex (storm) reagent orb. Each Wex held makes movement cost 10% less and grants +1 Initiative. Hold up to 3 orbs, then Invoke to combine them.</content>
     <content contentuid="hc6c374b0g9639g421ag898ag593a8b0c7747" version="1">Exort</content>
-    <content contentuid="h313a09e4gd5fcg40b5g9302g6a757e6fc200" version="1">Conjure an Exort (fire) reagent orb. Hold up to 3 orbs, then Invoke to combine them.</content>
+    <content contentuid="h313a09e4gd5fcg40b5g9302g6a757e6fc200" version="2">Conjure an Exort (fire) reagent orb. Each Exort held adds +1 force damage to your attacks and Arcane Strike. Hold up to 3 orbs, then Invoke to combine them.</content>
     <content contentuid="h1a3447c4g5eb6g4f44g8518gf8c4ee379e48" version="1">Dispel Orbs</content>
     <content contentuid="hc0461f9dg2aedg4974g837fg9a4bd293a02a" version="1">Discard all currently held orbs.</content>
     <content contentuid="h8f50feccg3bc6g4c41g9fbfgcbac9cc2f287" version="1">Orb Charge</content>
@@ -25,7 +25,7 @@
     <content contentuid="hbeae42d9gd89eg4a7bg9b02g7df079c5d225" version="1">Cold Snap</content>
     <content contentuid="h55e673bdg2fc9g4d4bg8e60gf02459998a74" version="1">Gripped by biting frost: taking [1] each turn and slowed.</content>
     <content contentuid="h1590970cg666dg48e0gb3b7gcb7beb9992c3" version="1">EMP</content>
-    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="2">WWW — Call a storm burst down on a targeted area, dealing lightning damage and Silencing everything caught for two turns.</content>
+    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="3">WWW — Call a storm burst down on a targeted area, dealing lightning damage and Silencing everything caught: two turns on a failed save, one turn on a success.</content>
     <content contentuid="h762ecd85g96beg4dd7ga5e8gc19834a9b20a" version="2">Chaos Meteor</content>
     <content contentuid="hc900206eg3950g424aga6a8g8f44e4f48975" version="3">WEE — Hurl a crashing meteor that deals thunder damage on impact, sets everything it hits ablaze for 3 turns, and leaves a burning fire field behind.</content>
     <content contentuid="h14b24eb4gd146g406bgb058gc07f68236b38" version="1">Alacrity</content>

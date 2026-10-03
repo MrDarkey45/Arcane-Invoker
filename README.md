@@ -14,7 +14,7 @@ an at-will Arcane Strike cantrip, and the Arcane Invoker's Gauntlets item.
 |---|---|
 | Quas | +1 HP regenerated per turn during combat |
 | Wex | movement costs 10% less, +1 Initiative |
-| Exort | +1d4 force damage on attacks and Arcane Strike |
+| Exort | +1 force damage on attacks and Arcane Strike |
 
 Combos: Cold Snap (QQQ), Ghost Walk (QQW), Ice Wall (QQE), EMP (WWW), Tornado (QWW), Deafening Blast (QWE),
 Alacrity (WWE), Sun Strike (EEE), Chaos Meteor (WEE), Forge Spirit (QEE).
