@@ -49,10 +49,10 @@ ARC_RING = 2.6              # radius of the ring of lingering arcs
 # spell's PositionEffect (it plays on Cast and bursts at CHARGE).
 PROJ_ID = str(uuid.uuid5(B.NS, "emp_projectile"))
 PROJ_NAME = "INVOKER_Projectile_EMP"
-PROJ_HEIGHT = 30
-PROJ_INITIAL_SPEED = 6.0
-PROJ_ACCEL = 48.0
-PROJ_SPEED = 60.0
+PROJ_HEIGHT = 3             # 2026-10-03: was 30 - roofs caught the projectile; now it starts just above the target (works indoors)
+PROJ_INITIAL_SPEED = 3.0    # m/s -> ~1 s for 3 m (slowest vanilla projectile templates: 4-5 m/s)
+PROJ_ACCEL = 3.0
+PROJ_SPEED = 3.0
 ROOT_TEMPLATES = os.path.join(B.ROOT, "roottemplate_src", "merged.lsx")
 
 MAIN = (125, 90, 255)       # Wex violet-blue

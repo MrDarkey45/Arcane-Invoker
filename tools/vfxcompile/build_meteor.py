@@ -41,24 +41,32 @@ CHUNKS = [  # rock chunks thrown out when the meteor shatters (clones of the cha
 
 HEAD_NAME = "VFX_Invoker_Meteor_Head_01"        # looping trail effect carried by the projectile (TrailFX)
 IMPACT_NAME = "VFX_Invoker_Meteor_Impact_01"    # one-shot effect played where it lands (ImpactFX)
-OLD_FILES = ("VFX_Invoker_Meteor_01.lsefx", "bank_VFX_Invoker_Meteor_01.lsx", "mei_INVOKER_METEOR_POSITION.lsx")
+OLD_FILES = ("VFX_Invoker_Meteor_01.lsefx", "bank_VFX_Invoker_Meteor_01.lsx")
+MEI_ID = str(uuid.uuid5(B.NS, "meteor_mei"))              # position effect on INVOKER_METEOR (the visual-only falling boulder)
+INFO_ID = str(uuid.uuid5(B.NS, "meteor_effectinfo"))
+KF_MODEL = B.MODS + r"\Shared\Assets\Effects\Actions\Cast\Common\VFX_Actions_Cast_Common_Impact_Overlay_01.lsefx"   # a Model with Keyframed Position
+KF_MODEL_MODULE = "7a790ae7-3b1c-463e-bb1f-5cc14980b78c"   # Model module "Keyframed Position" (property 37b047c1)
 HEAD_RES = str(uuid.uuid5(B.NS, "meteor_head_resource"))
 IMPACT_RES = str(uuid.uuid5(B.NS, "meteor_impact_resource"))
 PROJ_ID = str(uuid.uuid5(B.NS, "meteor_projectile"))      # projectile RootTemplate (INVOKER_METEOR Template/Trajectories)
 PROJ_NAME = "INVOKER_Projectile_ChaosMeteor"
 ROOT_TEMPLATES = os.path.join(B.ROOT, "roottemplate_src", "merged.lsx")
 
-# The meteor is now a real PROJECTILE (SpellType ProjectileStrike): the engine drops it from the sky and applies the damage
-# when it LANDS, so damage and impact are in sync by construction. Fall time = spell Height/Angle + these speeds.
-PROJ_INITIAL_SPEED = 18.0   # m/s (vanilla tutorial meteor: 35 / 35 / 35 - ours is heavier and slower)
-PROJ_SPEED = 18.0
-PROJ_ACCEL = 25.0
+# SPLIT (2026-10-03): roofs caught the sky projectile, so the spell only worked outdoors. Now the DAMAGE is carried by an invisible
+# projectile that starts PROJ_HEIGHT above the target and takes ~FALL_TIME to reach it (fits under ceilings), and the burning
+# boulder is a pure visual: a position effect that flies a keyframed path START -> END in FALL_TIME and passes through roofs.
+# The impact effect is still the projectile's ImpactFX, so the explosion is always in sync with the damage.
+PROJ_HEIGHT = 3             # INVOKER_METEOR Height (Angle 0)
+PROJ_INITIAL_SPEED = 3.0    # m/s -> ~1 s for 3 m (slowest vanilla projectile templates: 4-5 m/s)
+PROJ_SPEED = 3.0
+PROJ_ACCEL = 3.0
+FALL_TIME = 0.88            # seconds the visual boulder takes to come down (match the projectile's travel time; 1.0 landed a few frames after the damage)
+FIRE_HOLD = 0.4             # the head keeps burning this long after landing (overlaps the impact fireball)
+START = (-5.0, 19.0, -11.5)  # where the boulder appears, effect-local metres relative to the target point
+END = (0.0, 0.4, 0.0)
 
 AREA_RADIUS = 3.0           # INVOKER_METEOR AreaRadius / ExplodeRadius
 FALL = 0.0                  # impact effect starts at t=0 (it is played by the projectile when it lands)
-HEAD_LEAD_IN = 0.15         # head effect phases: fade in / loop while flying / fade out after the hit
-HEAD_LOOP = 1.0
-HEAD_LEAD_OUT = 0.5
 K_IMPACT = 1.0              # vanilla impact at its native size (20 m glow rings); was 0.4 -> 0.65 (user: "so small", wants a stronger landing)
 HEAD_DIAMETER = 9.6         # metres, the visible rock (user 2026-10-02: "maybe 50m"). Glow quad is ~3x its visible core; 3.5 reads ~4 m wide
 FALL_SCALE = 3.5 * HEAD_DIAMETER / 4.0   # multiplies every falling head/trail layer size (3.5 -> ~4 m, 43.75 -> ~50 m)
@@ -88,8 +96,19 @@ def br(v):
     return v / B.BRIGHT
 
 
-def _head_fade(d):
-    return HEAD_LEAD_IN / d, (HEAD_LEAD_IN + HEAD_LOOP) / d
+def _head_fade(d):          # (fade-in end, landing) as fractions of the fall effect's duration
+    return 0.08 / d, FALL_TIME / d
+
+
+def path_keys(d):
+    """Falling path: ease-in (accelerating) line START -> END over FALL_TIME, then rests at END. Times normalised over d."""
+    xs, ys, zs = [], [], []
+    n = 12
+    for u in [FALL_TIME / d * i / n for i in range(n + 1)] + [1.0]:
+        f = min(u * d / FALL_TIME, 1.0) ** 1.6
+        for lst, a, b in zip((xs, ys, zs), START, END):
+            lst.append((round(u, 5), round(a + f * (b - a), 4)))
+    return [xs, ys, zs]
 
 
 FLAME_OV = {  # Produce Flame persistent flame: fade in over the Lead In, hold through the Loop (the flight), fade out after
@@ -120,13 +139,13 @@ FALL_LAYERS = [
 
 
 def head_components(duration):
-    """The burning head, at the effect origin: the projectile carries the effect, so nothing is keyframed along a path."""
+    """The burning head, moved along the falling path by each emitter's Keyframed Offset."""
     glow_base = [c for c in B.xml(B.BASE).iter("component") if c.get("class") == "ParticleSystem"][1]
     el = dict(column=0, slot=2, phase=0)           # dummy: orbit_keys() path is overridden below
     out = []
     for L in FALL_LAYERS:
         c = B.make_emitter(glow_base, "meteor", el, L, duration)
-        B.set_ramp(c, B.P["kf_offset"], [[(0, 0.0), (1, 0.0)]] * 3)
+        B.set_ramp(c, B.P["kf_offset"], path_keys(duration))
         c.set("instancename", str(uuid.uuid5(B.NS, f"meteor_fall_{L['name']}")))
         out.append(c)
     return out
@@ -151,6 +170,15 @@ def rock_component(duration):
     ml = c.find("modules")
     if not any(m.get("id").lower() == B.M["position"] for m in ml):
         ET.SubElement(ml, "module", id=B.M["position"], muted="False", index=str(len(ml)))
+    src = next(m for m in B.xml(KF_MODEL).iter("component") if m.get("class") == "Model" and E.has_prop(m, "37b047c1"))
+    for pid in ("37b047c1", "7787b338", "94689e2e", "8c59c30a"):       # Keyframed Position + its X/Y/Z modifiers
+        if not E.has_prop(c, pid):
+            c.find("properties").append(copy.deepcopy(B.prop(src, pid)))
+    B.set_ramp(c, "37b047c1", path_keys(duration))                      # the rock flies the same path as the flames
+    for pid in ("7787b338", "94689e2e", "8c59c30a"):
+        B.set_value(c, pid, 1)
+    if not any(m.get("id").lower() == KF_MODEL_MODULE for m in ml):
+        ET.SubElement(ml, "module", id=KF_MODEL_MODULE, muted="False", index=str(len(ml)))
     E.retime(c, 0, duration)
     c.set("instancename", str(uuid.uuid5(B.NS, "meteor_rock")))
     return c
@@ -318,9 +346,51 @@ def write_bank(name, res_id, duration, deps, looping):
         f.write(text)
 
 
+def write_mei():
+    # position effect at the target point (same structure as the EMP / Sun Strike position effects)
+    text = f"""<?xml version="1.0" encoding="utf-8"?>
+<!-- GENERATED by tools/vfxcompile/build_meteor.py - do not edit by hand -->
+<save>
+	<version major="4" minor="0" revision="7" build="200" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="MultiEffectInfos">
+		<node id="MultiEffectInfos">
+			<attribute id="UUID" type="guid" value="{MEI_ID}" />
+			<attribute id="Name" type="LSString" value="INVOKER_METEOR_PositionEffect" />
+			<children>
+				<node id="EffectInfo">
+					<attribute id="UUID" type="guid" value="{INFO_ID}" />
+					<attribute id="EffectResourceGuid" type="guid" value="{HEAD_RES}" />
+					<attribute id="DetachSource" type="bool" value="True" />
+					<attribute id="DetachTarget" type="bool" value="True" />
+					<attribute id="KeepRotation" type="bool" value="True" />
+					<attribute id="UseOrientDirection" type="bool" value="False" />
+					<attribute id="UseDistance" type="bool" value="False" />
+					<attribute id="UseScaleOverride" type="bool" value="False" />
+					<attribute id="KeepScale" type="bool" value="False" />
+					<attribute id="MainHand" type="bool" value="False" />
+					<attribute id="OffHand" type="bool" value="False" />
+					<attribute id="MinDistance" type="float" value="0" />
+					<attribute id="MaxDistance" type="float" value="0" />
+					<attribute id="BindSourceTo" type="FixedString" value="SourceEntity" />
+					<attribute id="BindTargetTo" type="FixedString" value="TargetEntity" />
+					<attribute id="Pivot" type="FixedString" value="Target" />
+					<attribute id="DamageType" type="uint32" value="0" />
+					<attribute id="VerbalIntent" type="uint32" value="0" />
+					<attribute id="StartTextKey" type="LSString" value="Cast" />
+					<attribute id="Enabled" type="bool" value="True" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>
+"""
+    with open(os.path.join(B.OUT_DIR, "mei_INVOKER_METEOR_POSITION.lsx"), "w", encoding="utf-8") as f:
+        f.write(text)
+
+
 def write_projectile_template():
-    """Projectile RootTemplate (copy of vanilla VFX_Projectile_Tutorial_Meteor_01 3fbaebe6 with our effects): the engine
-    flies it from the sky to the target, plays TrailFX on it and ImpactFX where it lands. Replaced in place by MapKey."""
+    """Invisible delay projectile (no TrailFX): drops the last PROJ_HEIGHT metres onto the target, applies the damage and
+    plays ImpactFX where it lands. Replaced in place between the markers."""
     node = f"""                <node id="GameObjects">
 					<attribute id="Acceleration" type="float" value="{PROJ_ACCEL:g}" />
 					<attribute id="CameraOffset" type="fvec3" value="0 0 0" />
@@ -339,7 +409,7 @@ def write_projectile_template():
 					<attribute id="PreviewPathMaterial" type="FixedString" value="312a1494-a0e2-c215-cf51-bda58a6b2341" />
 					<attribute id="PreviewPathRadius" type="float" value="0.1" />
 					<attribute id="Speed" type="float" value="{PROJ_SPEED:g}" />
-					<attribute id="TrailFX" type="FixedString" value="{HEAD_NAME}" />
+					<attribute id="TrailFX" type="FixedString" value="" />
 					<attribute id="TrajectoryType" type="uint8" value="0" />
 					<attribute id="Type" type="FixedString" value="projectile" />
 					<attribute id="VelocityMode" type="uint8" value="1" />
@@ -391,22 +461,17 @@ def main():
             if os.path.isfile(os.path.join(d, f)):
                 os.remove(os.path.join(d, f))
 
-    # 1) head: looping trail effect carried by the projectile
-    duration = HEAD_LEAD_IN + HEAD_LOOP + HEAD_LEAD_OUT
-    root = copy.deepcopy(B.xml(B.BASE))
-    phases = root.find("phases")
-    for child in list(phases):
-        phases.remove(child)
-    for defid, dur, count in zip(B.PHASE_DEFS, (HEAD_LEAD_IN, HEAD_LOOP, HEAD_LEAD_OUT), (1, -1, 1)):
-        obj = ET.SubElement(phases, "object", {"class": "", "classid": "00000000-0000-0000-0000-000000000000",
-                                               "assembly": ""})
-        ET.SubElement(obj, "data", id=str(uuid.uuid5(B.NS, f"meteor_head_phase_{defid}")), duration=f"{dur:g}",
-                      playcount=str(count), definitionid=defid)
+    # 1) falling boulder: one-shot position effect (visual only), flies START -> END in FALL_TIME
+    duration = FALL_TIME + FIRE_HOLD
+    root = copy.deepcopy(B.xml(IMPACT))
+    for child in list(root.find("phases")):
+        root.find("phases").remove(child)
     comps = [rock_component(duration)] + head_components(duration) + sound_components([WHOOSH + (0.0, duration)])
     pm = preview_models(duration)
-    deps = write_effect(root, HEAD_NAME, "head", comps, duration, [pm[1]])     # one mannequin 3 m away, for scale
-    write_bank(HEAD_NAME, HEAD_RES, duration, deps, True)
-    print(f"{HEAD_NAME}: {len(comps)} components, duration {duration:g}s (looping), {len(deps)} dependencies")
+    deps = write_effect(root, HEAD_NAME, "head", comps, duration, pm)
+    write_bank(HEAD_NAME, HEAD_RES, duration, deps, False)
+    write_mei()
+    print(f"{HEAD_NAME}: {len(comps)} components, duration {duration:g}s (one-shot position effect, MEI {MEI_ID}), {len(deps)} dependencies")
 
     # 2) impact: one-shot effect played where the projectile lands
     root = copy.deepcopy(B.xml(IMPACT))

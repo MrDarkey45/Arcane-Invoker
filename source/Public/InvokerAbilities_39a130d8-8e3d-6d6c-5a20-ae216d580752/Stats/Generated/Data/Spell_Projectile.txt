@@ -8,10 +8,16 @@
 
 new entry "INVOKER_SUNSTRIKE"
 type "SpellData"
-data "SpellType" "Target"
+data "SpellType" "ProjectileStrike"
 data "TargetRadius" "150"
 data "AreaRadius" "2"
-data "PreviewCursor" "Cast"
+data "ExplodeRadius" "2"
+data "ProjectileCount" "1"
+data "Distribution" "EdgeCenter"
+data "Angle" "0"
+data "Height" "3"
+data "Template" "4f840034-0e07-5bce-92dc-3dfdc4b32cfd"
+data "Trajectories" "4f840034-0e07-5bce-92dc-3dfdc4b32cfd"
 data "TargetConditions" "not Dead()"
 data "AoEConditions" "not Dead() and not (HasPassive('SculptSpells', context.Source) and Ally())"
 data "SpellRoll" "not SavingThrow(Ability.Dexterity, 14)"
@@ -23,16 +29,19 @@ data "UseCosts" "ActionPoint:1;SpellSlotsGroup:1:1:3"
 data "SpellAnimation" "3ff87abf-1ea1-4c32-aadf-c822d74c7dc0,,;,,;39daf365-ec06-49a8-81f3-9032640699d7,,;5c400e93-0266-499c-a2e1-75d53358460f,,;d8925ce4-d6d9-400c-92f5-ad772ef7f178,,;,,;eadedcce-d01b-4fbb-a1ae-d218f13aa5d6,,;,,;,,"
 data "VerbalIntent" "Damage"
 data "CastTextEvent" "Cast"
-data "SpellFlags" "HasVerbalComponent;HasSomaticComponent;IsSpell;IsHarmful;IgnoreVisionBlock"
+data "SpellFlags" "HasVerbalComponent;HasSomaticComponent;IsSpell;IsHarmful;IgnoreVisionBlock;CanAreaDamageEvade"
 data "SpellSchool" "Evocation"
 data "DamageType" "Fire"
 data "PrepareEffect" "f2cc8572-ef49-414a-bc5d-0002e9f9fae3"
 data "CastEffect" "bcdbef29-f309-4d72-b12b-aa264e676786"
+// Delayed strike (2026-10-03): the warning ring + needle of light play at the spot on Cast (PositionEffect); an INVISIBLE projectile
+// INVOKER_Projectile_SunStrike starts 3 m above the spot and lands ~1 s later, applying the damage and playing the sunbeam column
+// (its ImpactFX). Low start so ceilings do not catch it (the 30 m sky drop only worked outdoors). tools/vfxcompile/build_sunstrike.py
+// On-cast fallback (Target + PreviewCursor): backups/pre_low_delay_strikes/Spell_Projectile.txt
 data "PositionEffect" "881d9b41-2fac-520c-a252-31cc17528dbf"
 data "CastSound" "Spell_Cast_Damage_FlameStrike_L4to5"
 data "PrepareSound" "Spell_Prepare_Damage_FlameStrike_L4to5"
 data "PrepareLoopSound" "Spell_Loop_Damage_FlameStrike_L4to5"
-data "TargetSound" "Spell_Impact_Damage_FlameStrike_L4to5"
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerSunStrike),Fire)"
 data "TooltipAttackSave" "Dexterity"
 data "DisplayName" "hba12ad0cg09a1g4e1agb9ebgc80728a3d54d;1"
@@ -49,8 +58,8 @@ data "AreaRadius" "3"
 data "ExplodeRadius" "3"
 data "ProjectileCount" "1"
 data "Distribution" "EdgeCenter"
-data "Angle" "25"
-data "Height" "20"
+data "Angle" "0"
+data "Height" "3"
 data "Template" "373fc678-0a69-52b1-9923-e9fc1c8e9894"
 data "Trajectories" "373fc678-0a69-52b1-9923-e9fc1c8e9894"
 data "TargetConditions" "not Dead()"
@@ -69,10 +78,11 @@ data "SpellSchool" "Evocation"
 data "DamageType" "Thunder"
 data "PrepareEffect" "fdbf8e88-c3a5-4151-a81d-429985de422c"
 data "CastEffect" "69aaec35-fb5f-489e-a4cc-47310f4377e9"
-// Sky-fall meteor = a real projectile (ProjectileStrike, like the tutorial Bombardment / Nautiloid Airstrike): the engine drops
-// projectile template INVOKER_Projectile_ChaosMeteor (roottemplate_src) from Height/Angle and applies damage WHEN IT LANDS.
-// Its TrailFX / ImpactFX are VFX_Invoker_Meteor_Head_01 / _Impact_01 (tools/vfxcompile/build_meteor.py).
-// Before: SpellType Target + PreviewCursor Cast + PositionEffect 8fffd60f-... (damage landed at cast, before the visual). Backup: backups/pre_projectilestrike
+// Split (2026-10-03): the burning boulder is a pure VISUAL (PositionEffect, flies a fixed path from the sky and ignores roofs);
+// the damage is carried by the invisible projectile INVOKER_Projectile_ChaosMeteor, which starts 3 m above the spot and lands
+// ~1 s later, playing the impact (its ImpactFX). Works indoors. tools/vfxcompile/build_meteor.py
+// Before (real sky projectile, outdoors only): backups/pre_low_delay_strikes/Spell_Projectile.txt
+data "PositionEffect" "8fffd60f-3e4a-5465-b623-987c5d327a3e"
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerMeteor),Thunder)"
 data "TooltipAttackSave" "Dexterity"
 data "CastSound" "Spell_Cast_Damage_Fireball_L5"

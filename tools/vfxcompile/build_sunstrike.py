@@ -48,11 +48,12 @@ WARN_INFO = str(uuid.uuid5(B.NS, "sunstrike_warn_effectinfo"))
 PROJ_ID = str(uuid.uuid5(B.NS, "sunstrike_projectile"))
 PROJ_NAME = "INVOKER_Projectile_SunStrike"
 
-# Timing: the projectile drops HEIGHT metres (spell Height) straight down: HEIGHT = v0*t + a*t^2/2 -> t ~= 1.0 s.
-HEIGHT = 30
-PROJ_INITIAL_SPEED = 6.0
-PROJ_ACCEL = 48.0
-PROJ_SPEED = 60.0            # cap (above the ~54 m/s it reaches at the ground)
+# Timing (2026-10-03): roofs caught the 30 m sky projectile (no explosion, no damage). The invisible projectile now starts only
+# HEIGHT metres above the target and crawls down in ~WARN_TIME, so the strike also works indoors.
+HEIGHT = 3
+PROJ_INITIAL_SPEED = 3.0     # m/s (slowest vanilla projectile templates: 4-5 m/s)
+PROJ_ACCEL = 3.0
+PROJ_SPEED = 3.0
 WARN_TIME = 1.0              # expected fall time; the sigil's second flare is lined up with it
 
 AREA_RADIUS = 2.0            # INVOKER_SUNSTRIKE AreaRadius
@@ -327,7 +328,7 @@ def write_projectile_template():
 					<attribute id="PreviewPathRadius" type="float" value="0.1" />
 					<attribute id="RotateImpact" type="bool" value="False" />
 					<attribute id="Speed" type="float" value="{PROJ_SPEED:g}" />
-					<attribute id="TrailFX" type="FixedString" value="{STREAK_NAME}" />
+					<attribute id="TrailFX" type="FixedString" value="" />
 					<attribute id="TrajectoryType" type="uint8" value="0" />
 					<attribute id="Type" type="FixedString" value="projectile" />
 					<attribute id="VelocityMode" type="uint8" value="1" />
