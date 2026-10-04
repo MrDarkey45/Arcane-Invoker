@@ -14,7 +14,8 @@
     <content contentuid="h936195d7gd9c3g41f4g96fbg3308818caa8d" version="1">Invoke</content>
     <content contentuid="h6c2d90e3g87feg481aga7dag40c1537ce836" version="1">Combine your held orbs into a spell. The available combination depends on which orbs you are holding.</content>
     <content contentuid="hba12ad0cg09a1g4e1agb9ebgc80728a3d54d" version="1">Sun Strike</content>
-    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="2">EEE — Call down a pinpoint blast of solar fire on any spot you can see, even without a clear line of sight from you. Requires 3 Exort orbs.</content>
+    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="3">EEE — Call down solar fire on any spot you can see, even without a clear line of sight. Creatures within 2 m of the spot take the full blast (a successful Dexterity save halves it), and enemies out to 4 m take a smaller burn. Requires 3 Exort orbs.</content>
+    <content contentuid="hf394b5d8gcad5g4091g8463g39871484045c" version="1">EEE — Call down solar fire on any spot you can see, even without a clear line of sight. The blast is rolled once and divided evenly among every creature within 2 m, so a lone target takes all of it. A successful Dexterity save halves a creature's share. Requires 3 Exort orbs.</content>
     <content contentuid="h3474333ag6e03g426cgacd1ge151d20a4f54" version="1">Cold Snap</content>
     <content contentuid="h1923bf23g6553g45d6g9795g9bf4f9d73d1c" version="1">QQQ — Chill a foe with biting frost. Requires 3 Quas orbs.</content>
     <content contentuid="h68a6074ag0afag4774g8615geadf6466e050" version="1">Deafening Blast</content>

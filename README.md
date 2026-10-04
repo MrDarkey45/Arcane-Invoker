@@ -38,7 +38,7 @@ python tools\vfxcompile\build_orb.py   # regenerates orb effects into vfx_src/
 .\repack.ps1                           # packs and installs (close BG3 and the Toolkit first)
 ```
 
-The Script Extender is optional and only used to give the gauntlets item once.
+The Script Extender is optional. It gives the gauntlets item once and lets Sun Strike split its damage between everything it hits (without it, Sun Strike hits the centre for full damage and enemies in a wider ring for less).
 
 ## Disclaimer
 

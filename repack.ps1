@@ -28,9 +28,13 @@ if (Test-Path $vfxSrc) {
     $bankDir = Join-Path $pub "Content\Assets\Effects\Effects\[PAK]_Invoker"
     $meiDir  = Join-Path $pub "MultiEffectInfos"
     # These three folders hold only generated output: clear them so renamed/removed effects don't linger in the pak.
+    # ...but ONLY when the Toolkit's AllSpark compiler is available (compile-effect.ps1 needs it). Without it (e.g. while the game is being
+    # reinstalled) the compiled effects already in source\ are kept as they are. Clearing first used to wipe all of them when the compile failed.
+    $toolkitOk = (Test-Path "E:\SteamLibrary\steamapps\common\Baldurs Gate 3 Toolkit") -and (Test-Path "E:\SteamLibrary\steamapps\common\Baldurs Gate 3\Data\Editor\Config\AllSpark\ModuleDefinition.xmd")
+    if (-not $toolkitOk) { Write-Warning "Toolkit / game Editor files not found: skipping effect recompile, keeping the compiled effects already in source\." }
     foreach ($d in $fxDir, $bankDir, $meiDir) {
         New-Item -ItemType Directory -Force $d | Out-Null
-        Get-ChildItem -LiteralPath $d -File | Remove-Item -Force
+        if ($toolkitOk) { Get-ChildItem -LiteralPath $d -File | Remove-Item -Force }
     }
     # Splice the generated visual-only orb statuses (build_orb.py -> orbfx_statuses.txt) into Status_BOOST.txt.
     $block = Join-Path $vfxSrc "orbfx_statuses.txt"
@@ -41,7 +45,7 @@ if (Test-Path $vfxSrc) {
         $gen = ([IO.File]::ReadAllText($block) -replace '\r?\n', "`r`n")
         [IO.File]::WriteAllText($boost, $text.TrimEnd() + "`r`n`r`n" + $gen, (New-Object Text.UTF8Encoding $false))
     }
-    Get-ChildItem $vfxSrc -Filter "VFX_*.lsefx" | ForEach-Object {
+    Get-ChildItem $vfxSrc -Filter "VFX_*.lsefx" | Where-Object { $toolkitOk } | ForEach-Object {
         Write-Host "Compiling effect $($_.Name) ..."
         & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root "tools\vfxcompile\compile-effect.ps1") `
             $_.FullName (Join-Path $fxDir ($_.BaseName + ".lsfx"))
