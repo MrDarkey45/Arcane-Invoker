@@ -18,9 +18,9 @@
                     </children>
                 </node>
                 <node id="ModuleInfo">
-                    <attribute id="Author" type="LSString" value=""/>
+                    <attribute id="Author" type="LSString" value="MrDarkey45"/>
                     <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
-                    <attribute id="Description" type="LSString" value=""/>
+                    <attribute id="Description" type="LSString" value="Arcane Invoker: a Wizard subclass inspired by Dota 2's Invoker. Stack Quas, Wex and Exort orbs, then Invoke one of ten spells. Unofficial fan mod, not affiliated with Valve or Larian."/>
                     <attribute id="FileSize" type="uint64" value="0"/>
                     <attribute id="Folder" type="LSString" value="InvokerAbilities_39a130d8-8e3d-6d6c-5a20-ae216d580752"/>
                     <attribute id="LobbyLevelName" type="FixedString" value=""/>

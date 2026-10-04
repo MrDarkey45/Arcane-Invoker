@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <contentList>
     <content contentuid="hd8e9a847gd34eg47e8gae42g50d9da8583f7" version="1">Arcane Invoker</content>
-    <content contentuid="hb797491eg3998g4424gac7cg192c7b5fc281" version="1">Masters of the three elemental reagents — Quas, Wex, and Exort. Arcane Invokers combine orbs and Invoke to unleash a vast arsenal of spells.</content>
+    <content contentuid="hb797491eg3998g4424gac7cg192c7b5fc281" version="2">Hold up to 3 Quas (ice), Wex (storm) or Exort (fire) orbs, then Invoke the spell they match. Grants ten combination spells, Arcane Strike, an extra action each turn, and bonus spell slots (one 3rd level, two 2nd level).</content>
     <content contentuid="h7f09443ag5440g4f59g936cg083b23a21e95" version="1">Quas</content>
-    <content contentuid="h547f6808g7e27g4732g8a2eg60bdf22b2477" version="1">Conjure a Quas (ice) reagent orb. Hold up to 3 orbs, then Invoke to combine them.</content>
+    <content contentuid="h547f6808g7e27g4732g8a2eg60bdf22b2477" version="2">Gain a Quas (ice) orb. Each Quas orb held restores 1 HP at the start of your turn in combat. Hold up to 3 orbs.</content>
     <content contentuid="hc2bff7e2g10eag4dacgb277g5e808ffbcd64" version="1">Wex</content>
-    <content contentuid="h96755596g86c3g4637gaf73g5213a3eb91d4" version="2">Conjure a Wex (storm) reagent orb. Each Wex held makes movement cost 10% less and grants +1 Initiative. Hold up to 3 orbs, then Invoke to combine them.</content>
+    <content contentuid="h96755596g86c3g4637gaf73g5213a3eb91d4" version="3">Gain a Wex (storm) orb. Each Wex orb held makes movement cost 10% less and gives +1 Initiative. Hold up to 3 orbs.</content>
     <content contentuid="hc6c374b0g9639g421ag898ag593a8b0c7747" version="1">Exort</content>
-    <content contentuid="h313a09e4gd5fcg40b5g9302g6a757e6fc200" version="2">Conjure an Exort (fire) reagent orb. Each Exort held adds +1 force damage to your attacks and Arcane Strike. Hold up to 3 orbs, then Invoke to combine them.</content>
+    <content contentuid="h313a09e4gd5fcg40b5g9302g6a757e6fc200" version="3">Gain an Exort (fire) orb. Each Exort orb held adds +1 force damage to your attacks and Arcane Strike. Hold up to 3 orbs.</content>
     <content contentuid="h1a3447c4g5eb6g4f44g8518gf8c4ee379e48" version="1">Dispel Orbs</content>
-    <content contentuid="hc0461f9dg2aedg4974g837fg9a4bd293a02a" version="1">Discard all currently held orbs.</content>
+    <content contentuid="hc0461f9dg2aedg4974g837fg9a4bd293a02a" version="2">Discard all held orbs.</content>
     <content contentuid="h8f50feccg3bc6g4c41g9fbfgcbac9cc2f287" version="1">Orb Charge</content>
     <content contentuid="h936195d7gd9c3g41f4g96fbg3308818caa8d" version="1">Invoke</content>
-    <content contentuid="h6c2d90e3g87feg481aga7dag40c1537ce836" version="1">Combine your held orbs into a spell. The available combination depends on which orbs you are holding.</content>
+    <content contentuid="h6c2d90e3g87feg481aga7dag40c1537ce836" version="2">Cast the spell that matches your held orbs.</content>
     <content contentuid="hba12ad0cg09a1g4e1agb9ebgc80728a3d54d" version="1">Sun Strike</content>
-    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="3">EEE — Call down solar fire on any spot you can see, even without a clear line of sight. Creatures within 2 m of the spot take the full blast (a successful Dexterity save halves it), and enemies out to 4 m take a smaller burn. Requires 3 Exort orbs.</content>
-    <content contentuid="hf394b5d8gcad5g4091g8463g39871484045c" version="1">EEE — Call down solar fire on any spot you can see, even without a clear line of sight. The blast is rolled once and divided evenly among every creature within 2 m, so a lone target takes all of it. A successful Dexterity save halves a creature's share. Requires 3 Exort orbs.</content>
+    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="5">EEE: Strike a point you can see for fire damage, even without line of sight. Creatures within 2 m take full damage and enemies out to 4 m take less. No saving throw. Needs 3 Exort orbs.</content>
+    <content contentuid="hf394b5d8gcad5g4091g8463g39871484045c" version="3">EEE: Strike a point you can see for fire damage, even without line of sight. The damage is rolled once and split evenly between all creatures within 2 m. No saving throw. Needs 3 Exort orbs.</content>
     <content contentuid="h3474333ag6e03g426cgacd1ge151d20a4f54" version="1">Cold Snap</content>
-    <content contentuid="h1923bf23g6553g45d6g9795g9bf4f9d73d1c" version="1">QQQ — Chill a foe with biting frost. Requires 3 Quas orbs.</content>
+    <content contentuid="h1923bf23g6553g45d6g9795g9bf4f9d73d1c" version="2">QQQ: Deals cold damage now and each turn, and slows the target. A target that fails a Constitution save is hit for 3 turns and frozen for 1 turn. A target that passes is hit for 1 turn. Needs 3 Quas orbs.</content>
     <content contentuid="h68a6074ag0afag4774g8615geadf6466e050" version="1">Deafening Blast</content>
-    <content contentuid="haae76190g693bg4f0dg8b54g738f8f49aba4" version="1">QWE — A blast of force and thunder. Requires one Quas, one Wex, and one Exort.</content>
+    <content contentuid="haae76190g693bg4f0dg8b54g738f8f49aba4" version="2">QWE: Thunder damage in a cone. A creature that fails a Constitution save is pushed back and has disadvantage on attack rolls for 1 turn. A creature that passes takes half damage. Needs 1 Quas, 1 Wex and 1 Exort.</content>
     <content contentuid="h70229b71gd409g4921gaa13g6aadcbacdee6" version="1">Sun Strike — Invoked!</content>
     <content contentuid="h58b0b1a9g9eabg497bga1dagcaf2136ffe78" version="1">Cold Snap — Invoked!</content>
     <content contentuid="h21908e77g033bg485eg8addg2cd9d23d47f7" version="1">Deafening Blast — Invoked!</content>
     <content contentuid="hbeae42d9gd89eg4a7bg9b02g7df079c5d225" version="1">Cold Snap</content>
-    <content contentuid="h55e673bdg2fc9g4d4bg8e60gf02459998a74" version="1">Gripped by biting frost: taking [1] each turn and slowed.</content>
+    <content contentuid="h55e673bdg2fc9g4d4bg8e60gf02459998a74" version="2">Takes [1] each turn. Movement reduced by 3 m.</content>
     <content contentuid="h1590970cg666dg48e0gb3b7gcb7beb9992c3" version="1">EMP</content>
-    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="5">WWW — Call a storm burst down on a targeted area, dealing lightning damage and Silencing everything caught: two turns on a failed save, one turn on a success.</content>
+    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="6">WWW: Lightning damage in a 3 m area. Creatures that fail a Constitution save take full damage and are Silenced for 2 turns. Creatures that pass take half damage and are Silenced for 1 turn. Needs 3 Wex orbs.</content>
     <content contentuid="h762ecd85g96beg4dd7ga5e8gc19834a9b20a" version="2">Chaos Meteor</content>
-    <content contentuid="hc900206eg3950g424aga6a8g8f44e4f48975" version="3">WEE — Hurl a crashing meteor that deals thunder damage on impact, sets everything it hits ablaze for 3 turns, and leaves a burning fire field behind.</content>
+    <content contentuid="hc900206eg3950g424aga6a8g8f44e4f48975" version="4">WEE: A meteor hits a 3 m area for thunder damage (Dexterity save for half). Creatures hit burn for 3 turns, and a fire field is left on the ground. Needs 1 Wex and 2 Exort orbs.</content>
     <content contentuid="h14b24eb4gd146g406bgb058gc07f68236b38" version="1">Alacrity</content>
-    <content contentuid="ha0642f11g8c78g4da5g87b2g1df7a587151a" version="2">WWE — For 3 turns, a creature is Hasted (extra action, double speed, +2 AC, no exhaustion afterward) with +1d4 to attack rolls and +1d6 damage.</content>
+    <content contentuid="ha0642f11g8c78g4da5g87b2g1df7a587151a" version="3">WWE: For 3 turns, one creature gets an extra action, double movement speed, +2 AC, advantage on Dexterity saves, +1d4 to attack rolls and +1d6 damage. Needs 2 Wex and 1 Exort orb.</content>
     <content contentuid="h080ff1beg9b96g43ccgb73cg8a102ba3580a" version="1">Ghost Walk</content>
-    <content contentuid="h78e06138gd8c2g4443ga070g8820c1aefab3" version="2">QQW — Turn invisible and slip past your foes. Enemies near you are slowed and burned.</content>
+    <content contentuid="h78e06138gd8c2g4443ga070g8820c1aefab3" version="3">QQW: Turn invisible until you attack or cast a spell (orbs and Invoke do not break it). You gain +3 m movement, +2 AC, advantage on Stealth and freedom of movement. Enemies within 3 m are slowed and take fire damage. Needs 2 Quas and 1 Wex.</content>
     <content contentuid="hfdacfda6gea01g4d84g99b7g7fa7db552d30" version="1">Ice Wall</content>
-    <content contentuid="ha2b749dag32ecg4db8g837bgac881997bc7a" version="3">QQE — Draw a wall of ice. It can be walked through, but enemies who cross it are slowed and burned, more fiercely as you level.</content>
+    <content contentuid="ha2b749dag32ecg4db8g837bgac881997bc7a" version="4">QQE: Draw a wall of ice up to 6 m long that lasts 3 turns. You can walk through it. Enemies near it are slowed and take fire damage that grows with your level. Needs 2 Quas and 1 Exort.</content>
     <content contentuid="h3a3cc4c1g22a8g467bga34bg2d47a04f2a67" version="1">Tornado</content>
-    <content contentuid="h9796caf4gf6fbg407bg9a9aga3752109a6f6" version="1">QWW — Conjure a lingering cyclone that deals force damage each turn to those caught inside.</content>
+    <content contentuid="h9796caf4gf6fbg407bg9a9aga3752109a6f6" version="2">QWW: Summon a cyclone for 3 turns. Enemies inside are slowed, knocked prone when they enter, and take force damage each turn. Needs 1 Quas and 2 Wex.</content>
     <content contentuid="h04efb32cgd35bg4509gaca5g987e5c41797a" version="1">Forge Spirit</content>
-    <content contentuid="h0ed534degc645g4152gb496gb03401c3a91b" version="4">QEE — Forge two fire elemental spirits that fight at your side for 4 turns. They grow tougher and hit harder as you level.</content>
+    <content contentuid="h0ed534degc645g4152gb496gb03401c3a91b" version="5">QEE: Summon two fire elemental spirits for 4 turns. They get stronger as you level. Needs 1 Quas and 2 Exort.</content>
     <content contentuid="hae63ab73g6b63g4078ga630g1432e0e86c38" version="1">Forged in Fire</content>
     <content contentuid="hff28df45g1f9fg4d08gbd7bg421f3ca553ed" version="1">A forged fire spirit empowers you: attacks deal +1d6 fire damage and you resist fire.</content>
     <content contentuid="h7ac34c72g09eag4098gb8a2g7f21184c3977" version="1">Arcane Strike</content>
-    <content contentuid="h5c4891d7gba0eg49d8g8857gf42787ac8121" version="1">Loose a bolt of arcane force at a foe. Scales with your level.</content>
+    <content contentuid="h5c4891d7gba0eg49d8g8857gf42787ac8121" version="2">Ranged spell attack that deals force damage. Damage grows with your level.</content>
     <content contentuid="he05e073eg0383g42abga5ddg5400841dd72d" version="1">Arcane Invoker's Gauntlets</content>
-    <content contentuid="h1c50efdbg92a3g4722g9d64g4bb0d82d028b" version="1">Gauntlets attuned to the elemental orbs. While worn, they grant the at-will Arcane Strike and sharpen the wearer's intellect.</content>
+    <content contentuid="h1c50efdbg92a3g4722g9d64g4bb0d82d028b" version="2">Grants Arcane Strike and +1 Intelligence while worn.</content>
     <content contentuid="h8904da0eg7b4fg4b31g8286g317298e273fe" version="1">Forged Fire Spirit</content>
     <content contentuid="h217e5c23gac7ag40degb108gf3c5f35a574d" version="1">Quas 2</content>
     <content contentuid="h26797b79g384eg488cg851cg3129a10be686" version="1">Quas 3</content>

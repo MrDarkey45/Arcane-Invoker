@@ -47,7 +47,7 @@ Just holding an orb grants a passive, stacking up to three:
 [*][b]Tornado[/b] (QWW) — [i]Lv2 slot.[/i] A lingering cyclone: knocks enemies prone as they enter, then slows and batters them (1d4+4 → 3d6+6 force per turn).
 [*][b]Deafening Blast[/b] (QWE) — [i]At-will.[/i] A thunder cone (2d8 → 5d8) that knocks foes back and leaves them disarmed (attacks at disadvantage).
 [*][b]Alacrity[/b] (WWE) — [i]Lv2 slot.[/i] One buff for 3 turns: Haste (no exhaustion afterward), +1d4 to attack rolls and +1d6 damage on every hit.
-[*][b]Sun Strike[/b] (EEE) — [i]Lv3 slot.[/i] Mark any spot you can see with a golden ring and a needle of sunlight; a second later a column of solar fire crashes down on it (3d10 → 8d10) with a small blast radius. No line of sight from you needed. With Script Extender its damage is rolled once and split evenly between every creature in the blast, so a lone target takes all of it. Without it, creatures in the centre take full damage and enemies in a wider ring take a smaller burn.
+[*][b]Sun Strike[/b] (EEE) — [i]Lv3 slot.[/i] Mark any spot you can see with a golden ring and a needle of sunlight; a second later a column of solar fire crashes down on it (4d10 → 12d10) with a small blast radius. No line of sight from you needed, and no saving throw. With Script Extender its damage is rolled once and split evenly between every creature in the blast, so a lone target takes all of it. Without it, creatures in the centre take full damage and enemies in a wider ring take a smaller burn.
 [*][b]Chaos Meteor[/b] (WEE) — [i]Lv3 slot.[/i] A flaming boulder falls from the sky and shatters where it lands (3d8 → 8d8 thunder), setting everything it hits ablaze for 3 turns (1d6 → 3d6 fire per turn) and leaves a burning fire field behind.
 [*][b]Forge Spirit[/b] (QEE) — [i]Lv2 slot.[/i] Summon two fire elemental spirits for 4 turns. They throw Fire Bolts and burn foes in melee, and grow tougher and hit harder as you level.
 [/list]
@@ -119,7 +119,7 @@ Just holding an orb grants a passive, stacking up to three:
 [*][b]Tornado[/b] (QWW) — Lv2 slot. Lingering cyclone: prone on entry, then slow + 1d4+4 → 3d6+6 force/turn.
 [*][b]Deafening Blast[/b] (QWE) — At-will. Thunder cone (2d8 → 5d8) + knockback + disarm (attacks at disadvantage).
 [*][b]Alacrity[/b] (WWE) — Lv2 slot. One 3-turn buff: Haste (no exhaustion after) + attack-roll and damage bonuses.
-[*][b]Sun Strike[/b] (EEE) — Lv3 slot. A golden warning ring, then a delayed column of solar fire (3d10 → 8d10) on any spot you can see. No line of sight from you needed. With Script Extender its damage is rolled once and split evenly between every creature in the blast, so a lone target takes all of it. Without it, creatures in the centre take full damage and enemies in a wider ring take a smaller burn.
+[*][b]Sun Strike[/b] (EEE) — Lv3 slot. A golden warning ring, then a delayed column of solar fire (4d10 → 12d10) on any spot you can see. No line of sight from you needed, and no saving throw. With Script Extender its damage is rolled once and split evenly between every creature in the blast, so a lone target takes all of it. Without it, creatures in the centre take full damage and enemies in a wider ring take a smaller burn.
 [*][b]Chaos Meteor[/b] (WEE) — Lv3 slot. A flaming boulder falls from the sky: impact (3d8 → 8d8 thunder) + a 3-turn burn (1d6 → 3d6 per turn) + a burning fire field.
 [*][b]Forge Spirit[/b] (QEE) — Lv2 slot. Summons two fire elemental spirits for 4 turns that scale with your level.
 [/list]

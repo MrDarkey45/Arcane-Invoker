@@ -9,7 +9,7 @@
                     <attribute id="UUID" type="guid" value="7b281658-5329-4a63-aa56-6faec8f383c8"/>
                     <attribute id="ParentGuid" type="guid" value="a865965f-501b-46e9-9eaa-7748e8c04d09"/>
                     <attribute id="DisplayName" type="TranslatedString" handle="hd8e9a847gd34eg47e8gae42g50d9da8583f7" version="1"/>
-                    <attribute id="Description" type="TranslatedString" handle="hb797491eg3998g4424gac7cg192c7b5fc281" version="1"/>
+                    <attribute id="Description" type="TranslatedString" handle="hb797491eg3998g4424gac7cg192c7b5fc281" version="2"/>
                     <attribute id="ProgressionTableUUID" type="guid" value="aa1678e1-d925-4a89-bba6-32bceb1b75e5"/>
                     <attribute id="PrimaryAbility" type="uint8" value="4"/>
                     <attribute id="SpellCastingAbility" type="uint8" value="4"/>

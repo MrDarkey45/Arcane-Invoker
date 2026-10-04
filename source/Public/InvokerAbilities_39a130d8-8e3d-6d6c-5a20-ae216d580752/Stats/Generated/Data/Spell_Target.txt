@@ -24,7 +24,7 @@ data "CastSound" "Spell_Cast_Damage_Ice_RayOfFrost_L0"
 data "TooltipDamageList" "DealDamage(1d4 + 1,Cold)"
 data "TooltipAttackSave" "Constitution"
 data "DisplayName" "h3474333ag6e03g426cgacd1ge151d20a4f54;1"
-data "Description" "h1923bf23g6553g45d6g9795g9bf4f9d73d1c;1"
+data "Description" "h1923bf23g6553g45d6g9795g9bf4f9d73d1c;2"
 data "Icon" "Spell_Evocation_RayOfFrost"
 
 // ============ FORGE SPIRIT melee — half-strength copy of the Fire Elemental's Smouldering Touch ============

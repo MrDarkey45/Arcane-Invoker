@@ -5,7 +5,7 @@
         <node id="Templates">
             <children>
                 <node id="GameObjects">
-                    <attribute id="Description" type="TranslatedString" handle="h1c50efdbg92a3g4722g9d64g4bb0d82d028b" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h1c50efdbg92a3g4722g9d64g4bb0d82d028b" version="2" />
                     <attribute id="DisplayName" type="TranslatedString" handle="he05e073eg0383g42abga5ddg5400841dd72d" version="1" />
                     <attribute id="Icon" type="FixedString" value="Item_ARM_Gloves_Leather_D" />
 					<attribute id="LevelName" type="FixedString" value="" />

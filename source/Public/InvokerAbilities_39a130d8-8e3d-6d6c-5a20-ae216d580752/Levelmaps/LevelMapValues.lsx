@@ -5,19 +5,19 @@
         <node id="root">
             <children>
                 <node id="LevelMapSeries">
-                    <attribute id="FallbackValue" type="LSString" value="8d10"/>
-                    <attribute id="Level1" type="LSString" value="3d10"/>
-                    <attribute id="Level2" type="LSString" value="3d10"/>
-                    <attribute id="Level3" type="LSString" value="4d10"/>
-                    <attribute id="Level4" type="LSString" value="4d10"/>
-                    <attribute id="Level5" type="LSString" value="5d10"/>
-                    <attribute id="Level6" type="LSString" value="5d10"/>
-                    <attribute id="Level7" type="LSString" value="6d10"/>
-                    <attribute id="Level8" type="LSString" value="6d10"/>
-                    <attribute id="Level9" type="LSString" value="7d10"/>
-                    <attribute id="Level10" type="LSString" value="7d10"/>
-                    <attribute id="Level11" type="LSString" value="8d10"/>
-                    <attribute id="Level12" type="LSString" value="8d10"/>
+                    <attribute id="FallbackValue" type="LSString" value="12d10"/>
+                    <attribute id="Level1" type="LSString" value="4d10"/>
+                    <attribute id="Level2" type="LSString" value="4d10"/>
+                    <attribute id="Level3" type="LSString" value="6d10"/>
+                    <attribute id="Level4" type="LSString" value="6d10"/>
+                    <attribute id="Level5" type="LSString" value="8d10"/>
+                    <attribute id="Level6" type="LSString" value="8d10"/>
+                    <attribute id="Level7" type="LSString" value="9d10"/>
+                    <attribute id="Level8" type="LSString" value="9d10"/>
+                    <attribute id="Level9" type="LSString" value="10d10"/>
+                    <attribute id="Level10" type="LSString" value="10d10"/>
+                    <attribute id="Level11" type="LSString" value="12d10"/>
+                    <attribute id="Level12" type="LSString" value="12d10"/>
                     <attribute id="Name" type="FixedString" value="InvokerSunStrike"/>
                     <attribute id="UUID" type="guid" value="5952ad38-0f27-468e-a67c-97288095cb98"/>
                 </node>

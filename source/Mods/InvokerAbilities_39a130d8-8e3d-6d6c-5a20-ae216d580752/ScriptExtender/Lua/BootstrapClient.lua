@@ -5,7 +5,7 @@
 -- Keep ENABLE_SUNSTRIKE_SPLIT in step with BootstrapServer.lua.
 
 local ENABLE_SUNSTRIKE_SPLIT = true
-local DEBUG = true
+local DEBUG = false
 
 local BASE_SPELL = "INVOKER_SUNSTRIKE"
 local SE_SPELL = "INVOKER_SUNSTRIKE_SE"

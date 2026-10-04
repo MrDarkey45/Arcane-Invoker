@@ -25,23 +25,22 @@ end)
 --
 -- Without Script Extender the data-only INVOKER_SUNSTRIKE runs: full damage in the inner 2 m, a smaller
 -- burn on enemies out to 4 m. With Script Extender this file swaps the Invoke container's entry to
--- INVOKER_SUNSTRIKE_SE, which deals no damage itself. It only marks each creature it hits:
---     INVOKER_SUNSTRIKE_SPLIT_FULL   failed the Dexterity save
---     INVOKER_SUNSTRIKE_SPLIT_HALF   passed the Dexterity save
--- The marks from one strike land in the same instant. We collect them, count N creatures hit, roll the
--- damage ONCE and give every creature roll / N (halved if it passed its save).
+-- INVOKER_SUNSTRIKE_SE, which deals no damage itself. It only marks each creature it hits with
+--     INVOKER_SUNSTRIKE_SPLIT_FULL
+-- Sun Strike has no saving throw (like Dota), so every creature marked takes its share. The marks from one
+-- strike land in the same instant. We collect them, count N creatures hit, roll the damage ONCE and give
+-- every creature roll / N.
 --
 -- Set ENABLE_SUNSTRIKE_SPLIT = false (here AND in BootstrapClient.lua) to go back to the data-only version.
 -- Set DEBUG = false once it is verified in game to silence the console lines.
 -- ---------------------------------------------------------------------------------------------
 local ENABLE_SUNSTRIKE_SPLIT = true
-local DEBUG = true
+local DEBUG = false
 
 local BASE_SPELL = "INVOKER_SUNSTRIKE"
 local SE_SPELL = "INVOKER_SUNSTRIKE_SE"
 local CONTAINER = "INVOKER_INVOKE"
-local MARK_FULL = "INVOKER_SUNSTRIKE_SPLIT_FULL"
-local MARK_HALF = "INVOKER_SUNSTRIKE_SPLIT_HALF"
+local MARK = "INVOKER_SUNSTRIKE_SPLIT_FULL"
 local DIE = 10          -- d10, like Levelmaps/LevelMapValues.lsx "InvokerSunStrike"
 local SETTLE_TICKS = 3  -- ticks to wait after the last mark so every creature of the strike is counted
 
@@ -49,11 +48,12 @@ local function dbg(...)
     if DEBUG then Ext.Utils.Print("[Invoker]", ...) end
 end
 
--- Mirrors the "InvokerSunStrike" level map: 3d10 at levels 1-2, +1 die every two levels, 8d10 from level 11 up.
+-- Mirrors the "InvokerSunStrike" level map (4d10 at levels 1-2 up to 12d10 at level 11-12; level 13+ uses the last value).
 -- Keep in sync with source/Public/<mod>/Levelmaps/LevelMapValues.lsx.
+local DICE_BY_LEVEL = { 4, 4, 6, 6, 8, 8, 9, 9, 10, 10, 12, 12 }
 local function diceCount(level)
-    level = math.max(1, tonumber(level) or 1)
-    return math.min(8, 3 + math.floor((level - 1) / 2))
+    level = math.max(1, math.min(#DICE_BY_LEVEL, math.floor(tonumber(level) or 1)))
+    return DICE_BY_LEVEL[level]
 end
 
 local function rollTotal(level)
@@ -99,36 +99,35 @@ if ENABLE_SUNSTRIKE_SPLIT then
         if not ok then Ext.Utils.PrintError("[Invoker] could not subscribe to " .. name .. ": " .. tostring(err)) end
     end
 
-    local pending = {}     -- [causee] = { { victim = guid, half = bool }, ... }
+    local pending = {}     -- [causee] = { victim guid, ... }
     local ticksLeft = 0
 
     local function isBlank(guid)
         return guid == nil or guid == "" or tostring(guid):find("^NULL_") ~= nil
     end
 
-    local function resolveStrike(causee, hits)
-        local n = #hits
+    local function resolveStrike(causee, victims)
+        local n = #victims
         local okLevel, level = pcall(Osi.GetLevel, causee)
         local total = rollTotal(okLevel and level or 1)
         local share = math.max(1, math.floor(total / n))
-        local halfShare = math.max(1, math.floor(share / 2))
-        dbg(string.format("Sun Strike: %d hit, rolled %d, share %d (%d if saved)", n, total, share, halfShare))
-        for _, hit in ipairs(hits) do
-            pcall(Osi.RemoveStatus, hit.victim, hit.half and MARK_HALF or MARK_FULL)
-            local ok, err = pcall(Osi.ApplyDamage, hit.victim, hit.half and halfShare or share, "Fire", isBlank(causee) and hit.victim or causee)
+        dbg(string.format("Sun Strike: %d hit, rolled %d, %d each", n, total, share))
+        for _, victim in ipairs(victims) do
+            pcall(Osi.RemoveStatus, victim, MARK)
+            local ok, err = pcall(Osi.ApplyDamage, victim, share, "Fire", isBlank(causee) and victim or causee)
             if not ok then Ext.Utils.PrintError("[Invoker] Sun Strike damage failed: " .. tostring(err)) end
         end
     end
 
     Ext.Osiris.RegisterListener("StatusApplied", 4, "after", function(object, status, causee, storyActionID)
-        if status ~= MARK_FULL and status ~= MARK_HALF then return end
+        if status ~= MARK then return end
         local key = isBlank(causee) and "unknown" or causee
         local list = pending[key]
         if list == nil then
             list = {}
             pending[key] = list
         end
-        list[#list + 1] = { victim = object, half = (status == MARK_HALF) }
+        list[#list + 1] = object
         ticksLeft = SETTLE_TICKS
     end)
 
@@ -138,8 +137,8 @@ if ENABLE_SUNSTRIKE_SPLIT then
         if ticksLeft > 0 then return end
         local batch = pending
         pending = {}
-        for causee, hits in pairs(batch) do
-            resolveStrike(causee == "unknown" and nil or causee, hits)
+        for causee, victims in pairs(batch) do
+            resolveStrike(causee == "unknown" and nil or causee, victims)
         end
     end)
 

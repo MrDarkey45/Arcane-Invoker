@@ -16,3 +16,6 @@ vfx_src/
 
 # Embedded copy of base-game icons used only by the store page
 icons.png
+
+# Packaged Nexus upload
+release/

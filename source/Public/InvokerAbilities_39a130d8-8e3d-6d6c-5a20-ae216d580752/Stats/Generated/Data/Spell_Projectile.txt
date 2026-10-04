@@ -7,7 +7,7 @@
 // effects and sounds instead of the borrowed Sacred Flame ones. Damage/mechanics UNCHANGED (Fire only, DC 14).
 
 // ---- Two-zone fallback (2026-10-04) ----
-// This is the version everyone gets WITHOUT Script Extender. Inner 2 m = full damage (SpellSuccess/SpellFail, Dex save). Outer 4 m ring = enemies only,
+// This is the version everyone gets WITHOUT Script Extender. Inner 2 m = full damage, NO saving throw (user 2026-10-04: a flat DC 14 was meaningless at level 12). Outer 4 m ring = enemies only,
 // a smaller fire burn from an invisible anchor aura (INVOKER_SUNSTRIKE_RING[_5|_9], level tier picked at cast time like Tornado). Enemies inside the
 // inner circle are also inside the ring, so they take both. With Script Extender, Lua swaps this spell for INVOKER_SUNSTRIKE_SE in the Invoke container.
 new entry "INVOKER_SUNSTRIKE"
@@ -24,9 +24,7 @@ data "Template" "4f840034-0e07-5bce-92dc-3dfdc4b32cfd"
 data "Trajectories" "4f840034-0e07-5bce-92dc-3dfdc4b32cfd"
 data "TargetConditions" "not Dead()"
 data "AoEConditions" "not Dead() and not (HasPassive('SculptSpells', context.Source) and Ally())"
-data "SpellRoll" "not SavingThrow(Ability.Dexterity, 14)"
 data "SpellSuccess" "DealDamage(LevelMapValue(InvokerSunStrike),Fire,Magical)"
-data "SpellFail" "DealDamage(LevelMapValue(InvokerSunStrike)/2,Fire,Magical)"
 data "SpellProperties" "GROUND:IF(not CharacterLevelGreaterThan(4)):Summon(09e375ca-21cb-4c29-9c0a-2346f00fb2f2, 1,,,'InvokerSunStrikeRing',INVOKER_SUNSTRIKE_RING);GROUND:IF(CharacterLevelGreaterThan(4) and not CharacterLevelGreaterThan(8)):Summon(09e375ca-21cb-4c29-9c0a-2346f00fb2f2, 1,,,'InvokerSunStrikeRing',INVOKER_SUNSTRIKE_RING_5);GROUND:IF(CharacterLevelGreaterThan(8)):Summon(09e375ca-21cb-4c29-9c0a-2346f00fb2f2, 1,,,'InvokerSunStrikeRing',INVOKER_SUNSTRIKE_RING_9)"
 data "RequirementConditions" "HasStatus('INVOKER_EXORT_TRIPLE')"
 data "Level" "3"
@@ -48,15 +46,14 @@ data "CastSound" "Spell_Cast_Damage_FlameStrike_L4to5"
 data "PrepareSound" "Spell_Prepare_Damage_FlameStrike_L4to5"
 data "PrepareLoopSound" "Spell_Loop_Damage_FlameStrike_L4to5"
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerSunStrike),Fire)"
-data "TooltipAttackSave" "Dexterity"
 data "DisplayName" "hba12ad0cg09a1g4e1agb9ebgc80728a3d54d;1"
-data "Description" "h99bca914gf9d1g4000gb1d7g769acb7cb63e;3"
+data "Description" "h99bca914gf9d1g4000gb1d7g769acb7cb63e;5"
 data "Icon" "Spell_Evocation_FlameStrike"
 
 
 // ============ SUN STRIKE, SCRIPT EXTENDER VARIANT (2026-10-04) ============
-// Same spell, but it deals NO damage itself: each creature hit gets a marker status (full = failed save, half = passed save).
-// Lua/BootstrapServer.lua counts the markers of one cast (N), rolls the damage once and applies roll/N to each (halved on a passed save).
+// Same spell, but it deals NO damage itself: each creature hit gets a marker status (there is no saving throw).
+// Lua/BootstrapServer.lua counts the markers of one cast (N), rolls the damage once and applies roll/N to each.
 // Never listed in the Invoke container by data: Lua swaps INVOKER_SUNSTRIKE -> INVOKER_SUNSTRIKE_SE (BootstrapServer/Client.lua) when SE is running.
 // Damage dice here must stay in sync with Levelmaps InvokerSunStrike (mirrored in the Lua).
 new entry "INVOKER_SUNSTRIKE_SE"
@@ -73,9 +70,7 @@ data "Template" "4f840034-0e07-5bce-92dc-3dfdc4b32cfd"
 data "Trajectories" "4f840034-0e07-5bce-92dc-3dfdc4b32cfd"
 data "TargetConditions" "not Dead()"
 data "AoEConditions" "not Dead() and not (HasPassive('SculptSpells', context.Source) and Ally())"
-data "SpellRoll" "not SavingThrow(Ability.Dexterity, 14)"
 data "SpellSuccess" "ApplyStatus(INVOKER_SUNSTRIKE_SPLIT_FULL,100,1)"
-data "SpellFail" "ApplyStatus(INVOKER_SUNSTRIKE_SPLIT_HALF,100,1)"
 data "RequirementConditions" "HasStatus('INVOKER_EXORT_TRIPLE')"
 data "Level" "3"
 data "UseCosts" "ActionPoint:1;SpellSlotsGroup:1:1:3"
@@ -92,9 +87,8 @@ data "CastSound" "Spell_Cast_Damage_FlameStrike_L4to5"
 data "PrepareSound" "Spell_Prepare_Damage_FlameStrike_L4to5"
 data "PrepareLoopSound" "Spell_Loop_Damage_FlameStrike_L4to5"
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerSunStrike),Fire)"
-data "TooltipAttackSave" "Dexterity"
 data "DisplayName" "hba12ad0cg09a1g4e1agb9ebgc80728a3d54d;1"
-data "Description" "hf394b5d8gcad5g4091g8463g39871484045c;1"
+data "Description" "hf394b5d8gcad5g4091g8463g39871484045c;3"
 data "Icon" "Spell_Evocation_FlameStrike"
 
 // ============ METEOR (WEE) — big fire projectile AoE ============
@@ -135,8 +129,8 @@ data "PositionEffect" "8fffd60f-3e4a-5465-b623-987c5d327a3e"
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerMeteor),Thunder)"
 data "TooltipAttackSave" "Dexterity"
 data "CastSound" "Spell_Cast_Damage_Fireball_L5"
-data "DisplayName" "h762ecd85g96beg4dd7ga5e8gc19834a9b20a;1"
-data "Description" "hc900206eg3950g424aga6a8g8f44e4f48975;1"
+data "DisplayName" "h762ecd85g96beg4dd7ga5e8gc19834a9b20a;2"
+data "Description" "hc900206eg3950g424aga6a8g8f44e4f48975;4"
 data "Icon" "Skill_Druid_FlamingSphere_Ram"
 
 // ============ ARCANE STRIKE — the Arcane Gauntlets' at-will "weapon" (Eldritch-Blast-style) ============
@@ -164,5 +158,5 @@ data "PrepareLoopSound" "Spell_Loop_Barbarian_Wildmagic_LightBolt_L1to3"
 data "TooltipDamageList" "DealDamage(LevelMapValue(D8Cantrip),Force)"
 data "TooltipAttackSave" "RangedSpellAttack"
 data "DisplayName" "h7ac34c72g09eag4098gb8a2g7f21184c3977;1"
-data "Description" "h5c4891d7gba0eg49d8g8857gf42787ac8121;1"
+data "Description" "h5c4891d7gba0eg49d8g8857gf42787ac8121;2"
 data "Icon" "Spell_WildMagic_LightBolt"
