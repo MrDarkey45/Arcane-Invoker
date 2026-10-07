@@ -279,7 +279,7 @@
 <section>
   <div class="wrap">
     <p class="sec-label">The Arsenal</p>
-    <h2>Ten combos<span class="sub">Order doesn't matter — only which three orbs you hold. Damage shown as level 1 → top tier; it climbs as you level.</span></h2>
+    <h2>Ten combos<span class="sub">Order doesn't matter — only which three orbs you hold. Damage shown from level 1 → level 12 (the base-game cap); it climbs as you level. Levels 13–20 are covered below.</span></h2>
     <div class="combos">
 
       <div class="combo q">
@@ -357,17 +357,48 @@
       </div>
       <div class="fcard">
         <h4>Scales with you</h4>
-        <p>Combo damage climbs every couple of levels (Sun Strike and Chaos Meteor more than double by level 11), so the kit keeps pace from the Nautiloid to the endgame.</p>
+        <p>Combo damage climbs every couple of levels (Sun Strike and Chaos Meteor more than double by level 11), so the kit keeps pace from the Nautiloid to the endgame — and on to level 20 with a level-cap mod.</p>
       </div>
       <div class="fcard">
         <h4><span class="ico" style="--n:15" role="img" aria-label="Arcane Strike icon"></span>Arcane Gauntlets</h4>
         <p>Signature gloves granted at the start: an at-will <strong>Arcane Strike</strong> bolt of light and an Intelligence boost.</p>
       </div>
       <div class="fcard">
+        <h4>Bonus spell slots</h4>
+        <p>Choosing the subclass grants one extra 3rd-level and two extra 2nd-level spell slots (long-rest refresh), so the heavy hitters are castable from level 2.</p>
+      </div>
+      <div class="fcard">
         <h4>Reagent economy</h4>
         <p>Free orbs, at-will utility combos, and spell-slot-gated heavy hitters keep it strong but fair.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-label">Levels 13–20</p>
+    <h2>Compatible with Expansion<span class="sub">Optional — the base game stops at level 12, and everything above works without it.</span></h2>
+    <p class="lede">Arcane Invoker works with <a href="https://www.nexusmods.com/baldursgate3/mods/279">Expansion: Level 13-20 (Configurable)</a>. If you raise the level cap, combo damage keeps climbing to level 20 (levels 19–20: Sun Strike 16d10, Chaos Meteor impact 12d8, EMP 11d8, Deafening Blast 7d8), and the damage-over-time effects, Ice Wall and Forge Spirits gain two more tiers at levels 13 and 17.</p>
+    <div class="feat">
+      <div class="fcard">
+        <h4>Level 14 · Elemental Attunement</h4>
+        <p>Resistance to Cold, Fire and Lightning damage.</p>
+      </div>
+      <div class="fcard">
+        <h4>Level 16 · Invoker's Reserves</h4>
+        <p>One extra 3rd-level and one extra 2nd-level spell slot.</p>
+      </div>
+      <div class="fcard">
+        <h4>Level 18 · Triple Resonance</h4>
+        <p>While you hold 3 orbs: +2 AC and +2 to all saving throws.</p>
+      </div>
+      <div class="fcard">
+        <h4>Level 20 · Grand Invoker</h4>
+        <p>Intelligence +2 (maximum 22) and +5 Initiative.</p>
+      </div>
+    </div>
+    <p class="lede"><b>Load order:</b> Mod Configuration Menu → Expansion → InvokerAbilities. <b>Tested through level 12;</b> the level 13–20 additions have not been through a full playthrough yet, so please report any problems.</p>
   </div>
 </section>
 
@@ -381,6 +412,7 @@
           <li><b>Baldur's Gate 3</b> — current patch.</li>
           <li><b>BG3 Mod Manager</b> — to install and order the mod.</li>
           <li><b>Script Extender</b> <span class="tag">optional</span><br>Optional. Auto-grants the Arcane Gauntlets and lets Sun Strike split its damage between everything it hits. The subclass, orbs, and all ten combos work without it.</li>
+          <li><b>Expansion: Level 13-20</b> <span class="tag">optional</span><br>Only needed to level past 12 (it requires Script Extender and Mod Configuration Menu itself).</li>
         </ul>
       </div>
       <div>
@@ -388,8 +420,8 @@
         <h2>Three steps</h2>
         <ol class="steps">
           <li>Drop <code>InvokerAbilities.pak</code> into your BG3 <code>Mods</code> folder (or import it in BG3 Mod Manager).</li>
-          <li>Add it to your load order and export to the game.</li>
-          <li>Launch. Create a Wizard, reach <strong>level 2</strong>, and choose <strong>Arcane Invoker</strong> as your subclass.</li>
+          <li>Add it to your load order and export to the game. With Expansion, load Mod Configuration Menu first, then Expansion, then InvokerAbilities.</li>
+          <li>Launch. Create a Wizard, reach <strong>level 2</strong>, and choose <strong>Arcane Invoker</strong> as your subclass. (Already past level 2? Respec at Withers, pick Wizard, then choose the subclass at level 2.)</li>
         </ol>
       </div>
     </div>

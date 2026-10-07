@@ -5,7 +5,7 @@
         <node id="root">
             <children>
                 <node id="LevelMapSeries">
-                    <attribute id="FallbackValue" type="LSString" value="12d10"/>
+                    <attribute id="FallbackValue" type="LSString" value="16d10"/>
                     <attribute id="Level1" type="LSString" value="4d10"/>
                     <attribute id="Level2" type="LSString" value="4d10"/>
                     <attribute id="Level3" type="LSString" value="6d10"/>
@@ -18,11 +18,19 @@
                     <attribute id="Level10" type="LSString" value="10d10"/>
                     <attribute id="Level11" type="LSString" value="12d10"/>
                     <attribute id="Level12" type="LSString" value="12d10"/>
+                    <attribute id="Level13" type="LSString" value="13d10"/>
+                    <attribute id="Level14" type="LSString" value="13d10"/>
+                    <attribute id="Level15" type="LSString" value="14d10"/>
+                    <attribute id="Level16" type="LSString" value="14d10"/>
+                    <attribute id="Level17" type="LSString" value="15d10"/>
+                    <attribute id="Level18" type="LSString" value="15d10"/>
+                    <attribute id="Level19" type="LSString" value="16d10"/>
+                    <attribute id="Level20" type="LSString" value="16d10"/>
                     <attribute id="Name" type="FixedString" value="InvokerSunStrike"/>
                     <attribute id="UUID" type="guid" value="5952ad38-0f27-468e-a67c-97288095cb98"/>
                 </node>
                 <node id="LevelMapSeries">
-                    <attribute id="FallbackValue" type="LSString" value="8d8"/>
+                    <attribute id="FallbackValue" type="LSString" value="12d8"/>
                     <attribute id="Level1" type="LSString" value="3d8"/>
                     <attribute id="Level2" type="LSString" value="3d8"/>
                     <attribute id="Level3" type="LSString" value="4d8"/>
@@ -35,11 +43,19 @@
                     <attribute id="Level10" type="LSString" value="7d8"/>
                     <attribute id="Level11" type="LSString" value="8d8"/>
                     <attribute id="Level12" type="LSString" value="8d8"/>
+                    <attribute id="Level13" type="LSString" value="9d8"/>
+                    <attribute id="Level14" type="LSString" value="9d8"/>
+                    <attribute id="Level15" type="LSString" value="10d8"/>
+                    <attribute id="Level16" type="LSString" value="10d8"/>
+                    <attribute id="Level17" type="LSString" value="11d8"/>
+                    <attribute id="Level18" type="LSString" value="11d8"/>
+                    <attribute id="Level19" type="LSString" value="12d8"/>
+                    <attribute id="Level20" type="LSString" value="12d8"/>
                     <attribute id="Name" type="FixedString" value="InvokerMeteor"/>
                     <attribute id="UUID" type="guid" value="9b2c8ed8-953f-44a6-b4ae-de942d343602"/>
                 </node>
                 <node id="LevelMapSeries">
-                    <attribute id="FallbackValue" type="LSString" value="7d8"/>
+                    <attribute id="FallbackValue" type="LSString" value="11d8"/>
                     <attribute id="Level1" type="LSString" value="2d8"/>
                     <attribute id="Level2" type="LSString" value="2d8"/>
                     <attribute id="Level3" type="LSString" value="3d8"/>
@@ -52,11 +68,19 @@
                     <attribute id="Level10" type="LSString" value="6d8"/>
                     <attribute id="Level11" type="LSString" value="7d8"/>
                     <attribute id="Level12" type="LSString" value="7d8"/>
+                    <attribute id="Level13" type="LSString" value="8d8"/>
+                    <attribute id="Level14" type="LSString" value="8d8"/>
+                    <attribute id="Level15" type="LSString" value="9d8"/>
+                    <attribute id="Level16" type="LSString" value="9d8"/>
+                    <attribute id="Level17" type="LSString" value="10d8"/>
+                    <attribute id="Level18" type="LSString" value="10d8"/>
+                    <attribute id="Level19" type="LSString" value="11d8"/>
+                    <attribute id="Level20" type="LSString" value="11d8"/>
                     <attribute id="Name" type="FixedString" value="InvokerEMP"/>
                     <attribute id="UUID" type="guid" value="d12bbc11-cee8-4f48-98a9-30a8e4faf9d5"/>
                 </node>
                 <node id="LevelMapSeries">
-                    <attribute id="FallbackValue" type="LSString" value="5d8"/>
+                    <attribute id="FallbackValue" type="LSString" value="7d8"/>
                     <attribute id="Level1" type="LSString" value="2d8"/>
                     <attribute id="Level2" type="LSString" value="2d8"/>
                     <attribute id="Level3" type="LSString" value="2d8"/>
@@ -69,6 +93,14 @@
                     <attribute id="Level10" type="LSString" value="4d8"/>
                     <attribute id="Level11" type="LSString" value="5d8"/>
                     <attribute id="Level12" type="LSString" value="5d8"/>
+                    <attribute id="Level13" type="LSString" value="6d8"/>
+                    <attribute id="Level14" type="LSString" value="6d8"/>
+                    <attribute id="Level15" type="LSString" value="6d8"/>
+                    <attribute id="Level16" type="LSString" value="6d8"/>
+                    <attribute id="Level17" type="LSString" value="7d8"/>
+                    <attribute id="Level18" type="LSString" value="7d8"/>
+                    <attribute id="Level19" type="LSString" value="7d8"/>
+                    <attribute id="Level20" type="LSString" value="7d8"/>
                     <attribute id="Name" type="FixedString" value="InvokerDeafeningBlast"/>
                     <attribute id="UUID" type="guid" value="9d0e6b23-71c6-4a31-9870-8699671b3915"/>
                 </node>

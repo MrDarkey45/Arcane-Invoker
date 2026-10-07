@@ -23,3 +23,19 @@ using "Fire_Elemental"
 data "Vitality" "100"
 data "Armor" "14"
 data "SpellCastingAbility" "Dexterity"
+
+// Level tier _13: used when the caster is level 13+ (see INVOKER_FORGESPIRIT). Only reachable with a level-cap mod such as Expansion.
+new entry "INVOKER_FIRE_SPIRIT_13"
+type "Character"
+using "Fire_Elemental"
+data "Vitality" "130"
+data "Armor" "15"
+data "SpellCastingAbility" "Dexterity"
+
+// Level tier _17: used when the caster is level 17+ (see INVOKER_FORGESPIRIT). Only reachable with a level-cap mod such as Expansion.
+new entry "INVOKER_FIRE_SPIRIT_17"
+type "Character"
+using "Fire_Elemental"
+data "Vitality" "160"
+data "Armor" "16"
+data "SpellCastingAbility" "Dexterity"

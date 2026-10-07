@@ -19,6 +19,20 @@ an at-will Arcane Strike cantrip, and the Arcane Invoker's Gauntlets item.
 Combos: Cold Snap (QQQ), Ghost Walk (QQW), Ice Wall (QQE), EMP (WWW), Tornado (QWW), Deafening Blast (QWE),
 Alacrity (WWE), Sun Strike (EEE), Chaos Meteor (WEE), Forge Spirit (QEE).
 
+## Compatible with Expansion (Levels 13–20)
+
+Works with [Expansion: Level 13-20 (Configurable)](https://www.nexusmods.com/baldursgate3/mods/279), but does not need it (the base game caps at level 12). With a raised level cap:
+
+- Combo damage continues to level 20 (levels 19–20: Sun Strike 16d10, Chaos Meteor impact 12d8, EMP 11d8, Deafening Blast 7d8); damage-over-time effects, Ice Wall and Forge Spirits gain tiers at levels 13 and 17.
+- Level 14 **Elemental Attunement**: resistance to Cold, Fire and Lightning.
+- Level 16 **Invoker's Reserves**: one extra 3rd-level and one extra 2nd-level spell slot.
+- Level 18 **Triple Resonance**: while you hold 3 orbs, +2 AC and +2 to all saving throws.
+- Level 20 **Grand Invoker**: Intelligence +2 (max 22) and +5 Initiative.
+
+Load order: Mod Configuration Menu, then Expansion, then InvokerAbilities. Tested through level 12; the level 13–20 additions have not been through a full playthrough yet.
+
+Choosing the subclass also grants one extra 3rd-level and two extra 2nd-level spell slots (long-rest refresh) for the slot-gated combos.
+
 ## Layout
 
 - `source/` - the mod as it ships (`Mods/` and `Public/` roots, stats, level maps, progressions, localization, effects).

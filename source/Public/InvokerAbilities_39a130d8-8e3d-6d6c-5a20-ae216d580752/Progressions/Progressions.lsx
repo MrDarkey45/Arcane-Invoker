@@ -32,6 +32,42 @@
                     <attribute id="Boosts" type="LSString" value="ActionResource(ActionPoint,1,0);UnlockSpell(INVOKER_ARCANE_STRIKE);ActionResource(SpellSlot,1,3);ActionResource(SpellSlot,2,2)"/>
                     <attribute id="Selectors" type="LSString" value="AddSpells(793881ae-b38c-4d7d-a9f1-672a070f648e,,,,AlwaysPrepared)"/>
                 </node>
+                <!-- Arcane Invoker level 14: Elemental Attunement -->
+                <node id="Progression">
+                    <attribute id="Name" type="LSString" value="ArcaneInvoker"/>
+                    <attribute id="TableUUID" type="guid" value="aa1678e1-d925-4a89-bba6-32bceb1b75e5"/>
+                    <attribute id="UUID" type="guid" value="092fdac0-7981-5469-9108-2c3694234d89"/>
+                    <attribute id="Level" type="uint8" value="14"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="PassivesAdded" type="LSString" value="INVOKER_ELEMENTAL_ATTUNEMENT"/>
+                </node>
+                <!-- Arcane Invoker level 16: Invoker's Reserves -->
+                <node id="Progression">
+                    <attribute id="Name" type="LSString" value="ArcaneInvoker"/>
+                    <attribute id="TableUUID" type="guid" value="aa1678e1-d925-4a89-bba6-32bceb1b75e5"/>
+                    <attribute id="UUID" type="guid" value="c6172723-4512-5b10-9f1d-e1abb3ad3c8a"/>
+                    <attribute id="Level" type="uint8" value="16"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="PassivesAdded" type="LSString" value="INVOKER_RESERVES"/>
+                </node>
+                <!-- Arcane Invoker level 18: Triple Resonance -->
+                <node id="Progression">
+                    <attribute id="Name" type="LSString" value="ArcaneInvoker"/>
+                    <attribute id="TableUUID" type="guid" value="aa1678e1-d925-4a89-bba6-32bceb1b75e5"/>
+                    <attribute id="UUID" type="guid" value="85a9616b-8c1e-520b-b720-b6ca4008cb6f"/>
+                    <attribute id="Level" type="uint8" value="18"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="PassivesAdded" type="LSString" value="INVOKER_TRIPLE_RESONANCE"/>
+                </node>
+                <!-- Arcane Invoker level 20: Grand Invoker -->
+                <node id="Progression">
+                    <attribute id="Name" type="LSString" value="ArcaneInvoker"/>
+                    <attribute id="TableUUID" type="guid" value="aa1678e1-d925-4a89-bba6-32bceb1b75e5"/>
+                    <attribute id="UUID" type="guid" value="c02ce5d1-a71a-582e-9b9c-39da58a89e12"/>
+                    <attribute id="Level" type="uint8" value="20"/>
+                    <attribute id="ProgressionType" type="uint8" value="1"/>
+                    <attribute id="PassivesAdded" type="LSString" value="INVOKER_GRAND_INVOKER"/>
+                </node>
             </children>
         </node>
     </region>

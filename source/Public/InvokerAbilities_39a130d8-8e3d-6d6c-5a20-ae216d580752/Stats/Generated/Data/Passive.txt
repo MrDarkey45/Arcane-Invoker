@@ -1,0 +1,31 @@
+// ============ ARCANE INVOKER high-level features (2026-10-05) ============
+// Granted by the subclass progression rows at levels 14 / 16 / 18 / 20. Only reachable with a level-cap mod such as Expansion.
+new entry "INVOKER_ELEMENTAL_ATTUNEMENT"
+type "PassiveData"
+data "DisplayName" "hb830ffcbg342eg5aeeg958agd2ba0512ecf3;1"
+data "Description" "hb0729644g1e12g5752gb4eeg68d441787eba;1"
+data "Icon" "GenericIcon_DamageType_Fire"
+data "Boosts" "Resistance(Cold,Resistant);Resistance(Fire,Resistant);Resistance(Lightning,Resistant)"
+
+new entry "INVOKER_RESERVES"
+type "PassiveData"
+data "DisplayName" "hf4c9520cg5864g54c8gb119ga4d06e7752fb;1"
+data "Description" "hbf43c4d3g070bg5131g84f5g8b7f9d777b59;1"
+data "Icon" "Spell_Evocation_ChromaticOrb"
+data "Boosts" "ActionResource(SpellSlot,1,3);ActionResource(SpellSlot,1,2)"
+
+new entry "INVOKER_TRIPLE_RESONANCE"
+type "PassiveData"
+data "DisplayName" "h8dc635c1g5184g5c59g95a8g5cb789f5354e;1"
+data "Description" "h29208821ged69g52a4gabe0ga81c3ae8ab7b;1"
+data "Icon" "Spell_Evocation_Daylight_Sphere"
+data "BoostConditions" "HasStatus('INVOKER_ORB_3')"
+data "Boosts" "AC(2);RollBonus(SavingThrow,2)"
+
+new entry "INVOKER_GRAND_INVOKER"
+type "PassiveData"
+data "DisplayName" "h252e845ega2f1g543fgb2bfg444744ec1e21;1"
+data "Description" "hca3f4801g18c8g545cgb5d2g4dce051d0ddf;1"
+data "Icon" "Spell_Evocation_ChromaticOrb_Thunder"
+data "Boosts" "Ability(Intelligence,2,22);Initiative(5)"
+

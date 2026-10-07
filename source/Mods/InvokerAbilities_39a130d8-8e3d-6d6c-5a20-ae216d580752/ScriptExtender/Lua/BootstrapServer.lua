@@ -48,9 +48,9 @@ local function dbg(...)
     if DEBUG then Ext.Utils.Print("[Invoker]", ...) end
 end
 
--- Mirrors the "InvokerSunStrike" level map (4d10 at levels 1-2 up to 12d10 at level 11-12; level 13+ uses the last value).
+-- Mirrors the "InvokerSunStrike" level map (4d10 at levels 1-2 up to 12d10 at level 11-12 and 16d10 at level 19-20; above 20 uses the last value).
 -- Keep in sync with source/Public/<mod>/Levelmaps/LevelMapValues.lsx.
-local DICE_BY_LEVEL = { 4, 4, 6, 6, 8, 8, 9, 9, 10, 10, 12, 12 }
+local DICE_BY_LEVEL = { 4, 4, 6, 6, 8, 8, 9, 9, 10, 10, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16 }
 local function diceCount(level)
     level = math.max(1, math.min(#DICE_BY_LEVEL, math.floor(tonumber(level) or 1)))
     return DICE_BY_LEVEL[level]
