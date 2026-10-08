@@ -1,7 +1,8 @@
 ========================================================================
   ARCANE INVOKER — mod description (BBCode)
   Two versions below: full Nexus BBCode, and a conservative mod.io version.
-  Copy the block you need. (Nexus supports [size]/[color]/[center]/[line];
+  Copy the block you need. The Nexus block uses NO [list] bullets (they break the Nexus editor); one line per item instead.
+  (Nexus supports [size]/[color]/[center]/[line];
   mod.io's editor is more limited, so its block sticks to [b]/[i]/[list]/[url].)
 ========================================================================
 
@@ -24,84 +25,66 @@ The [b]Arcane Invoker[/b] is a Wizard subclass that ports Invoker's signature ki
 
 [size=5][b]The Three Orbs[/b][/size]
 Just holding an orb grants a passive, stacking up to three:
-[list]
-[*][b][color=#5cc6ff]Quas[/color][/b] (Ice) +1 HP regenerated per turn in combat, per Quas held.
-[*][b][color=#b98bff]Wex[/color][/b] (Storm) movement costs 10% less and +1 Initiative, per Wex held.
-[*][b][color=#ff8f43]Exort[/color][/b] (Fire) +1 force damage to your attacks & Arcane Strike, per Exort held.
-[/list]
+[b][color=#5cc6ff]Quas[/color][/b] (Ice) +1 HP regenerated per turn in combat, per Quas held.
+[b][color=#b98bff]Wex[/color][/b] (Storm) movement costs 10% less and +1 Initiative, per Wex held.
+[b][color=#ff8f43]Exort[/color][/b] (Fire) +1 force damage to your attacks & Arcane Strike, per Exort held.
 
 [size=5][b]How It Works[/b][/size]
-[list=1]
-[*][b]Conjure[/b] cast Quas, Wex or Exort to hold up to 3 orbs. No action cost, build freely.
-[*][b]Invoke[/b] open Invoke and the combo matching your held orbs lights up; the other nine stay greyed out.
-[*][b]Reset[/b] orbs persist after invoking; cast [b]Dispel Orbs[/b] (free) to clear them and mix a new recipe.
-[/list]
+[b]Conjure[/b] cast Quas, Wex or Exort to hold up to 3 orbs. No action cost, build freely.
+[b]Invoke[/b] open Invoke and the combo matching your held orbs lights up; the other nine stay greyed out.
+[b]Reset[/b] orbs persist after invoking; cast [b]Dispel Orbs[/b] (free) to clear them and mix a new recipe.
 
 [size=5][b]The Ten Combos[/b][/size]
 [i]Order doesn't matter, only which three orbs you hold. Damage climbs as you level; levels 13–20 are covered below.[/i]
-[list]
-[*][b]Cold Snap[/b] (QQQ) - A 3-turn frost DoT that snaps the target with a 1-turn freeze.
-[*][b]Ghost Walk[/b] (QQW) - Turn invisible with a haunting aura; nearby foes are slowed and burned while you move faster and can't be held.
-[*][b]Ice Wall[/b] (QQE) - Drag out a wall of ice. It can be walked through, but foes within 2m of it are slowed and burned.
-[*][b]EMP[/b] (WWW) - A crackling ball of energy charges over the targeted area, then detonates in a storm burst that Silences everything caught.
-[*][b]Tornado[/b] (QWW) - A lingering cyclone that knocks enemies prone as they enter, then slows and batters them.
-[*][b]Deafening Blast[/b] (QWE) - A thunder cone that knocks foes back and leaves them with a disadvantage on attacks.
-[*][b]Alacrity[/b] (WWE) - Buffs an ally for 3 turns: Grants Special Haste, buffs to attack rolls and additional damage on every hit.
-[*][b]Sun Strike[/b] (EEE) - Mark any spot you can see with a golden ring and a needle of sunlight; a second later a column of solar fire crashes down on it with a small blast radius. With Script Extender its damage is rolled once and split evenly between every creature in the blast, so a lone target takes all of it. Without it, creatures in the center take full damage and enemies in a wider ring take a smaller burn.
-[*][b]Chaos Meteor[/b] (WEE) - A flaming boulder falls from the sky and shatters where it lands, setting everything it hits ablaze for 3 turns and leaves a burning fire field behind.
-[*][b]Forge Spirit[/b] (QEE) - Summon two fire elemental spirits for 4 turns. They throw Fire Bolts and burn foes in melee and grow tougher and hit harder as you level.
-[/list]
+[b]Cold Snap[/b] (QQQ) - A 3-turn frost DoT that snaps the target with a 1-turn freeze.
+[b]Ghost Walk[/b] (QQW) - Turn invisible with a haunting aura; nearby foes are slowed and burned while you move faster and can't be held.
+[b]Ice Wall[/b] (QQE) - Drag out a wall of ice. It can be walked through, but foes within 2m of it are slowed and burned.
+[b]EMP[/b] (WWW) - A crackling ball of energy charges over the targeted area, then detonates in a storm burst that Silences everything caught.
+[b]Tornado[/b] (QWW) - A lingering cyclone that knocks enemies prone as they enter, then slows and batters them.
+[b]Deafening Blast[/b] (QWE) - A thunder cone that knocks foes back and leaves them with a disadvantage on attacks.
+[b]Alacrity[/b] (WWE) - Buffs an ally for 3 turns: Grants Special Haste, buffs to attack rolls and additional damage on every hit.
+[b]Sun Strike[/b] (EEE) - Mark any spot you can see with a golden ring and a needle of sunlight; a second later a column of solar fire crashes down on it with a small blast radius. With Script Extender its damage is rolled once and split evenly between every creature in the blast, so a lone target takes all of it. Without it, creatures in the center take full damage and enemies in a wider ring take a smaller burn.
+[b]Chaos Meteor[/b] (WEE) - A flaming boulder falls from the sky and shatters where it lands, setting everything it hits ablaze for 3 turns and leaves a burning fire field behind.
+[b]Forge Spirit[/b] (QEE) - Summon two fire elemental spirits for 4 turns. They throw Fire Bolts and burn foes in melee and grow tougher and hit harder as you level.
 
 [size=5][b]Spell Slots and Upcasting[/b][/size]
 Every combo costs an Action. Most also cost a spell slot:
-[list]
-[*][b]No slot (at-will):[/b] Cold Snap.
-[*][b]Level 1 slot:[/b] Ghost Walk, Ice Wall, Deafening Blast.
-[*][b]Level 2 slot:[/b] EMP, Tornado, Alacrity, Forge Spirit.
-[*][b]Level 3 slot:[/b] Sun Strike, Chaos Meteor.
-[/list]
+[b]No slot (at-will):[/b] Cold Snap.
+[b]Level 1 slot:[/b] Ghost Walk, Ice Wall, Deafening Blast.
+[b]Level 2 slot:[/b] EMP, Tornado, Alacrity, Forge Spirit.
+[b]Level 3 slot:[/b] Sun Strike, Chaos Meteor.
 Any combo that costs a slot can be cast with a higher-level slot, like a normal spell. Each slot level above the spell's own adds:
-[list]
-[*][b]Sun Strike[/b] +1d10 damage.
-[*][b]Chaos Meteor[/b], [b]EMP[/b], [b]Deafening Blast[/b] +1d8 damage.
-[*][b]Tornado[/b], [b]Ice Wall[/b] +1d6 damage per turn.
-[*][b]Ghost Walk[/b], [b]Alacrity[/b], [b]Forge Spirit[/b] no bonus; a higher slot only lets you cast them when the lower slots are spent.
-[/list]
+[b]Sun Strike[/b] +1d10 damage.
+[b]Chaos Meteor[/b], [b]EMP[/b], [b]Deafening Blast[/b] +1d8 damage.
+[b]Tornado[/b], [b]Ice Wall[/b] +1d6 damage per turn.
+[b]Ghost Walk[/b], [b]Alacrity[/b], [b]Forge Spirit[/b] no bonus; a higher slot only lets you cast them when the lower slots are spent.
 
 [size=5][b]Additional Information[/b][/size]
-[list]
-[*][b]Invoker's tempo[/b] - two actions per turn from level 2.
-[*][b]Scales with you[/b] - combo damage climbs every couple of levels from the Nautiloid to the endgame, and on to level 20 if you use a level-cap mod (see below).
-[*][b]Bonus spell slots[/b] - choosing the subclass grants one extra 3rd-level and two extra 2nd-level spell slots, so the heavy hitters are castable from level 2. They refresh on a long rest.
-[*][b]Arcane Gauntlets[/b] - signature gloves granted at the start: an at-will [b]Arcane Strike[/b] force bolt and an Intelligence boost.
-[*][b]Balancing[/b] - free orbs, an at-will Cold Snap, and spell slots on everything else keep it strong but fair. Let me know if the damage values need tuning.
-[/list]
+[b]Invoker's tempo[/b] - two actions per turn from level 2.
+[b]Scales with you[/b] - combo damage climbs every couple of levels from the Nautiloid to the endgame, and on to level 20 if you use a level-cap mod (see below).
+[b]Bonus spell slots[/b] - choosing the subclass grants one extra 3rd-level and two extra 2nd-level spell slots, so the heavy hitters are castable from level 2. They refresh on a long rest.
+[b]Arcane Gauntlets[/b] - signature gloves granted at the start: an at-will [b]Arcane Strike[/b] force bolt and an Intelligence boost.
+[b]Balancing[/b] - free orbs, an at-will Cold Snap, and spell slots on everything else keep it strong but fair. Let me know if the damage values need tuning.
 
 [size=5][b]Compatible with Expansion (Levels 13–20)[/b][/size]
 Arcane Invoker works with [url=https://www.nexusmods.com/baldursgate3/mods/279]Expansion: Level 13-20 (Configurable)[/url]. It is [b]not required[/b] since the base game stops at level 12 and everything above works without it but if you raise the level cap, the Arcane Invoker keeps growing:
-[list]
-[*][b]Damage to level 20[/b] at levels 19–20: Sun Strike 16d10, Chaos Meteor impact 12d8, EMP 11d8, Deafening Blast 7d8. Cold Snap, Ghost Walk, Ice Wall, Tornado, the Meteor burn and the Forge Spirits gain two more tiers (levels 13 and 17).
-[*][b]Higher spell slots[/b] combos can be cast with level 7–9 slots once you have them.
-[*][b]Level 14 Elemental Attunement:[/b] resistance to Cold, Fire and Lightning damage.
-[*][b]Level 16 Invoker's Reserves:[/b] one extra 3rd-level and one extra 2nd-level spell slot.
-[*][b]Level 18 Triple Resonance:[/b] while you hold 3 orbs, +2 AC and +2 to all saving throws.
-[*][b]Level 20 Grand Invoker:[/b] Intelligence +2 (maximum 22) and +5 Initiative.
-[/list]
+[b]Damage to level 20[/b] at levels 19–20: Sun Strike 16d10, Chaos Meteor impact 12d8, EMP 11d8, Deafening Blast 7d8. Cold Snap, Ghost Walk, Ice Wall, Tornado, the Meteor burn and the Forge Spirits gain two more tiers (levels 13 and 17).
+[b]Higher spell slots[/b] combos can be cast with level 7–9 slots once you have them.
+[b]Level 14 Elemental Attunement:[/b] resistance to Cold, Fire and Lightning damage.
+[b]Level 16 Invoker's Reserves:[/b] one extra 3rd-level and one extra 2nd-level spell slot.
+[b]Level 18 Triple Resonance:[/b] while you hold 3 orbs, +2 AC and +2 to all saving throws.
+[b]Level 20 Grand Invoker:[/b] Intelligence +2 (maximum 22) and +5 Initiative.
 [b]Load order:[/b] Mod Configuration Menu → Expansion → InvokerAbilities. Tested through level 20 but report any problems if they occur.
 
 [size=5][b]Requirements[/b][/size]
-[list]
-[*][b]BG3 Mod Manager[/b] — to install and order the mod.
-[*][b]BG3 Script Extender[/b] Optional. Auto-grants the Arcane Gauntlets and lets Sun Strike split its damage between everything it hits. The subclass, orbs and all ten combos work without it.
-[*][b]Expansion: Level 13-20[/b] Optional. Only needed to level past 12 (it requires Script Extender and Mod Configuration Menu itself).
-[/list]
+[b]BG3 Mod Manager[/b] — to install and order the mod.
+[b]BG3 Script Extender[/b] Optional. Auto-grants the Arcane Gauntlets and lets Sun Strike split its damage between everything it hits. The subclass, orbs and all ten combos work without it.
+[b]Expansion: Level 13-20[/b] Optional. Only needed to level past 12 (it requires Script Extender and Mod Configuration Menu itself).
 
 [size=5][b]Installation[/b][/size]
-[list=1]
-[*]Add [b]InvokerAbilities.pak[/b] via BG3 Mod Manager (or drop it into your Mods folder).
-[*]Add it to your load order and export to the game. If you also use Expansion, load Mod Configuration Menu first, then Expansion, then InvokerAbilities.
-[*]Launch. Create a Wizard, reach [b]level 2[/b], and choose [b]Arcane Invoker[/b]. (Already past level 2? Respec at Withers and pick Wizard, then choose the subclass at level 2.)
-[/list]
+Add [b]InvokerAbilities.pak[/b] via BG3 Mod Manager (or drop it into your Mods folder).
+Add it to your load order and export to the game. If you also use Expansion, load Mod Configuration Menu first, then Expansion, then InvokerAbilities.
+Launch. Create a Wizard, reach [b]level 2[/b], and choose [b]Arcane Invoker[/b]. (Already past level 2? Respec at Withers and pick Wizard, then choose the subclass at level 2.)
 
 [size=5][b]License[/b][/size]
 Free for personal use. [b]Not for commercial use[/b] and not to be reuploaded or redistributed for profit. Licensed under CC BY-NC 4.0.
