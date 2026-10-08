@@ -7,7 +7,7 @@ A Baldur's Gate 3 mod that adds the **Arcane Invoker**, a Wizard subclass (chose
 Unofficial fan work, inspired by the Invoker hero from Dota 2.
 
 Hold up to three **reagent orbs** (Quas, Wex, Exort), then cast **Invoke** to unleash the one spell that
-matches the orbs you hold. Orbs cost no action; each Invoke costs an action. Ten combo spells, orb passives,
+matches the orbs you hold. Orbs cost no action; each combo costs an action, and most cost a spell slot. Ten combo spells, orb passives,
 an at-will Arcane Strike cantrip, and the Arcane Invoker's Gauntlets item.
 
 | Orb | Passive (per orb held, up to 3) |
@@ -19,6 +19,11 @@ an at-will Arcane Strike cantrip, and the Arcane Invoker's Gauntlets item.
 Combos: Cold Snap (QQQ), Ghost Walk (QQW), Ice Wall (QQE), EMP (WWW), Tornado (QWW), Deafening Blast (QWE),
 Alacrity (WWE), Sun Strike (EEE), Chaos Meteor (WEE), Forge Spirit (QEE).
 
+Slot costs: Cold Snap is at-will; Ghost Walk, Ice Wall and Deafening Blast cost a level 1 slot; EMP, Tornado, Alacrity and Forge Spirit a level 2 slot;
+Sun Strike and Chaos Meteor a level 3 slot. Any combo that costs a slot can be cast with a higher-level slot. Each level above the spell's own adds
++1d10 to Sun Strike, +1d8 to Chaos Meteor, EMP and Deafening Blast, and +1d6 per turn to Tornado and Ice Wall. Ghost Walk, Alacrity and Forge Spirit
+gain nothing from a higher slot.
+
 ## Compatible with Expansion (Levels 13–20)
 
 Works with [Expansion: Level 13-20 (Configurable)](https://www.nexusmods.com/baldursgate3/mods/279), but does not need it (the base game caps at level 12). With a raised level cap:
@@ -29,7 +34,7 @@ Works with [Expansion: Level 13-20 (Configurable)](https://www.nexusmods.com/bal
 - Level 18 **Triple Resonance**: while you hold 3 orbs, +2 AC and +2 to all saving throws.
 - Level 20 **Grand Invoker**: Intelligence +2 (max 22) and +5 Initiative.
 
-Load order: Mod Configuration Menu, then Expansion, then InvokerAbilities. Tested through level 12; the level 13–20 additions have not been through a full playthrough yet.
+Load order: Mod Configuration Menu, then Expansion, then InvokerAbilities. Tested through level 20.
 
 Choosing the subclass also grants one extra 3rd-level and two extra 2nd-level spell slots (long-rest refresh) for the slot-gated combos.
 
@@ -37,7 +42,7 @@ Choosing the subclass also grants one extra 3rd-level and two extra 2nd-level sp
 
 - `source/` - the mod as it ships (`Mods/` and `Public/` roots, stats, level maps, progressions, localization, effects).
 - `roottemplate_src/` - editable item/creature templates, converted to `.lsf` at build time.
-- `tools/` - packer (`pakbuild`), extractor, and the orb effect generator (`vfxcompile/build_orb.py`).
+- `tools/` - packer (`pakbuild`), extractor, the orb effect generator (`vfxcompile/build_orb.py`), and `generate_upcasts.py`, which writes the higher-slot spell versions (`Spell_Upcast.txt`, `Status_Upcast.txt`; rerun it after changing a base combo).
 - `docs/plans/` - design notes.
 - `repack.ps1` - builds `InvokerAbilities.pak` and installs it into the game's `Mods` folder.
 - `mod-description-bbcode.txt`, `mod-details-page.html` - store page text.

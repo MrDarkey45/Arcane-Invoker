@@ -14,29 +14,29 @@
     <content contentuid="h936195d7gd9c3g41f4g96fbg3308818caa8d" version="1">Invoke</content>
     <content contentuid="h6c2d90e3g87feg481aga7dag40c1537ce836" version="2">Cast the spell that matches your held orbs.</content>
     <content contentuid="hba12ad0cg09a1g4e1agb9ebgc80728a3d54d" version="1">Sun Strike</content>
-    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="5">EEE: Strike a point you can see for fire damage, even without line of sight. Creatures within 2 m take full damage and enemies out to 4 m take less. No saving throw. Needs 3 Exort orbs.</content>
-    <content contentuid="hf394b5d8gcad5g4091g8463g39871484045c" version="3">EEE: Strike a point you can see for fire damage, even without line of sight. The damage is rolled once and split evenly between all creatures within 2 m. No saving throw. Needs 3 Exort orbs.</content>
+    <content contentuid="h99bca914gf9d1g4000gb1d7g769acb7cb63e" version="6">EEE: Strike a point you can see for fire damage, even without line of sight. Creatures within 2 m take full damage and enemies out to 4 m take less. No saving throw. Each slot level above 3 adds 1d10 damage. Needs 3 Exort orbs.</content>
+    <content contentuid="hf394b5d8gcad5g4091g8463g39871484045c" version="4">EEE: Strike a point you can see for fire damage, even without line of sight. The damage is rolled once and split evenly between all creatures within 2 m. No saving throw. Each slot level above 3 adds 1d10 damage. Needs 3 Exort orbs.</content>
     <content contentuid="h3474333ag6e03g426cgacd1ge151d20a4f54" version="1">Cold Snap</content>
     <content contentuid="h1923bf23g6553g45d6g9795g9bf4f9d73d1c" version="2">QQQ: Deals cold damage now and each turn, and slows the target. A target that fails a Constitution save is hit for 3 turns and frozen for 1 turn. A target that passes is hit for 1 turn. Needs 3 Quas orbs.</content>
     <content contentuid="h68a6074ag0afag4774g8615geadf6466e050" version="1">Deafening Blast</content>
-    <content contentuid="haae76190g693bg4f0dg8b54g738f8f49aba4" version="2">QWE: Thunder damage in a cone. A creature that fails a Constitution save is pushed back and has disadvantage on attack rolls for 1 turn. A creature that passes takes half damage. Needs 1 Quas, 1 Wex and 1 Exort.</content>
+    <content contentuid="haae76190g693bg4f0dg8b54g738f8f49aba4" version="3">QWE: Thunder damage in a cone. A creature that fails a Constitution save is pushed back and has disadvantage on attack rolls for 1 turn. A creature that passes takes half damage. Each slot level above 1 adds 1d8 damage. Needs 1 Quas, 1 Wex and 1 Exort.</content>
     <content contentuid="h70229b71gd409g4921gaa13g6aadcbacdee6" version="1">Sun Strike — Invoked!</content>
     <content contentuid="h58b0b1a9g9eabg497bga1dagcaf2136ffe78" version="1">Cold Snap — Invoked!</content>
     <content contentuid="h21908e77g033bg485eg8addg2cd9d23d47f7" version="1">Deafening Blast — Invoked!</content>
     <content contentuid="hbeae42d9gd89eg4a7bg9b02g7df079c5d225" version="1">Cold Snap</content>
     <content contentuid="h55e673bdg2fc9g4d4bg8e60gf02459998a74" version="2">Takes [1] each turn. Movement reduced by 3 m.</content>
     <content contentuid="h1590970cg666dg48e0gb3b7gcb7beb9992c3" version="1">EMP</content>
-    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="6">WWW: Lightning damage in a 3 m area. Creatures that fail a Constitution save take full damage and are Silenced for 2 turns. Creatures that pass take half damage and are Silenced for 1 turn. Needs 3 Wex orbs.</content>
+    <content contentuid="h63bfc2dcg4fd7g41d7ga0f5g24b03744f7d1" version="7">WWW: Lightning damage in a 3 m area. Creatures that fail a Constitution save take full damage and are Silenced for 2 turns. Creatures that pass take half damage and are Silenced for 1 turn. Each slot level above 2 adds 1d8 damage. Needs 3 Wex orbs.</content>
     <content contentuid="h762ecd85g96beg4dd7ga5e8gc19834a9b20a" version="2">Chaos Meteor</content>
-    <content contentuid="hc900206eg3950g424aga6a8g8f44e4f48975" version="4">WEE: A meteor hits a 3 m area for thunder damage (Dexterity save for half). Creatures hit burn for 3 turns, and a fire field is left on the ground. Needs 1 Wex and 2 Exort orbs.</content>
+    <content contentuid="hc900206eg3950g424aga6a8g8f44e4f48975" version="5">WEE: A meteor hits a 3 m area for thunder damage (Dexterity save for half). Creatures hit burn for 3 turns, and a fire field is left on the ground. Each slot level above 3 adds 1d8 impact damage. Needs 1 Wex and 2 Exort orbs.</content>
     <content contentuid="h14b24eb4gd146g406bgb058gc07f68236b38" version="1">Alacrity</content>
     <content contentuid="ha0642f11g8c78g4da5g87b2g1df7a587151a" version="3">WWE: For 3 turns, one creature gets an extra action, double movement speed, +2 AC, advantage on Dexterity saves, +1d4 to attack rolls and +1d6 damage. Needs 2 Wex and 1 Exort orb.</content>
     <content contentuid="h080ff1beg9b96g43ccgb73cg8a102ba3580a" version="1">Ghost Walk</content>
     <content contentuid="h78e06138gd8c2g4443ga070g8820c1aefab3" version="3">QQW: Turn invisible until you attack or cast a spell (orbs and Invoke do not break it). You gain +3 m movement, +2 AC, advantage on Stealth and freedom of movement. Enemies within 3 m are slowed and take fire damage. Needs 2 Quas and 1 Wex.</content>
     <content contentuid="hfdacfda6gea01g4d84g99b7g7fa7db552d30" version="1">Ice Wall</content>
-    <content contentuid="ha2b749dag32ecg4db8g837bgac881997bc7a" version="4">QQE: Draw a wall of ice up to 6 m long that lasts 3 turns. You can walk through it. Enemies near it are slowed and take fire damage that grows with your level. Needs 2 Quas and 1 Exort.</content>
+    <content contentuid="ha2b749dag32ecg4db8g837bgac881997bc7a" version="5">QQE: Draw a wall of ice up to 6 m long that lasts 3 turns. You can walk through it. Enemies near it are slowed and take fire damage that grows with your level. Each slot level above 1 adds 1d6 fire damage. Needs 2 Quas and 1 Exort.</content>
     <content contentuid="h3a3cc4c1g22a8g467bga34bg2d47a04f2a67" version="1">Tornado</content>
-    <content contentuid="h9796caf4gf6fbg407bg9a9aga3752109a6f6" version="2">QWW: Summon a cyclone for 3 turns. Enemies inside are slowed, knocked prone when they enter, and take force damage each turn. Needs 1 Quas and 2 Wex.</content>
+    <content contentuid="h9796caf4gf6fbg407bg9a9aga3752109a6f6" version="3">QWW: Summon a cyclone for 3 turns. Enemies inside are slowed, knocked prone when they enter, and take force damage each turn. Each slot level above 2 adds 1d6 force damage per turn. Needs 1 Quas and 2 Wex.</content>
     <content contentuid="h04efb32cgd35bg4509gaca5g987e5c41797a" version="1">Forge Spirit</content>
     <content contentuid="h0ed534degc645g4152gb496gb03401c3a91b" version="5">QEE: Summon two fire elemental spirits for 4 turns. They get stronger as you level. Needs 1 Quas and 2 Exort.</content>
     <content contentuid="hae63ab73g6b63g4078ga630g1432e0e86c38" version="1">Forged in Fire</content>

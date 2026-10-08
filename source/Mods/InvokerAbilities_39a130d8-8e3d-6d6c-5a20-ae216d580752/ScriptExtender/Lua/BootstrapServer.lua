@@ -26,7 +26,8 @@ end)
 -- Without Script Extender the data-only INVOKER_SUNSTRIKE runs: full damage in the inner 2 m, a smaller
 -- burn on enemies out to 4 m. With Script Extender this file swaps the Invoke container's entry to
 -- INVOKER_SUNSTRIKE_SE, which deals no damage itself. It only marks each creature it hits with
---     INVOKER_SUNSTRIKE_SPLIT_FULL
+--     INVOKER_SUNSTRIKE_SPLIT_FULL        (cast with a level 3 slot)
+--     INVOKER_SUNSTRIKE_SPLIT_FULL_<n>    (cast with a level n slot; each level above 3 adds 1d10)
 -- Sun Strike has no saving throw (like Dota), so every creature marked takes its share. The marks from one
 -- strike land in the same instant. We collect them, count N creatures hit, roll the damage ONCE and give
 -- every creature roll / N.
@@ -40,7 +41,8 @@ local DEBUG = false
 local BASE_SPELL = "INVOKER_SUNSTRIKE"
 local SE_SPELL = "INVOKER_SUNSTRIKE_SE"
 local CONTAINER = "INVOKER_INVOKE"
-local MARK = "INVOKER_SUNSTRIKE_SPLIT_FULL"
+local MARK = "INVOKER_SUNSTRIKE_SPLIT_FULL"      -- cast with the base slot; INVOKER_SUNSTRIKE_SPLIT_FULL_<n> = cast with a level n slot
+local BASE_SLOT = 3     -- Sun Strike's own slot level; every slot level above it adds one die (+1d10, like vanilla upcasting)
 local DIE = 10          -- d10, like Levelmaps/LevelMapValues.lsx "InvokerSunStrike"
 local SETTLE_TICKS = 3  -- ticks to wait after the last mark so every creature of the strike is counted
 
@@ -56,9 +58,9 @@ local function diceCount(level)
     return DICE_BY_LEVEL[level]
 end
 
-local function rollTotal(level)
+local function rollTotal(level, extraDice)
     local total = 0
-    for _ = 1, diceCount(level) do
+    for _ = 1, diceCount(level) + (extraDice or 0) do
         total = total + math.random(1, DIE)
     end
     return total
@@ -99,35 +101,47 @@ if ENABLE_SUNSTRIKE_SPLIT then
         if not ok then Ext.Utils.PrintError("[Invoker] could not subscribe to " .. name .. ": " .. tostring(err)) end
     end
 
-    local pending = {}     -- [causee] = { victim guid, ... }
+    local pending = {}     -- [causee] = { slot = slot level of the cast, victims = { { guid = ..., mark = status name }, ... } }
     local ticksLeft = 0
 
     local function isBlank(guid)
         return guid == nil or guid == "" or tostring(guid):find("^NULL_") ~= nil
     end
 
-    local function resolveStrike(causee, victims)
+    -- Slot level a marker stands for: INVOKER_SUNSTRIKE_SPLIT_FULL = the base slot, INVOKER_SUNSTRIKE_SPLIT_FULL_<n> = a level n slot.
+    local function slotOf(status)
+        status = tostring(status)
+        if status == MARK then return BASE_SLOT end
+        local n = status:match("^" .. MARK .. "_(%d+)$")
+        return n and tonumber(n) or nil
+    end
+
+    local function resolveStrike(causee, strike)
+        local victims = strike.victims
         local n = #victims
+        local extra = math.max(0, strike.slot - BASE_SLOT)
         local okLevel, level = pcall(Osi.GetLevel, causee)
-        local total = rollTotal(okLevel and level or 1)
+        local total = rollTotal(okLevel and level or 1, extra)
         local share = math.max(1, math.floor(total / n))
-        dbg(string.format("Sun Strike: %d hit, rolled %d, %d each", n, total, share))
+        dbg(string.format("Sun Strike (slot %d): %d hit, rolled %d (+%d dice), %d each", strike.slot, n, total, extra, share))
         for _, victim in ipairs(victims) do
-            pcall(Osi.RemoveStatus, victim, MARK)
-            local ok, err = pcall(Osi.ApplyDamage, victim, share, "Fire", isBlank(causee) and victim or causee)
+            pcall(Osi.RemoveStatus, victim.guid, victim.mark)
+            local ok, err = pcall(Osi.ApplyDamage, victim.guid, share, "Fire", isBlank(causee) and victim.guid or causee)
             if not ok then Ext.Utils.PrintError("[Invoker] Sun Strike damage failed: " .. tostring(err)) end
         end
     end
 
     Ext.Osiris.RegisterListener("StatusApplied", 4, "after", function(object, status, causee, storyActionID)
-        if status ~= MARK then return end
+        if tostring(status):sub(1, #MARK) ~= MARK then return end   -- cheap test first: this runs for every status in the game
+        local slot = slotOf(status)
+        if slot == nil then return end
         local key = isBlank(causee) and "unknown" or causee
-        local list = pending[key]
-        if list == nil then
-            list = {}
-            pending[key] = list
+        local strike = pending[key]
+        if strike == nil then
+            strike = { slot = slot, victims = {} }
+            pending[key] = strike
         end
-        list[#list + 1] = object
+        strike.victims[#strike.victims + 1] = { guid = object, mark = status }
         ticksLeft = SETTLE_TICKS
     end)
 
@@ -137,8 +151,8 @@ if ENABLE_SUNSTRIKE_SPLIT then
         if ticksLeft > 0 then return end
         local batch = pending
         pending = {}
-        for causee, victims in pairs(batch) do
-            resolveStrike(causee == "unknown" and nil or causee, victims)
+        for causee, strike in pairs(batch) do
+            resolveStrike(causee == "unknown" and nil or causee, strike)
         end
     end)
 

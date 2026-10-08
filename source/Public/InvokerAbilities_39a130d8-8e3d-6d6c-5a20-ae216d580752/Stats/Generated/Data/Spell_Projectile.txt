@@ -47,7 +47,7 @@ data "PrepareSound" "Spell_Prepare_Damage_FlameStrike_L4to5"
 data "PrepareLoopSound" "Spell_Loop_Damage_FlameStrike_L4to5"
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerSunStrike),Fire)"
 data "DisplayName" "hba12ad0cg09a1g4e1agb9ebgc80728a3d54d;1"
-data "Description" "h99bca914gf9d1g4000gb1d7g769acb7cb63e;5"
+data "Description" "h99bca914gf9d1g4000gb1d7g769acb7cb63e;6"
 data "Icon" "Spell_Evocation_FlameStrike"
 
 
@@ -88,7 +88,7 @@ data "PrepareSound" "Spell_Prepare_Damage_FlameStrike_L4to5"
 data "PrepareLoopSound" "Spell_Loop_Damage_FlameStrike_L4to5"
 data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerSunStrike),Fire)"
 data "DisplayName" "hba12ad0cg09a1g4e1agb9ebgc80728a3d54d;1"
-data "Description" "hf394b5d8gcad5g4091g8463g39871484045c;3"
+data "Description" "hf394b5d8gcad5g4091g8463g39871484045c;4"
 data "Icon" "Spell_Evocation_FlameStrike"
 
 // ============ METEOR (WEE) — big fire projectile AoE ============
@@ -130,7 +130,7 @@ data "TooltipDamageList" "DealDamage(LevelMapValue(InvokerMeteor),Thunder)"
 data "TooltipAttackSave" "Dexterity"
 data "CastSound" "Spell_Cast_Damage_Fireball_L5"
 data "DisplayName" "h762ecd85g96beg4dd7ga5e8gc19834a9b20a;2"
-data "Description" "hc900206eg3950g424aga6a8g8f44e4f48975;4"
+data "Description" "hc900206eg3950g424aga6a8g8f44e4f48975;5"
 data "Icon" "Skill_Druid_FlamingSphere_Ram"
 
 // ============ ARCANE STRIKE — the Arcane Gauntlets' at-will "weapon" (Eldritch-Blast-style) ============

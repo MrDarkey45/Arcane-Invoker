@@ -162,6 +162,7 @@
   .cost{font-family:var(--sc);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
     padding:3px 9px;border-radius:20px;border:1px solid var(--line-strong);color:var(--muted);white-space:nowrap}
   .cost.free{color:#8fd6a6;border-color:rgba(143,214,166,.35)}
+.cost.l1{color:#8ec8f0;border-color:rgba(142,200,240,.4)}
   .cost.l2{color:#e6c877;border-color:rgba(230,200,119,.35)}
   .cost.l3{color:#ff9a6b;border-color:rgba(255,154,107,.4)}
   .combo h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 5px;letter-spacing:.02em;color:#f3ecd7}
@@ -289,13 +290,13 @@
       </div>
 
       <div class="combo q">
-        <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb q"></span><span class="orb w"></span></div><span class="cost free">At-will</span></div>
+        <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb q"></span><span class="orb w"></span></div><span class="cost l1">Lv1 slot</span></div>
         <h3><span class="ico" style="--n:6" role="img" aria-label="Ghost Walk icon"></span>Ghost Walk <span class="rc">QQW</span></h3>
         <p>Turn invisible with a haunting aura — nearby foes are slowed and burned (1d6 → 3d6 per turn) while you move faster and can't be held.</p>
       </div>
 
       <div class="combo q">
-        <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb q"></span><span class="orb e"></span></div><span class="cost free">At-will</span></div>
+        <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb q"></span><span class="orb e"></span></div><span class="cost l1">Lv1 slot</span></div>
         <h3><span class="ico" style="--n:7" role="img" aria-label="Ice Wall icon"></span>Ice Wall <span class="rc">QQE</span></h3>
         <p>Drag out a wall of ice. It can be walked through, but foes within 2 m of it are slowed and burned (1d6 → 3d6 fire per turn).</p>
       </div>
@@ -313,7 +314,7 @@
       </div>
 
       <div class="combo m">
-        <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb w"></span><span class="orb e"></span></div><span class="cost free">At-will</span></div>
+        <div class="chead"><div class="recipe"><span class="orb q"></span><span class="orb w"></span><span class="orb e"></span></div><span class="cost l1">Lv1 slot</span></div>
         <h3><span class="ico" style="--n:10" role="img" aria-label="Deafening Blast icon"></span>Deafening Blast <span class="rc">QWE</span></h3>
         <p>A thunder cone (2d8 → 5d8) that knocks foes back and leaves them disarmed — attacks at disadvantage.</p>
       </div>
@@ -367,9 +368,13 @@
         <h4>Bonus spell slots</h4>
         <p>Choosing the subclass grants one extra 3rd-level and two extra 2nd-level spell slots (long-rest refresh), so the heavy hitters are castable from level 2.</p>
       </div>
+<div class="fcard">
+<h4>Upcasting</h4>
+<p>Any combo that costs a slot can be cast with a higher-level slot. Each level above the spell's own adds +1d10 to Sun Strike, +1d8 to Chaos Meteor, EMP and Deafening Blast, and +1d6 per turn to Tornado and Ice Wall. Ghost Walk, Alacrity and Forge Spirit gain nothing; a higher slot only lets you cast them when the lower slots are spent.</p>
+</div>
       <div class="fcard">
         <h4>Reagent economy</h4>
-        <p>Free orbs, at-will utility combos, and spell-slot-gated heavy hitters keep it strong but fair.</p>
+        <p>Free orbs, an at-will Cold Snap, and spell slots on everything else keep it strong but fair.</p>
       </div>
     </div>
   </div>
@@ -398,7 +403,7 @@
         <p>Intelligence +2 (maximum 22) and +5 Initiative.</p>
       </div>
     </div>
-    <p class="lede"><b>Load order:</b> Mod Configuration Menu → Expansion → InvokerAbilities. <b>Tested through level 12;</b> the level 13–20 additions have not been through a full playthrough yet, so please report any problems.</p>
+    <p class="lede"><b>Load order:</b> Mod Configuration Menu → Expansion → InvokerAbilities. Tested through level 20, but please report any problems.</p>
   </div>
 </section>
 
